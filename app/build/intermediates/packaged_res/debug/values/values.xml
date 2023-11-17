@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Reference">
+        <item>Согласие на прохождение психологического тестирования</item>
+        <item>Документ о доходах</item>
+        <item>Документ на академический отпуск</item>
+        <item>Документ о переводе</item>
+    </string-array>
+    <string-array name="Role">
+        <item>Студент</item>
+        <item>Преподаватель</item>
+    </string-array>
+    <string-array name="Uneversity">
+        <item>БГУ</item>
+        <item>ВСГУТУ</item>
+        <item>СИБГУТИ</item>
+    </string-array>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="Create_requistion">Создать заявку</string>
+    <string name="Curs">Курс</string>
+    <string name="Delete_podpise">Удалить подпись</string>
+    <string name="Department">Кафедра</string>
+    <string name="Double_Name">Фамилия</string>
+    <string name="Download_podpise">Загрузить подпись</string>
+    <string name="History">История</string>
+    <string name="Job_title">Должность</string>
+    <string name="Key">Ключ</string>
+    <string name="Name">Имя</string>
+    <string name="Number_certificate">Номер сертификата</string>
+    <string name="Number_group">Номер группы</string>
+    <string name="Number_record_book">Номер зачетной книжки</string>
+    <string name="Open_podpise">Открыть подпись</string>
+    <string name="Photo">Фото</string>
+    <string name="Photo_podpise">Создать подпись</string>
+    <string name="Regestration">Создать</string>
+    <string name="Send">Отправить</string>
+    <string name="Sign">Подписать</string>
+    <string name="Since_Degree">Научная степень</string>
+    <string name="Speciality">Специальность</string>
+    <string name="Thirst_Name">Отчество</string>
+    <string name="app_name">Podpise</string>
+    <string name="role">Роль</string>
+    <style name="Base.Theme.Podpise" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.Podpise" parent="Base.Theme.Podpise"/>
+</resources>

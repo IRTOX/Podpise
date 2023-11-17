@@ -1,0 +1,3 @@
+com.example.podpise.test
+style WhiteBackgroundDialogTheme
+style WhiteBackgroundTheme

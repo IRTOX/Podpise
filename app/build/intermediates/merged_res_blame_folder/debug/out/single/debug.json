@@ -1,0 +1,162 @@
+[
+    {
+        "merged": "com.example.podpise.app-merged_res-28:/drawable_send_check.xml.flat",
+        "source": "com.example.podpise.app-main-30:/drawable/send_check.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\drawable_folder.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\drawable\\folder.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.podpise.app-merged_res-28:/drawable_save.xml.flat",
+        "source": "com.example.podpise.app-main-30:/drawable/save.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\layout_activity_create_sign.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\layout\\activity_create_sign.xml"
+    },
+    {
+        "merged": "com.example.podpise.app-merged_res-28:/drawable_download_sign.xml.flat",
+        "source": "com.example.podpise.app-main-30:/drawable/download_sign.xml"
+    },
+    {
+        "merged": "com.example.podpise.app-merged_res-28:/drawable_create_sign.xml.flat",
+        "source": "com.example.podpise.app-main-30:/drawable/create_sign.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\layout_activity_open_sign.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\layout\\activity_open_sign.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\mipmap-anydpi_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\mipmap-anydpi\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\mipmap-anydpi\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\drawable_sign.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\drawable\\sign.xml"
+    },
+    {
+        "merged": "com.example.podpise.app-merged_res-28:/drawable_documents.xml.flat",
+        "source": "com.example.podpise.app-main-30:/drawable/documents.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\drawable_create.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\drawable\\create.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\layout_activity_history.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\layout\\activity_history.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\layout_activity_create_application.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\layout\\activity_create_application.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\drawable_delete.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\drawable\\delete.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\drawable_history.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\drawable\\history.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\drawable_download.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\drawable\\download.xml"
+    },
+    {
+        "merged": "com.example.podpise.app-merged_res-28:/drawable_delete_sign.xml.flat",
+        "source": "com.example.podpise.app-main-30:/drawable/delete_sign.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\layout_activity_delate_sign.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\layout\\activity_delate_sign.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\drawable_send.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\drawable\\send.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\layout_activity_sign.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\layout\\activity_sign.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\drawable_camera.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\drawable\\camera.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.podpise.app-merged_res-28:/layout_activity_main.xml.flat",
+        "source": "com.example.podpise.app-main-30:/layout/activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\layout_activity_send_sign.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\layout\\activity_send_sign.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\drawable_requisition.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\drawable\\requisition.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-merged_res-28:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.0\\com.example.podpise.app-main-30:\\mipmap-mdpi\\ic_launcher_round.webp"
+    }
+]

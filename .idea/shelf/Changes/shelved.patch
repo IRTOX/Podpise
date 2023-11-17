@@ -1,0 +1,2864 @@
+Index: app/.idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/.idea/.gitignore b/app/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1700176218555)
++++ b/app/.idea/.gitignore	(date 1700176218555)
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+Index: app/.idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/.idea/misc.xml b/app/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1700176232229)
++++ b/app/.idea/misc.xml	(date 1700176232229)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ExternalStorageConfigurationManager" enabled="true" />
++  <component name="ProjectRootManager" version="2" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/build/classes" />
++  </component>
++  <component name="ProjectType">
++    <option name="id" value="Android" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1700189210540)
++++ b/.idea/misc.xml	(date 1700189210540)
+@@ -0,0 +1,9 @@
++<project version="4">
++  <component name="ExternalStorageConfigurationManager" enabled="true" />
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/build/classes" />
++  </component>
++  <component name="ProjectType">
++    <option name="id" value="Android" />
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/java/com/example/podpise/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/podpise/MainActivity.java b/app/src/main/java/com/example/podpise/MainActivity.java
+new file mode 100644
+--- /dev/null	(date 1700166340000)
++++ b/app/src/main/java/com/example/podpise/MainActivity.java	(date 1700166340000)
+@@ -0,0 +1,91 @@
++package com.example.podpise;
++
++import androidx.appcompat.app.AlertDialog;
++import androidx.appcompat.app.AppCompatActivity;
++
++import android.app.Activity;
++import android.content.DialogInterface;
++import android.content.Intent;
++import android.os.Environment;
++import android.util.Log;
++import android.view.View;
++
++
++import android.os.Bundle;
++import android.widget.Toast;
++
++import java.io.BufferedReader;
++import java.io.File;
++import java.io.FileInputStream;
++import java.io.FileNotFoundException;
++import java.io.FileOutputStream;
++import java.io.IOException;
++import java.io.InputStreamReader;
++
++import kotlin._Assertions;
++
++public class MainActivity extends AppCompatActivity {
++
++    private boolean a;
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.activity_main);
++    }
++    public void Start_Create_activity(View v)
++    {
++        //Переход на следующию меню
++        Intent intent=new Intent(this,Create_sign.class);
++        startActivity(intent);
++    }
++    public void Start_Open_activity(View v)
++    {
++        Intent intent=new Intent(this,activity_open_sign.class);
++        startActivity(intent);
++    }
++public void Start_Activity_Sign(View v)
++{
++    Intent intent=new Intent(this,activity_sign.class);
++    startActivity(intent);
++}
++    public void Start_Activity_History(View v)
++    {
++        Intent intent=new Intent(this,activity_history.class);
++        startActivity(intent);
++    }
++    public void Start_Create_application_activity(View v)
++    {
++        Intent intent=new Intent(this,activity_create_application.class);
++        startActivity(intent);
++    }
++public void delete_key(View v)
++{
++    //FileOutputStream file_output = openFileOutput("Sign.txt", MODE_PRIVATE);
++    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
++    builder.setTitle("Удаление подписи");
++            builder.setMessage("Вы точно хотите удалить подпись?");
++            builder.setPositiveButton("Нет", new DialogInterface.OnClickListener() {
++                public void onClick(DialogInterface dialog, int id) {
++                    Toast.makeText(MainActivity.this,"Нажата кнопка 'Нет'",Toast.LENGTH_SHORT).show();
++                }
++            });
++            builder.setNegativeButton("Да", new DialogInterface.OnClickListener() {
++                public void onClick(DialogInterface dialog, int id) {
++                    String path = Environment.getExternalStorageDirectory().toString()+"/folder";
++                    Log.d("Files", "Path: " + path);
++                    File directory = new File(path);
++                    File[] files = directory.listFiles();
++                    if(files==null)
++                    {
++                        deleteFile("Sign.txt");
++                        Toast.makeText(MainActivity.this, "Данные удалены", Toast.LENGTH_SHORT).show();
++                    }
++                    else
++                        Toast.makeText(MainActivity.this, "Нету подписи", Toast.LENGTH_SHORT).show();
++                }
++            });
++    builder.create().show();
++}
++
++
++}
+\ No newline at end of file
+Index: gradlew.bat
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gradlew.bat b/gradlew.bat
+new file mode 100644
+--- /dev/null	(date 1700024202000)
++++ b/gradlew.bat	(date 1700024202000)
+@@ -0,0 +1,89 @@
++@rem
++@rem Copyright 2015 the original author or authors.
++@rem
++@rem Licensed under the Apache License, Version 2.0 (the "License");
++@rem you may not use this file except in compliance with the License.
++@rem You may obtain a copy of the License at
++@rem
++@rem      https://www.apache.org/licenses/LICENSE-2.0
++@rem
++@rem Unless required by applicable law or agreed to in writing, software
++@rem distributed under the License is distributed on an "AS IS" BASIS,
++@rem WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++@rem See the License for the specific language governing permissions and
++@rem limitations under the License.
++@rem
++
++@if "%DEBUG%" == "" @echo off
++@rem ##########################################################################
++@rem
++@rem  Gradle startup script for Windows
++@rem
++@rem ##########################################################################
++
++@rem Set local scope for the variables with windows NT shell
++if "%OS%"=="Windows_NT" setlocal
++
++set DIRNAME=%~dp0
++if "%DIRNAME%" == "" set DIRNAME=.
++set APP_BASE_NAME=%~n0
++set APP_HOME=%DIRNAME%
++
++@rem Resolve any "." and ".." in APP_HOME to make it shorter.
++for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi
++
++@rem Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
++set DEFAULT_JVM_OPTS="-Xmx64m" "-Xms64m"
++
++@rem Find java.exe
++if defined JAVA_HOME goto findJavaFromJavaHome
++
++set JAVA_EXE=java.exe
++%JAVA_EXE% -version >NUL 2>&1
++if "%ERRORLEVEL%" == "0" goto execute
++
++echo.
++echo ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
++echo.
++echo Please set the JAVA_HOME variable in your environment to match the
++echo location of your Java installation.
++
++goto fail
++
++:findJavaFromJavaHome
++set JAVA_HOME=%JAVA_HOME:"=%
++set JAVA_EXE=%JAVA_HOME%/bin/java.exe
++
++if exist "%JAVA_EXE%" goto execute
++
++echo.
++echo ERROR: JAVA_HOME is set to an invalid directory: %JAVA_HOME%
++echo.
++echo Please set the JAVA_HOME variable in your environment to match the
++echo location of your Java installation.
++
++goto fail
++
++:execute
++@rem Setup the command line
++
++set CLASSPATH=%APP_HOME%\gradle\wrapper\gradle-wrapper.jar
++
++
++@rem Execute Gradle
++"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -classpath "%CLASSPATH%" org.gradle.wrapper.GradleWrapperMain %*
++
++:end
++@rem End local scope for the variables with windows NT shell
++if "%ERRORLEVEL%"=="0" goto mainEnd
++
++:fail
++rem Set variable GRADLE_EXIT_CONSOLE if you need the _script_ return code instead of
++rem the _cmd.exe /c_ return code!
++if  not "" == "%GRADLE_EXIT_CONSOLE%" exit 1
++exit /b 1
++
++:mainEnd
++if "%OS%"=="Windows_NT" endlocal
++
++:omega
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+--- /dev/null	(date 1700024202000)
++++ b/.gitignore	(date 1700024202000)
+@@ -0,0 +1,15 @@
++*.iml
++.gradle
++/local.properties
++/.idea/caches
++/.idea/libraries
++/.idea/modules.xml
++/.idea/workspace.xml
++/.idea/navEditor.xml
++/.idea/assetWizardSettings.xml
++.DS_Store
++/build
++/captures
++.externalNativeBuild
++.cxx
++local.properties
+Index: gradle.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/gradle.properties b/gradle.properties
+new file mode 100644
+--- /dev/null	(date 1700024202000)
++++ b/gradle.properties	(date 1700024202000)
+@@ -0,0 +1,21 @@
++# Project-wide Gradle settings.
++# IDE (e.g. Android Studio) users:
++# Gradle settings configured through the IDE *will override*
++# any settings specified in this file.
++# For more details on how to configure your build environment visit
++# http://www.gradle.org/docs/current/userguide/build_environment.html
++# Specifies the JVM arguments used for the daemon process.
++# The setting is particularly useful for tweaking memory settings.
++org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8
++# When configured, Gradle will run in incubating parallel mode.
++# This option should only be used with decoupled projects. More details, visit
++# http://www.gradle.org/docs/current/userguide/multi_project_builds.html#sec:decoupled_projects
++# org.gradle.parallel=true
++# AndroidX package structure to make it clearer which packages are bundled with the
++# Android operating system, and which are packaged with your app's APK
++# https://developer.android.com/topic/libraries/support-library/androidx-rn
++android.useAndroidX=true
++# Enables namespacing of each library's R class so that its R class includes only the
++# resources declared in the library itself and none from the library's dependencies,
++# thereby reducing the size of the R class for that library
++android.nonTransitiveRClass=true
+\ No newline at end of file
+Index: build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build.gradle.kts b/build.gradle.kts
+new file mode 100644
+--- /dev/null	(date 1700024204000)
++++ b/build.gradle.kts	(date 1700024204000)
+@@ -0,0 +1,4 @@
++// Top-level build file where you can add configuration options common to all sub-projects/modules.
++plugins {
++    id("com.android.application") version "8.1.1" apply false
++}
+\ No newline at end of file
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1700175826652)
++++ b/.idea/.gitignore	(date 1700175826652)
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+Index: .idea/deploymentTargetDropDown.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/deploymentTargetDropDown.xml b/.idea/deploymentTargetDropDown.xml
+new file mode 100644
+--- /dev/null	(date 1700178892825)
++++ b/.idea/deploymentTargetDropDown.xml	(date 1700178892825)
+@@ -0,0 +1,17 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="deploymentTargetDropDown">
++    <targetSelectedWithDropDown>
++      <Target>
++        <type value="QUICK_BOOT_TARGET" />
++        <deviceKey>
++          <Key>
++            <type value="VIRTUAL_DEVICE_PATH" />
++            <value value="C:\Users\Чаян\.android\avd\Pixel_3a_API_34_extension_level_7_x86_64.avd" />
++          </Key>
++        </deviceKey>
++      </Target>
++    </targetSelectedWithDropDown>
++    <timeTargetWasSelectedWithDropDown value="2023-11-16T23:53:15.089621700Z" />
++  </component>
++</project>
+\ No newline at end of file
+Index: gradlew
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gradlew b/gradlew
+new file mode 100644
+--- /dev/null	(date 1700024202000)
++++ b/gradlew	(date 1700024202000)
+@@ -0,0 +1,185 @@
++#!/usr/bin/env sh
++
++#
++# Copyright 2015 the original author or authors.
++#
++# Licensed under the Apache License, Version 2.0 (the "License");
++# you may not use this file except in compliance with the License.
++# You may obtain a copy of the License at
++#
++#      https://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing, software
++# distributed under the License is distributed on an "AS IS" BASIS,
++# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++# See the License for the specific language governing permissions and
++# limitations under the License.
++#
++
++##############################################################################
++##
++##  Gradle start up script for UN*X
++##
++##############################################################################
++
++# Attempt to set APP_HOME
++# Resolve links: $0 may be a link
++PRG="$0"
++# Need this for relative symlinks.
++while [ -h "$PRG" ] ; do
++    ls=`ls -ld "$PRG"`
++    link=`expr "$ls" : '.*-> \(.*\)$'`
++    if expr "$link" : '/.*' > /dev/null; then
++        PRG="$link"
++    else
++        PRG=`dirname "$PRG"`"/$link"
++    fi
++done
++SAVED="`pwd`"
++cd "`dirname \"$PRG\"`/" >/dev/null
++APP_HOME="`pwd -P`"
++cd "$SAVED" >/dev/null
++
++APP_NAME="Gradle"
++APP_BASE_NAME=`basename "$0"`
++
++# Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
++DEFAULT_JVM_OPTS='"-Xmx64m" "-Xms64m"'
++
++# Use the maximum available, or set MAX_FD != -1 to use that value.
++MAX_FD="maximum"
++
++warn () {
++    echo "$*"
++}
++
++die () {
++    echo
++    echo "$*"
++    echo
++    exit 1
++}
++
++# OS specific support (must be 'true' or 'false').
++cygwin=false
++msys=false
++darwin=false
++nonstop=false
++case "`uname`" in
++  CYGWIN* )
++    cygwin=true
++    ;;
++  Darwin* )
++    darwin=true
++    ;;
++  MINGW* )
++    msys=true
++    ;;
++  NONSTOP* )
++    nonstop=true
++    ;;
++esac
++
++CLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper.jar
++
++
++# Determine the Java command to use to start the JVM.
++if [ -n "$JAVA_HOME" ] ; then
++    if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
++        # IBM's JDK on AIX uses strange locations for the executables
++        JAVACMD="$JAVA_HOME/jre/sh/java"
++    else
++        JAVACMD="$JAVA_HOME/bin/java"
++    fi
++    if [ ! -x "$JAVACMD" ] ; then
++        die "ERROR: JAVA_HOME is set to an invalid directory: $JAVA_HOME
++
++Please set the JAVA_HOME variable in your environment to match the
++location of your Java installation."
++    fi
++else
++    JAVACMD="java"
++    which java >/dev/null 2>&1 || die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
++
++Please set the JAVA_HOME variable in your environment to match the
++location of your Java installation."
++fi
++
++# Increase the maximum file descriptors if we can.
++if [ "$cygwin" = "false" -a "$darwin" = "false" -a "$nonstop" = "false" ] ; then
++    MAX_FD_LIMIT=`ulimit -H -n`
++    if [ $? -eq 0 ] ; then
++        if [ "$MAX_FD" = "maximum" -o "$MAX_FD" = "max" ] ; then
++            MAX_FD="$MAX_FD_LIMIT"
++        fi
++        ulimit -n $MAX_FD
++        if [ $? -ne 0 ] ; then
++            warn "Could not set maximum file descriptor limit: $MAX_FD"
++        fi
++    else
++        warn "Could not query maximum file descriptor limit: $MAX_FD_LIMIT"
++    fi
++fi
++
++# For Darwin, add options to specify how the application appears in the dock
++if $darwin; then
++    GRADLE_OPTS="$GRADLE_OPTS \"-Xdock:name=$APP_NAME\" \"-Xdock:icon=$APP_HOME/media/gradle.icns\""
++fi
++
++# For Cygwin or MSYS, switch paths to Windows format before running java
++if [ "$cygwin" = "true" -o "$msys" = "true" ] ; then
++    APP_HOME=`cygpath --path --mixed "$APP_HOME"`
++    CLASSPATH=`cygpath --path --mixed "$CLASSPATH"`
++
++    JAVACMD=`cygpath --unix "$JAVACMD"`
++
++    # We build the pattern for arguments to be converted via cygpath
++    ROOTDIRSRAW=`find -L / -maxdepth 1 -mindepth 1 -type d 2>/dev/null`
++    SEP=""
++    for dir in $ROOTDIRSRAW ; do
++        ROOTDIRS="$ROOTDIRS$SEP$dir"
++        SEP="|"
++    done
++    OURCYGPATTERN="(^($ROOTDIRS))"
++    # Add a user-defined pattern to the cygpath arguments
++    if [ "$GRADLE_CYGPATTERN" != "" ] ; then
++        OURCYGPATTERN="$OURCYGPATTERN|($GRADLE_CYGPATTERN)"
++    fi
++    # Now convert the arguments - kludge to limit ourselves to /bin/sh
++    i=0
++    for arg in "$@" ; do
++        CHECK=`echo "$arg"|egrep -c "$OURCYGPATTERN" -`
++        CHECK2=`echo "$arg"|egrep -c "^-"`                                 ### Determine if an option
++
++        if [ $CHECK -ne 0 ] && [ $CHECK2 -eq 0 ] ; then                    ### Added a condition
++            eval `echo args$i`=`cygpath --path --ignore --mixed "$arg"`
++        else
++            eval `echo args$i`="\"$arg\""
++        fi
++        i=`expr $i + 1`
++    done
++    case $i in
++        0) set -- ;;
++        1) set -- "$args0" ;;
++        2) set -- "$args0" "$args1" ;;
++        3) set -- "$args0" "$args1" "$args2" ;;
++        4) set -- "$args0" "$args1" "$args2" "$args3" ;;
++        5) set -- "$args0" "$args1" "$args2" "$args3" "$args4" ;;
++        6) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" ;;
++        7) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" ;;
++        8) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" "$args7" ;;
++        9) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" "$args7" "$args8" ;;
++    esac
++fi
++
++# Escape application args
++save () {
++    for i do printf %s\\n "$i" | sed "s/'/'\\\\''/g;1s/^/'/;\$s/\$/' \\\\/" ; done
++    echo " "
++}
++APP_ARGS=`save "$@"`
++
++# Collect all arguments for the java command, following the shell quoting and substitution rules
++eval set -- $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS "\"-Dorg.gradle.appname=$APP_BASE_NAME\"" -classpath "\"$CLASSPATH\"" org.gradle.wrapper.GradleWrapperMain "$APP_ARGS"
++
++exec "$JAVACMD" "$@"
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+new file mode 100644
+--- /dev/null	(date 1700176468279)
++++ b/.idea/gradle.xml	(date 1700176468279)
+@@ -0,0 +1,20 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="GradleMigrationSettings" migrationVersion="1" />
++  <component name="GradleSettings">
++    <option name="linkedExternalProjectsSettings">
++      <GradleProjectSettings>
++        <option name="testRunner" value="GRADLE" />
++        <option name="distributionType" value="DEFAULT_WRAPPED" />
++        <option name="externalProjectPath" value="$PROJECT_DIR$" />
++        <option name="gradleJvm" value="jbr-17" />
++        <option name="modules">
++          <set>
++            <option value="$PROJECT_DIR$" />
++            <option value="$PROJECT_DIR$/app" />
++          </set>
++        </option>
++      </GradleProjectSettings>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: settings.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/settings.gradle.kts b/settings.gradle.kts
+new file mode 100644
+--- /dev/null	(date 1700024204000)
++++ b/settings.gradle.kts	(date 1700024204000)
+@@ -0,0 +1,18 @@
++pluginManagement {
++    repositories {
++        google()
++        mavenCentral()
++        gradlePluginPortal()
++    }
++}
++dependencyResolutionManagement {
++    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
++    repositories {
++        google()
++        mavenCentral()
++    }
++}
++
++rootProject.name = "Podpise"
++include(":app")
++ 
+\ No newline at end of file
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+new file mode 100644
+--- /dev/null	(date 1700176468216)
++++ b/.idea/compiler.xml	(date 1700176468216)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <bytecodeTargetLevel target="17" />
++  </component>
++</project>
+\ No newline at end of file
+Index: app/.idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/.idea/gradle.xml b/app/.idea/gradle.xml
+new file mode 100644
+--- /dev/null	(date 1700176232296)
++++ b/app/.idea/gradle.xml	(date 1700176232296)
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="GradleSettings">
++    <option name="linkedExternalProjectsSettings">
++      <GradleProjectSettings>
++        <option name="testRunner" value="GRADLE" />
++        <option name="distributionType" value="DEFAULT_WRAPPED" />
++        <option name="externalProjectPath" value="$PROJECT_DIR$" />
++        <option name="gradleJvm" value="jbr-17" />
++      </GradleProjectSettings>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/java/com/example/podpise/Create_sign.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/podpise/Create_sign.java b/app/src/main/java/com/example/podpise/Create_sign.java
+new file mode 100644
+--- /dev/null	(date 1700158354000)
++++ b/app/src/main/java/com/example/podpise/Create_sign.java	(date 1700158354000)
+@@ -0,0 +1,159 @@
++package com.example.podpise;
++
++import java.io.BufferedReader;
++import java.io.File;
++import java.io.FileInputStream;
++import java.io.FileNotFoundException;
++import java.io.FileOutputStream;
++import java.io.IOException;
++import java.io.InputStreamReader;
++import java.util.Random;
++
++import android.content.Context;
++import android.content.ReceiverCallNotAllowedException;
++import android.hardware.Camera;
++import android.os.Bundle;
++import android.util.Log;
++import android.view.View;
++
++import androidx.appcompat.app.AppCompatActivity;
++import android.widget.AdapterView;
++import android.widget.ArrayAdapter;
++import android.widget.EditText;
++import android.widget.Spinner;
++import android.widget.Toast;
++
++public class Create_sign extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
++    private EditText text_1,text_2,text_3,text_4,text_5;
++    private Spinner spinner;
++    private String text,key;
++    private char[] mas;
++    private boolean a;
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.activity_create_sign);
++
++        text_1=findViewById(R.id.editTextText);
++        text_2=findViewById(R.id.editTextText5);
++        text_3=findViewById(R.id.editTextText2);
++        text_4=findViewById(R.id.editTextText3);
++        text_5=findViewById(R.id.editTextText4);
++
++        spinner = findViewById(R.id.spinner);
++        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.Role, android.R.layout.simple_spinner_dropdown_item);
++        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
++        spinner.setAdapter(adapter);
++        spinner.setOnItemSelectedListener(this);
++    }
++
++
++
++
++    @Override
++    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
++    {
++        text=adapterView.getItemAtPosition(i).toString();
++        String text_3="Преподаватель";
++        if(text.equals(text_3))
++        {
++            text_1.setHint(R.string.Job_title);
++            text_2.setHint(R.string.Number_certificate);
++        }
++        else
++        {
++            text_1.setHint(R.string.Number_group);
++            text_2.setHint(R.string.Number_record_book);
++        }
++        Toast.makeText(adapterView.getContext(),text,Toast.LENGTH_SHORT).show();
++    }
++
++    @Override
++    public void onNothingSelected(AdapterView<?> adapterView) {
++
++    }
++
++
++    public void CreateKey(View v) {
++        mas=new char[10];
++        Random rand=new Random();
++        String alpha="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
++        for(int i=0;i<mas.length;i++)
++        {
++            mas[i] = alpha.charAt(rand.nextInt(alpha.length()));
++            key+=mas[i];
++        }
++
++
++        try {
++            FileOutputStream file_output = openFileOutput("Sign.txt", MODE_PRIVATE);
++            file_output.close();
++        } catch (FileNotFoundException e) {
++            throw new RuntimeException(e);
++        } catch (IOException e) {
++            throw new RuntimeException(e);
++        }
++
++        a = true;
++        String[] data = {text_3.getText().toString(), text_4.getText().toString(), text_5.getText().toString(), text_1.getText().toString(), text_2.getText().toString(),text};
++
++        try {
++            FileInputStream file_input=openFileInput("Sign.txt");
++InputStreamReader reader=new InputStreamReader(file_input);
++BufferedReader buffer=new BufferedReader(reader);
++StringBuffer str_buffer=new StringBuffer();
++String lines;
++
++while((lines=buffer.readLine())!=null)
++{
++str_buffer.append(lines+"\n");
++if(data[4].equals(lines))
++{   Toast.makeText(Create_sign.this, "В базе данных есть уже человек с данным номером", Toast.LENGTH_SHORT).show();
++    a = false;
++    break;
++}
++    a=false;
++}
++if(a==false)
++    Toast.makeText(Create_sign.this, "Вы уже сделали электронную подпись", Toast.LENGTH_SHORT).show();
++        }
++        catch (FileNotFoundException e) {throw new RuntimeException(e);}
++        catch (IOException e) {throw new RuntimeException(e);}
++
++        for (int i = 0; i < data.length; i++) {
++            if (data[i].equals("")) {
++                Toast.makeText(Create_sign.this, "Не все поля заполнены", Toast.LENGTH_SHORT).show();
++                a = false;
++                break;
++            }
++        }
++
++        if (a == true) {
++            try {
++                FileOutputStream file_output = openFileOutput("Sign.txt", MODE_PRIVATE);
++                file_output.write((data[0]+"\n").getBytes());
++                file_output.write((data[1]+"\n").getBytes());
++                file_output.write((data[2]+"\n").getBytes());
++                file_output.write((data[3]+"\n").getBytes());
++                file_output.write((data[4]+"\n").getBytes());
++                file_output.write((text+"\n").getBytes());
++                file_output.write((key+"\n").getBytes());
++                file_output.close();
++                text_1.setText("");
++                text_2.setText("");
++                text_3.setText("");
++                text_4.setText("");
++                text_5.setText("");
++                Toast.makeText(Create_sign.this, "Сохранено", Toast.LENGTH_SHORT).show();
++                a=false;
++            }
++            catch (FileNotFoundException e) {
++                e.printStackTrace();
++            } catch (IOException e) {
++                throw new RuntimeException(e);
++            }
++        }
++    }
++
++
++}
+\ No newline at end of file
+Index: app/src/androidTest/java/com/example/podpise/ExampleInstrumentedTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/androidTest/java/com/example/podpise/ExampleInstrumentedTest.java b/app/src/androidTest/java/com/example/podpise/ExampleInstrumentedTest.java
+new file mode 100644
+--- /dev/null	(date 1700024204000)
++++ b/app/src/androidTest/java/com/example/podpise/ExampleInstrumentedTest.java	(date 1700024204000)
+@@ -0,0 +1,26 @@
++package com.example.podpise;
++
++import android.content.Context;
++
++import androidx.test.platform.app.InstrumentationRegistry;
++import androidx.test.ext.junit.runners.AndroidJUnit4;
++
++import org.junit.Test;
++import org.junit.runner.RunWith;
++
++import static org.junit.Assert.*;
++
++/**
++ * Instrumented test, which will execute on an Android device.
++ *
++ * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
++ */
++@RunWith(AndroidJUnit4.class)
++public class ExampleInstrumentedTest {
++    @Test
++    public void useAppContext() {
++        // Context of the app under test.
++        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
++        assertEquals("com.example.podpise", appContext.getPackageName());
++    }
++}
+\ No newline at end of file
+Index: gradle/wrapper/gradle-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/gradle/wrapper/gradle-wrapper.properties b/gradle/wrapper/gradle-wrapper.properties
+new file mode 100644
+--- /dev/null	(date 1700024206000)
++++ b/gradle/wrapper/gradle-wrapper.properties	(date 1700024206000)
+@@ -0,0 +1,6 @@
++#Wed Nov 15 12:56:44 IRKT 2023
++distributionBase=GRADLE_USER_HOME
++distributionPath=wrapper/dists
++distributionUrl=https\://services.gradle.org/distributions/gradle-8.0-bin.zip
++zipStoreBase=GRADLE_USER_HOME
++zipStorePath=wrapper/dists
+Index: app/src/test/java/com/example/podpise/ExampleUnitTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/test/java/com/example/podpise/ExampleUnitTest.java b/app/src/test/java/com/example/podpise/ExampleUnitTest.java
+new file mode 100644
+--- /dev/null	(date 1700024204000)
++++ b/app/src/test/java/com/example/podpise/ExampleUnitTest.java	(date 1700024204000)
+@@ -0,0 +1,17 @@
++package com.example.podpise;
++
++import org.junit.Test;
++
++import static org.junit.Assert.*;
++
++/**
++ * Example local unit test, which will execute on the development machine (host).
++ *
++ * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
++ */
++public class ExampleUnitTest {
++    @Test
++    public void addition_isCorrect() {
++        assertEquals(4, 2 + 2);
++    }
++}
+\ No newline at end of file
+Index: app/src/main/res/xml/backup_rules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/xml/backup_rules.xml b/app/src/main/res/xml/backup_rules.xml
+new file mode 100644
+--- /dev/null	(date 1700024204000)
++++ b/app/src/main/res/xml/backup_rules.xml	(date 1700024204000)
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="utf-8"?><!--
++   Sample backup rules file; uncomment and customize as necessary.
++   See https://developer.android.com/guide/topics/data/autobackup
++   for details.
++   Note: This file is ignored for devices older that API 31
++   See https://developer.android.com/about/versions/12/backup-restore
++-->
++<full-backup-content>
++    <!--
++   <include domain="sharedpref" path="."/>
++   <exclude domain="sharedpref" path="device.xml"/>
++-->
++</full-backup-content>
+\ No newline at end of file
+Index: app/src/main/res/xml/data_extraction_rules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/xml/data_extraction_rules.xml b/app/src/main/res/xml/data_extraction_rules.xml
+new file mode 100644
+--- /dev/null	(date 1700024204000)
++++ b/app/src/main/res/xml/data_extraction_rules.xml	(date 1700024204000)
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="utf-8"?><!--
++   Sample data extraction rules file; uncomment and customize as necessary.
++   See https://developer.android.com/about/versions/12/backup-restore#xml-changes
++   for details.
++-->
++<data-extraction-rules>
++    <cloud-backup>
++        <!-- TODO: Use <include> and <exclude> to control what is backed up.
++        <include .../>
++        <exclude .../>
++        -->
++    </cloud-backup>
++    <!--
++    <device-transfer>
++        <include .../>
++        <exclude .../>
++    </device-transfer>
++    -->
++</data-extraction-rules>
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+new file mode 100644
+--- /dev/null	(date 1700166268000)
++++ b/app/src/main/AndroidManifest.xml	(date 1700166268000)
+@@ -0,0 +1,53 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:tools="http://schemas.android.com/tools">
++
++    <uses-sdk android:minSdkVersion="17" />
++
++    <uses-feature
++        android:name="android.hardware.camera"
++        android:required="false" />
++
++    <uses-permission android:name="android.permission.CAMERA" />
++    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
++
++    <application
++        android:allowBackup="true"
++        android:dataExtractionRules="@xml/data_extraction_rules"
++        android:fullBackupContent="@xml/backup_rules"
++        android:icon="@mipmap/ic_launcher"
++        android:label="@string/app_name"
++        android:roundIcon="@mipmap/ic_launcher_round"
++        android:supportsRtl="true"
++        android:theme="@style/Theme.Podpise"
++        tools:targetApi="31">
++        <activity
++            android:name=".activity_history"
++            android:exported="false" />
++        <activity
++            android:name=".activity_sign"
++            android:exported="false" />
++        <activity
++            android:name=".activity_create_application"
++            android:exported="false" />
++        <activity
++            android:name=".activity_open_sign"
++            android:exported="false" />
++        <activity
++            android:name=".activity_send_sign"
++            android:exported="false" />
++        <activity
++            android:name=".Create_sign"
++            android:exported="false" />
++        <activity
++            android:name=".MainActivity"
++            android:exported="true">
++            <intent-filter>
++                <action android:name="android.intent.action.MAIN" />
++
++                <category android:name="android.intent.category.LAUNCHER" />
++            </intent-filter>
++        </activity>
++    </application>
++
++</manifest>
+\ No newline at end of file
+Index: app/src/main/java/com/example/podpise/activity_send_sign.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/podpise/activity_send_sign.java b/app/src/main/java/com/example/podpise/activity_send_sign.java
+new file mode 100644
+--- /dev/null	(date 1700134778000)
++++ b/app/src/main/java/com/example/podpise/activity_send_sign.java	(date 1700134778000)
+@@ -0,0 +1,14 @@
++package com.example.podpise;
++
++import androidx.appcompat.app.AppCompatActivity;
++
++import android.os.Bundle;
++
++public class activity_send_sign extends AppCompatActivity {
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.activity_send_sign);
++    }
++}
+\ No newline at end of file
+Index: app/src/main/java/com/example/podpise/activity_open_sign.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/podpise/activity_open_sign.java b/app/src/main/java/com/example/podpise/activity_open_sign.java
+new file mode 100644
+--- /dev/null	(date 1700152456000)
++++ b/app/src/main/java/com/example/podpise/activity_open_sign.java	(date 1700152456000)
+@@ -0,0 +1,71 @@
++package com.example.podpise;
++
++import androidx.appcompat.app.AppCompatActivity;
++
++import android.os.Bundle;
++import android.widget.TextView;
++import android.widget.Toast;
++
++import java.io.BufferedReader;
++import java.io.FileInputStream;
++import java.io.FileNotFoundException;
++import java.io.IOException;
++import java.io.InputStreamReader;
++
++public class activity_open_sign extends AppCompatActivity {
++
++    private String mas[];
++    private int i=0;
++    private TextView text_1,text_2,text_3,text_4,text_5,text_6,text_7,text_20,text_21;
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.activity_open_sign);
++
++        text_1=findViewById(R.id.textView9);
++        text_2=findViewById(R.id.textView10);
++        text_3=findViewById(R.id.textView11);
++        text_4=findViewById(R.id.textView12);
++        text_5=findViewById(R.id.textView13);
++        text_6=findViewById(R.id.textView14);
++        text_7=findViewById(R.id.textView15);
++        text_20=findViewById(R.id.textView20);
++        text_21=findViewById(R.id.textView21);
++
++        mas=new String[7];
++        try {
++            FileInputStream file_input=openFileInput("Sign.txt");
++            InputStreamReader reader=new InputStreamReader(file_input);
++            BufferedReader buffer=new BufferedReader(reader);
++            StringBuffer str_buffer=new StringBuffer();
++            String lines;
++            while((lines=buffer.readLine())!=null)
++            {
++                str_buffer.append(lines+"\n");
++                mas[i]=lines;
++                i++;
++            }
++            if(text_6.equals("Преподаватель"))
++            {
++                text_20.setText(R.string.Job_title);
++                text_21.setText(R.string.Number_certificate);
++            }
++            else
++            {
++                text_20.setText(R.string.Number_group);
++                text_21.setText(R.string.Number_record_book);
++            }
++            text_1.setText(mas[0]);
++            text_2.setText(mas[1]);
++            text_3.setText(mas[2]);
++            text_4.setText(mas[3]);
++            text_5.setText(mas[4]);
++            text_6.setText(mas[5]);
++            text_7.setText(mas[6]);
++        }
++        catch (
++                FileNotFoundException e) {throw new RuntimeException(e);}
++        catch (
++                IOException e) {throw new RuntimeException(e);}
++    }
++}
+\ No newline at end of file
+Index: app/src/main/java/com/example/podpise/activity_create_application.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/podpise/activity_create_application.java b/app/src/main/java/com/example/podpise/activity_create_application.java
+new file mode 100644
+--- /dev/null	(date 1700165570000)
++++ b/app/src/main/java/com/example/podpise/activity_create_application.java	(date 1700165570000)
+@@ -0,0 +1,98 @@
++package com.example.podpise;
++
++import androidx.appcompat.app.AppCompatActivity;
++
++import android.os.Bundle;
++import android.view.View;
++import android.widget.AdapterView;
++import android.widget.ArrayAdapter;
++import android.widget.Spinner;
++import android.widget.Toast;
++import  android.app.Activity;
++
++import java.io.BufferedReader;
++import java.io.FileInputStream;
++import java.io.FileNotFoundException;
++import java.io.FileOutputStream;
++import java.io.IOException;
++import java.io.InputStreamReader;
++
++public class activity_create_application extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
++
++    private Spinner spinner_1,spinner_2;
++    private String text_1,text_2;
++    private ArrayAdapter adapter_1,adapter_2;
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.activity_create_application);
++
++        spinner_1 = findViewById(R.id.spinner2);
++        adapter_1 = ArrayAdapter.createFromResource(this,R.array.Reference, android.R.layout.simple_spinner_dropdown_item);
++        adapter_1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
++        spinner_1.setAdapter(adapter_1);
++        spinner_1.setOnItemSelectedListener(this);
++
++        spinner_2 = findViewById(R.id.spinner3);adapter_2 = ArrayAdapter.createFromResource(this,R.array.Uneversity, android.R.layout.simple_spinner_dropdown_item);
++        adapter_2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
++        spinner_2.setAdapter(adapter_2);
++        spinner_2.setOnItemSelectedListener(this);
++       // text_1=adapter_1.getContext().toString();
++      //  Toast.makeText(adapter_1.getContext(),text_1,Toast.LENGTH_SHORT).show();
++        //text_2=adapter_2.getContext().toString();
++        //Toast.makeText(adapter_2.getContext(),text_2,Toast.LENGTH_SHORT).show();
++    }
++    @Override
++    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
++    {
++        text_1=adapter_1.getItem(i).toString();
++        text_2=adapter_2.getItem(i).toString();
++        Toast.makeText(adapter_1.getContext(),text_1,Toast.LENGTH_SHORT).show();
++        Toast.makeText(adapter_2.getContext(),text_2,Toast.LENGTH_SHORT).show();
++    }
++
++    @Override
++    public void onNothingSelected(AdapterView<?> adapterView) {
++
++    }
++
++
++public void send_application(View v)
++{
++    int a=0;
++    try {
++        FileOutputStream file_output = openFileOutput("Application.txt", MODE_PRIVATE);
++        file_output.write((text_1+"\n").getBytes());
++        file_output.write((text_2+"\n").getBytes());
++        Toast.makeText(activity_create_application.this, "Сохранено", Toast.LENGTH_SHORT).show();
++
++
++    try {
++        FileInputStream file_input=openFileInput("Sign.txt");
++        InputStreamReader reader=new InputStreamReader(file_input);
++        BufferedReader buffer=new BufferedReader(reader);
++        StringBuffer str_buffer=new StringBuffer();
++        String lines;
++
++        while((lines=buffer.readLine())!=null)
++        {
++            a++;
++            str_buffer.append(lines+"\n");
++            if(a==7)
++                continue;
++            file_output.write((lines+"\n").getBytes());
++        }
++        file_output.close();
++        file_input.close();
++    }
++    catch (FileNotFoundException e) {throw new RuntimeException(e);}
++    catch (IOException e) {throw new RuntimeException(e);}
++    }
++    catch (FileNotFoundException e) {
++        e.printStackTrace();
++    } catch (IOException e) {
++        throw new RuntimeException(e);
++    }
++}
++
++}
+\ No newline at end of file
+Index: app/src/main/res/drawable/save.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/save.xml b/app/src/main/res/drawable/save.xml
+new file mode 100644
+--- /dev/null	(date 1700185298000)
++++ b/app/src/main/res/drawable/save.xml	(date 1700185298000)
+@@ -0,0 +1,40 @@
++<vector android:autoMirrored="true" android:height="48dp"
++    android:viewportHeight="1100" android:viewportWidth="1100"
++    android:width="48dp" xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="#000000"
++        android:pathData="M184,11.6c-87.3,12.7 -156.3,82 -168.4,169.3 -1.4,10 -1.6,49.8 -1.6,368.6 0,318.8 0.2,358.6 1.6,368.6 11,79.2 69.6,145 146.7,164.9 25.1,6.4 -1.7,6 387.7,6 315.6,-0 355.1,-0.2 365.1,-1.6 79.2,-11 145,-69.6 164.9,-146.7 6.4,-25.1 6,2.1 6,-391.2 0,-393.3 0.4,-366.1 -6,-391.2 -17.9,-69.1 -73.2,-124.4 -142.3,-142.3 -25.1,-6.4 1.9,-6 -389,-5.9 -296.4,0.1 -356.8,0.3 -364.7,1.5zM519.2,34.7c2,1.6 7,7.4 11.2,13 4.2,5.6 8,10.4 8.5,10.8 0.5,0.3 4.7,-1.2 9.3,-3.3 4.6,-2.2 11.5,-5.4 15.3,-7.2 3.9,-1.8 10.2,-4.7 14,-6.5 3.9,-1.8 8.8,-4 11,-5 2.2,-0.9 4.8,-2.1 5.7,-2.6 2.9,-1.5 7.9,-1 11.2,1 3.9,2.5 6.6,6.1 9.5,13.1 1.3,3 4.3,9.8 6.8,15 5.6,11.9 9.2,19.5 13.3,28.6l3.2,7 5.7,1.2c9.6,1.9 17.3,3.1 24.1,3.7 3.6,0.4 7.2,0.9 8,1.3 0.8,0.3 6.2,1.1 12,1.8 5.8,0.7 13.4,1.8 17,2.4 6.2,1.1 11.7,1.9 37.5,5.4 6.1,0.8 13.7,2 17,2.6 5.8,1 18.8,2.8 38.5,5.4 17,2.1 23,7.3 21.7,18.5l-0.6,4.9 4.7,1c11.7,2.7 14.3,3.5 17.4,5.6 3.9,2.6 7.2,8.9 6.5,12.5 -0.3,1.4 -1.3,5.5 -2.2,9.1 -0.9,3.6 -2.2,9.2 -2.9,12.5 -0.8,3.3 -2.1,8.7 -3.1,12 -0.9,3.3 -2,7.8 -2.5,10 -0.4,2.2 -2.4,10.4 -4.4,18.2 -2,7.9 -3.6,15.2 -3.6,16.2 0,1.1 -0.4,2.2 -0.9,2.5 -0.5,0.3 -1.2,2.7 -1.6,5.3 -0.3,2.7 -1.5,7.7 -2.5,11.3 -1,3.6 -2.3,8.5 -2.9,11 -0.5,2.5 -1.5,6.7 -2.1,9.5 -0.7,2.7 -2,7.9 -3,11.5 -1,3.6 -2.8,11 -4,16.5 -1.2,5.5 -3,12.9 -4,16.5 -1,3.6 -2.1,8.1 -2.5,10 -0.4,1.9 -0.9,4.2 -1.1,5.1 -0.3,1.2 4.2,4.8 17.3,13.6 9.8,6.6 22.8,15.4 28.8,19.6 6.1,4.2 20.1,13.8 31.3,21.4 11.2,7.6 24.3,16.5 29.1,19.8 4.8,3.3 16.1,10.9 25,17 8.9,6 18.1,12.9 20.3,15.3 3.8,4.2 4,4.7 3.6,9.6 -0.3,4.2 -1.3,6.5 -4.6,11.1 -2.3,3.2 -4.2,6.3 -4.2,6.9 0,0.5 1.5,2.5 3.2,4.4 2.8,2.8 3.3,4 3.1,7.6 -0.2,5.5 -1.6,8.1 -9.7,18.1 -3.6,4.4 -6.6,8.4 -6.6,9 0,0.5 1.8,2.7 4,4.9 2.2,2.1 4.5,5.5 5.1,7.5 1.4,4.8 -0.8,9.3 -8.5,17.1l-5.8,5.9 2.6,3.4c2,2.6 2.6,4.5 2.6,8.5 0,4.5 -0.5,5.7 -3.4,9 -3.1,3.4 -3.4,4.3 -2.9,7.8 0.8,5.9 -1.6,9.5 -10.5,16.4 -8.7,6.8 -25.7,19.8 -34.9,26.8 -3.4,2.6 -6.2,5.2 -6.2,5.8 -0.1,0.6 2.6,6.8 5.9,13.7 9.6,20.1 8.4,24.3 -9.4,32.6 -24.6,11.7 -27.7,13.1 -28,13.1 -0.2,-0 -6.5,2.9 -14.1,6.5 -7.5,3.6 -13.8,6.5 -14,6.5 -0.3,-0 -5.7,2.5 -12.2,5.6 -25.4,12 -26.5,12.6 -29.8,17.4 -1.7,2.5 -5.8,8.3 -9,13 -3.2,4.7 -11,16.1 -17.4,25.5 -11.9,17.6 -25.5,37.7 -30.8,45.5 -6,8.7 -10.7,11.1 -20.8,10.3l-6.1,-0.5 -5.6,5.6c-3.6,3.5 -6.5,5.6 -8,5.6 -1.3,0.1 -3.4,0.7 -4.8,1.5 -3.3,1.9 -7,1.8 -14.8,-0.1l-6.4,-1.6 -5.2,5c-8.7,8.6 -14.4,9.5 -22,3.4 -3.1,-2.4 -3.2,-2.4 -8.6,2.4 -8,7.1 -12.9,8.6 -19.6,6.2 -2.8,-1 -3.5,-0.9 -5.9,1 -3.6,2.9 -10.5,2.9 -15.4,0.1 -2.1,-1.2 -6.2,-5.7 -10.1,-11 -3.5,-5 -7.5,-9.9 -8.7,-11.1l-2.2,-2.1 -4.8,2.1c-2.6,1.1 -8.6,3.8 -13.3,6 -4.7,2.1 -10.7,4.9 -13.5,6.2 -2.7,1.3 -9.2,4.2 -14.3,6.6 -12.6,6 -17.6,6.1 -23,0.5 -2,-2.1 -4.6,-6.1 -5.6,-8.8 -1.1,-2.6 -4.8,-10.9 -8.3,-18.3 -3.5,-7.4 -7,-14.9 -7.7,-16.5 -0.8,-1.7 -2.6,-5.6 -4,-8.7 -1.4,-3.1 -2.6,-6.1 -2.6,-6.7 0,-1.7 -3.2,-2.9 -11.5,-4.1 -7.8,-1.1 -17.9,-2.6 -38,-5.5 -5.5,-0.7 -12.9,-1.8 -16.5,-2.4 -3.6,-0.5 -11.4,-1.7 -17.5,-2.6 -27.4,-3.9 -32.3,-4.7 -37.5,-5.5 -7.4,-1.2 -26.2,-3.8 -39,-5.4 -12.6,-1.6 -16.9,-3.3 -20.4,-7.8 -2.1,-2.9 -2.6,-4.5 -2.6,-9.6l0,-6.1 -5.7,-1.6c-14.2,-3.8 -16.2,-4.6 -18.7,-7.6 -3.2,-3.8 -4,-8.2 -2.6,-13.9 0.6,-2.5 1.6,-7 2.1,-10 0.6,-3 1.4,-6.4 1.9,-7.5 1,-2.4 4.8,-18 6.1,-25 0.5,-2.8 1.4,-5.9 1.8,-7 0.5,-1.1 1.7,-5.6 2.6,-10 0.9,-4.4 2.1,-9.1 2.5,-10.5 0.5,-1.4 1.3,-4.8 1.9,-7.5 0.9,-4.8 4.7,-20.5 11.3,-46 1.6,-6.6 3.6,-14.7 4.3,-18 0.7,-3.3 2.5,-10.7 4,-16.5 1.5,-5.8 3.1,-12 3.5,-13.7l0.8,-3.3 -12.7,-8.5c-6.9,-4.7 -18.2,-12.5 -25.1,-17.2 -12.5,-8.5 -30.7,-21 -51.5,-35.1 -6,-4.1 -16.4,-11.2 -23,-15.7 -6.6,-4.5 -17.8,-12.1 -25,-16.9 -16.4,-11.1 -18.4,-13.3 -18.5,-20.5 0,-4.3 0.5,-6 2.8,-9 1.6,-2 3.7,-5 4.7,-6.8l1.9,-3.2 -3.7,-4c-6.6,-7.3 -5,-12.7 8.1,-27.8l5.4,-6.2 -4.7,-5.6c-4.2,-4.8 -4.7,-6.1 -4.8,-10.3 -0.1,-5.6 1.5,-8.3 9.2,-15.5l5.2,-4.8 -2.6,-3c-4.7,-5.7 -4.5,-12.6 0.5,-17.5 2.5,-2.5 2.9,-3.7 3,-8.3 0,-6.3 2.1,-10.2 8.1,-14.6 2.2,-1.7 6.6,-5 9.7,-7.5 3.1,-2.5 11.9,-9.2 19.5,-15 7.6,-5.7 14.1,-10.8 14.3,-11.2 0.3,-0.5 -0.2,-2.6 -1.2,-4.6 -0.9,-2 -3.7,-7.9 -6.1,-13.1 -5.2,-10.9 -5.8,-16.2 -2.2,-21.2 2.3,-3.2 11.3,-7.9 42.4,-21.9 1.1,-0.5 7,-3.2 13,-6.1 6.1,-2.8 13.5,-6.2 16.5,-7.6 3,-1.3 8.2,-3.7 11.5,-5.3 3.3,-1.5 10,-4.6 14.9,-6.9 9.8,-4.6 9.5,-4.2 21,-21.4 7.5,-11.1 12.2,-18 26.1,-38.2 2.6,-3.9 9.1,-13.3 14.3,-21 5.2,-7.7 11.2,-15.8 13.3,-18l3.9,-4 9.2,-0.4 9.1,-0.3 4.8,-4.9c2.6,-2.6 6,-5.1 7.5,-5.5 1.6,-0.4 4.7,-1.6 6.9,-2.7 3.5,-1.8 4.5,-1.8 9,-0.8 2.7,0.7 6.3,1.7 7.8,2.3 2.6,1 3.2,0.7 7.5,-3.4 6.9,-6.7 9.1,-7.8 14.5,-7.8 3.8,-0 5.6,0.6 7.9,2.5 3.7,3.1 4.9,3.1 7.9,-0.1 5,-5.4 10.5,-8.4 15.3,-8.4 2.6,-0 5.5,0.5 6.5,1.1 1.4,1 2.5,0.7 5.7,-1.5 5.3,-3.6 10.8,-3.5 15.6,0.1zM266.8,897.1c2.4,2.5 3.2,6.2 3.2,15.1 0,6 -0.3,7.2 -2.5,9.3 -4.5,4.6 -11.9,2.8 -14.5,-3.4 -1.7,-4.3 -6.4,-5.1 -12.4,-2.1 -6.1,2.9 -16.4,14.2 -21.2,23.2 -3.6,6.8 -3.9,7.9 -3.9,15.6l0,8.3 4.2,4c3.9,3.6 4.6,3.9 10,3.9 6.4,-0 11.2,-1.8 19.4,-7.4 3.8,-2.6 6.5,-3.6 9.2,-3.6 5,-0 8.7,3.5 8.7,8.4 0,2.8 -0.8,4.1 -4.7,7.6 -2.6,2.2 -8.5,6 -13.2,8.3 -8.3,4.1 -8.6,4.2 -19,4.2 -9.9,-0 -11,-0.2 -16,-3 -24.8,-13.7 -22.4,-48.4 5.3,-75.9 9.2,-9.2 14.8,-11.8 26.7,-12.5 5.4,-0.3 10.1,-0.9 10.5,-1.4 1.6,-1.6 8.3,-0.7 10.2,1.4zM618.8,922c2.2,2.1 2.2,2.5 2.2,33l0,30.9 -2.6,2c-3.5,2.8 -8.6,2.7 -11.9,-0.2 -2.4,-2.1 -2.7,-2.9 -3.2,-13.5 -0.5,-8.6 -0.9,-11.2 -2,-11.2 -3.7,-0 -20.8,2.2 -22.8,3 -2.1,0.8 -2.3,1.6 -2.7,10.4 -0.3,8.3 -0.7,9.9 -2.8,12.1 -3.1,3.3 -8.9,3.4 -12.3,0.2l-2.5,-2.2 0.5,-30.4c0.6,-34.6 0.5,-34.1 8.6,-34.1 7.1,-0 8.4,2.2 9.2,15.7 0.5,7.3 1.2,11.3 1.9,11.3 0.6,-0 2.9,-0.5 5.1,-1 2.2,-0.5 7.5,-1 11.8,-1.1l7.7,-0.3 0,-8.6c0,-9.6 1.1,-14.6 3.7,-16.6 2.8,-2.1 9.5,-1.7 12.1,0.6zM759,922c1.9,1.9 2,3.3 2,32.9l0,31 -2.6,2c-3.5,2.8 -8.6,2.7 -11.9,-0.2 -2.4,-2.1 -2.7,-2.9 -3.2,-13.5 -0.5,-8.6 -0.9,-11.2 -2,-11.2 -3.7,-0 -20.8,2.2 -22.8,3 -2.1,0.8 -2.3,1.6 -2.7,10.4 -0.3,8.3 -0.7,9.9 -2.8,12.1 -3.1,3.3 -8.9,3.4 -12.3,0.2l-2.5,-2.2 0.5,-30.4c0.6,-34.6 0.5,-34.1 8.6,-34.1 7.1,-0 8.4,2.2 9.2,15.7 0.5,7.3 1.2,11.3 1.9,11.3 0.6,-0 2.9,-0.5 5.1,-1 2.2,-0.5 7.5,-1 11.8,-1.1l7.7,-0.3 0,-8.5c0,-9.8 1.3,-15.6 3.8,-17 3.1,-1.8 10,-1.3 12.2,0.9zM369.1,923.9c1.9,1.6 5.9,6.1 8.9,10 3,3.9 5.7,7.1 6.2,7.1 1,-0 13.1,-10.6 18.3,-15.9 3.2,-3.4 4.6,-4.1 7.7,-4.1 2.8,-0 4.6,0.7 6.3,2.5 5.1,5 2.9,9.4 -11,21.5 -5.8,5.1 -10.5,9.4 -10.5,9.7 0,0.2 4.5,6.1 10,12.9 11.1,13.8 12,16.5 7.5,20.9 -2.5,2.6 -7.2,3.3 -10.4,1.5 -1,-0.5 -5.5,-5.5 -10.1,-11.2 -4.6,-5.7 -8.7,-10.7 -9.1,-11.2 -0.4,-0.5 -5.9,3.9 -12.3,9.8 -10.2,9.4 -11.9,10.6 -15.1,10.6 -4.7,-0 -8.5,-3.6 -8.5,-8.1 0,-2.9 1.5,-4.7 12.2,-14.9l12.2,-11.7 -4.6,-6.4c-2.5,-3.5 -6.5,-8.2 -8.7,-10.4 -3.3,-3.1 -4.1,-4.6 -4.1,-7.4 0,-7.9 8.3,-10.8 15.1,-5.2zM326.9,923.7c6.1,1.9 12.2,6.9 14.5,11.8 9,18.8 -2,47.3 -21.1,54.5 -7.6,2.9 -21.3,2.5 -28.5,-0.7 -13.5,-6.1 -20.5,-18.9 -17.9,-32.9 2.9,-15.2 13.2,-28.5 26,-33 5.3,-1.9 20.8,-1.7 27,0.3zM440.2,925l2.4,3.1 4.3,-1.6c6.1,-2.1 16.6,-1.9 21.7,0.4 9,4.1 13.5,13.5 14.1,29.6 0.6,13.8 -1.4,20.3 -8.7,27.5 -6.1,6.2 -12.2,8.3 -23,7.8l-8,-0.3 0,12.3c0,16.4 -1.4,19.2 -9.6,19.2 -2.4,-0 -4.3,-0.8 -5.9,-2.5l-2.5,-2.4 0,-32.3c-0.1,-17.8 -0.5,-37 -0.9,-42.7 -1,-11.3 -0.3,-15.1 3.1,-18.8 1.6,-1.7 3.2,-2.3 6.4,-2.3 3.5,-0 4.6,0.5 6.6,3zM536.8,925.6c2.8,0.9 6.7,3 8.7,4.7 3.5,2.8 3.6,3.2 3,7.1 -0.4,2.3 -0.8,10.6 -0.9,18.6 0,13.8 0.1,14.8 2.7,20 3.3,6.7 3.4,10.3 0.5,13 -3,2.8 -7.9,2.6 -11.6,-0.5l-3,-2.5 -6.8,2.6c-12.1,4.6 -25.3,2.4 -32.6,-5.3 -5.3,-5.5 -7.3,-11.8 -7.3,-22.8 0,-8.9 0.3,-10.6 2.8,-15.5 4.4,-8.9 11.6,-15.6 20.4,-19 6.1,-2.4 17.3,-2.6 24.1,-0.4zM674.1,925c8.8,2.5 14.3,8.6 14.3,15.9 0,9 -4.6,12.9 -27.9,23.1 -6.6,2.9 -12.4,5.6 -12.8,6 -0.5,0.4 1.1,1.7 3.5,2.9 6.5,3.1 17.5,2.9 24.6,-0.4 10.2,-4.7 17.4,-2.2 15.7,5.5 -2.5,11.3 -30.8,17.2 -46.7,9.6 -6.8,-3.2 -12.9,-9.8 -14.8,-15.8 -1.8,-6.1 -1.5,-17.2 0.8,-24.4 3.3,-10.7 10.2,-18.7 18.8,-21.8 4.6,-1.7 19.3,-2 24.5,-0.6zM782.5,924.6c3,1.2 4.5,6 4.5,14.6 0,4.6 0.3,12 0.7,16.6l0.6,8.3 5.4,-5.3c3,-2.9 10.2,-11.2 15.9,-18.3 5.8,-7.2 11.7,-13.8 13.2,-14.7 4,-2.6 9.8,-2.3 12.7,0.7l2.5,2.4 0,28.6 0,28.6 -2.5,2.4c-3.4,3.5 -9.6,3.5 -13.2,-0.1l-2.5,-2.5 0.7,-15.7 0.7,-15.7 -6.5,8.1c-5.5,6.9 -17.5,18 -28.1,26.2 -4,3.1 -10.9,3 -14,-0.1 -2.2,-2.2 -2.3,-2.8 -2.9,-31.2 -0.7,-28.7 -0.7,-28.9 1.5,-31.2 2.2,-2.3 7.5,-3.1 11.3,-1.7zM899.3,926.6c3.3,3.3 3.6,5.4 3.9,34.2l0.3,24.4 -2.8,2.4c-3.8,3.3 -9.5,3.3 -13.1,-0.1 -2.3,-2.1 -2.6,-3.2 -2.6,-9 0,-4.2 -0.4,-6.5 -1.1,-6.5 -1.7,-0 -10.5,5.5 -17.4,11 -7.7,6 -9.7,7 -13.5,7 -3.7,-0 -9,-4.7 -9,-7.9 0,-2.8 5.9,-9.2 12.1,-13.1l4.9,-3.2 -4,-2.9c-12.6,-9.1 -10.1,-23.3 5.7,-32.6 7.4,-4.3 14.9,-6.2 24.9,-6.2 8.5,-0.1 9.3,0.1 11.7,2.5z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M582.5,69.5c-3.8,1.9 -11,5.2 -16,7.5 -10.2,4.8 -10.2,4.7 2.7,7.5 4,0.9 11.4,2.5 16.3,3.7 5,1.1 10.2,2.2 11.8,2.5 1.5,0.3 3,0.9 3.3,1.4 0.6,1 4.4,1.2 4.4,0.3 0,-0.3 -0.6,-1.8 -1.4,-3.2 -0.8,-1.5 -3.6,-7.3 -6.2,-13 -3.2,-6.8 -5.3,-10.2 -6.3,-10.1 -0.9,-0 -4.7,1.5 -8.6,3.4z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M402.3,96.4c-0.7,2.2 -1.7,8.6 -2.3,14.1 -0.6,5.5 -1.5,12.5 -2.1,15.5 -0.9,5.4 -2.5,16.8 -5.4,39 -0.8,6.3 -1.9,14 -2.4,17 -1.3,7.7 -4,26.6 -5.7,39 -0.7,5.8 -1.9,13.4 -2.4,17 -1.1,6.4 -2.8,18.5 -5.6,39 -0.7,5.8 -1.8,13.2 -2.3,16.5 -1.4,8.6 -4,27.2 -5.6,39.5 -0.8,5.8 -1.9,13.4 -2.4,17 -1.2,6.8 -3.2,20.8 -5.7,39.5 -0.8,6 -1.9,13.9 -2.4,17.5 -2.2,15.3 -4.1,30.1 -5,39 -0.5,5.2 -1.4,12 -1.9,15 -1,5.6 -1.6,10.8 -2.7,25.8 -0.3,4.8 -1.4,10.4 -2.6,13 -1,2.6 -2.3,5.6 -2.8,6.7 -1.6,3.8 -3.4,14.8 -6,36.5 -0.6,4.7 -1.4,10.7 -2,13.5 -0.5,2.7 -1.4,8.6 -2,13 -0.6,4.4 -1.6,10 -2.1,12.5 -0.5,2.5 -1.6,10.1 -2.4,17 -1.6,13.1 -2.6,19.8 -4.6,31.5 -0.6,3.8 -1.3,8.1 -1.5,9.5 -0.1,1.4 -1,7.7 -1.9,14 -0.9,6.3 -2,14.2 -2.5,17.5 -2.1,14.7 -4.3,29.8 -5.6,39 -2.9,18.8 -3.1,21 -2.5,21.7 0.4,0.4 6.1,1.4 12.6,2.2 15.1,1.9 31.1,4.1 39.5,5.6 7.9,1.3 22.7,3.5 37.5,5.4 6.1,0.8 13.9,2 17.5,2.6 11.1,1.8 26.1,4.1 37,5.5 5.8,0.8 13.4,1.9 17,2.5 3.6,0.6 11.2,1.8 17,2.6 26.4,3.7 31.9,4.5 37,5.3 5.6,0.9 20.5,3.1 38.5,5.7 5.5,0.7 12.8,1.8 16.3,2.4 3.4,0.5 9,1.5 12.5,2 3.4,0.6 13,1.9 21.2,3 8.3,1 21.1,2.9 28.5,4 7.4,1.2 15.1,2.4 17,2.7 1.9,0.2 8.2,1.1 14,2 19.6,2.8 23.4,3.3 23.6,3 0.2,-0.2 0.8,-3.6 1.4,-7.7 0.6,-4.1 1.5,-10 2,-13 1.1,-7.1 3.7,-25.3 5.5,-40 1.4,-11.3 2.3,-17.1 4.5,-30 0.6,-3.6 2,-13.3 3.1,-21.5 1.9,-15.4 3.1,-23.5 4.9,-34 0.6,-3.3 1.9,-13 3,-21.5 1.1,-8.5 2.4,-18 2.9,-21 0.5,-3 1.6,-10.9 2.5,-17.5 3.2,-22.6 4.5,-32 5.5,-38.5 1.1,-7.5 3.6,-25.2 5.6,-39.5 1.8,-12.6 3.2,-22.2 4.5,-30.5 0.6,-3.6 2,-14.2 3.1,-23.5 1.9,-16.9 2.8,-24.1 4.8,-38.5 0.6,-4.1 1.1,-11.2 1.1,-15.7 0,-6.5 0.5,-9.4 2.4,-13.5 3.7,-8.3 4.5,-10.8 5.6,-18.3 0.6,-3.9 1.5,-9.7 2,-13 0.6,-3.3 1.6,-10.7 2.4,-16.5 2.3,-16.6 4.5,-31 5.6,-37.5 0.6,-3.3 1.7,-10.7 2.5,-16.5 1.5,-11.5 4,-29.2 5.5,-38.5 0.6,-3.3 1.6,-10.7 2.4,-16.5 0.8,-5.8 1.9,-13.7 2.6,-17.5 1.4,-8.5 1.6,-9.8 3,-20 1.9,-13.7 3.6,-24.8 4.8,-32.5 0.6,-3 0.7,-5.8 0.3,-6.3 -0.7,-0.7 -5.2,-1.5 -26.1,-4.1 -6.4,-0.8 -12.2,-1.7 -13,-2 -0.8,-0.3 -5.3,-1 -10,-1.6 -4.7,-0.6 -11.2,-1.6 -14.5,-2.1 -3.3,-0.5 -10.5,-1.5 -16,-2.3 -10.5,-1.5 -27.8,-4.1 -38,-5.7 -3.3,-0.5 -10.9,-1.6 -17,-2.4 -6,-0.9 -13.7,-2 -17,-2.5 -10.7,-1.6 -26.8,-4 -38,-5.6 -16.6,-2.3 -30.3,-4.3 -37,-5.4 -3.3,-0.6 -10.9,-1.7 -17,-2.5 -17.2,-2.4 -31.5,-4.5 -38,-5.5 -3.3,-0.6 -10.7,-1.7 -16.5,-2.5 -15.7,-2.2 -30.6,-4.3 -38.5,-5.5 -3.8,-0.5 -11,-1.5 -16,-2.1 -4.9,-0.6 -9.6,-1.4 -10.5,-1.9 -0.8,-0.4 -5.2,-1.1 -9.7,-1.4 -4.6,-0.4 -9.6,-1.1 -11.1,-1.5 -2.7,-0.8 -2.9,-0.6 -3.9,3.3zM458,248c7.4,1.1 18.5,2.7 24.5,3.6 6.1,0.8 13.3,2 16,2.5 2.8,0.5 8.6,1.4 13,2 4.4,0.6 10.5,1.5 13.5,2 3,0.6 10.2,1.6 16,2.4 5.8,0.7 15,2.1 20.5,2.9 19.9,3.2 23.2,3.7 33,5.1 5.5,0.8 14.5,2.1 20,2.9 5.5,0.8 15,2.2 21,3.1 6.1,0.9 13.6,1.9 16.8,2.2 3.1,0.3 6,0.9 6.3,1.4 0.3,0.5 2,0.9 3.7,0.9 6,0.1 28.2,3.7 31.7,5.2 3.8,1.6 9,7 9,9.3 0,0.8 -1,2.1 -2.2,2.9 -2.1,1.5 -2.1,1.6 -0.4,2.9 2.7,2 1.4,6.3 -2.7,8.8 -4,2.5 -10.2,2.2 -34.2,-1.5 -14.9,-2.4 -29.1,-4.6 -40.5,-6.3 -1.9,-0.2 -9.6,-1.4 -17,-2.5 -16,-2.4 -30.8,-4.5 -40.5,-5.8 -3.8,-0.5 -8,-1.2 -9.3,-1.5 -1.3,-0.3 -5.6,-1 -9.5,-1.6 -8.5,-1.2 -22,-3.2 -37.2,-5.4 -6,-0.8 -13.5,-2 -16.5,-2.5 -3,-0.5 -9.3,-1.4 -14,-2 -4.7,-0.5 -10.7,-1.4 -13.5,-2 -2.7,-0.5 -10.2,-1.6 -16.5,-2.5 -13.1,-1.9 -19.3,-4.4 -21.5,-8.8 -5,-10.1 3.4,-21.7 14.5,-20.1 1.4,0.2 8.6,1.2 16,2.4zM443.5,338c7.2,1.3 21.9,3.5 37,5.5 6.1,0.8 13.9,1.9 17.5,2.6 8.2,1.4 23.2,3.6 33.5,4.9 4.4,0.5 9.1,1.3 10.5,1.6 1.4,0.3 5.2,1 8.5,1.6 5.6,0.9 10.9,1.6 37.5,5.3 5.8,0.8 13,1.9 16,2.5 5.1,0.9 13.6,2.1 38,5.5 5.2,0.7 10.4,1.5 11.5,1.8 1.1,0.3 6.1,1.1 11,1.7 16.3,2.2 21.6,5 23.6,12.3 1.4,5.3 0.4,8.9 -3.8,13.2l-3.6,3.7 -7.6,-0.6c-8.6,-0.6 -16.6,-1.7 -29.2,-4 -4.8,-0.9 -14.2,-2.2 -21,-3 -11.5,-1.4 -23.2,-3.2 -35.4,-5.6 -2.7,-0.5 -10.6,-1.7 -17.5,-2.5 -13.8,-1.8 -20.1,-2.7 -30.5,-4.5 -3.8,-0.6 -13.5,-2 -21.5,-3.1 -14.1,-2 -18.3,-2.6 -32,-4.9 -3.6,-0.5 -13.2,-2 -21.5,-3.1 -30.6,-4.3 -42.8,-6.4 -46.4,-8.2 -3.8,-1.9 -6.3,-6.1 -6.9,-11.6 -0.4,-4.9 -0.3,-5.2 3.7,-9.2l4.1,-4.1 9.2,0.5c5.1,0.3 12,1.1 15.3,1.7zM433,428.5c5.8,0.9 13,2.1 16,2.6 3,0.5 10.2,1.6 16,2.3 5.8,0.8 13.2,2 16.5,2.6 3.3,0.6 12.8,2 21,3.1 18.2,2.4 25.2,3.4 33,4.9 3.3,0.6 12.8,2 21,3.1 17.4,2.4 23.4,3.3 33,4.9 9,1.5 24,3.8 33,5 3.9,0.5 12,1.7 18,2.6 6.1,0.9 11.7,1.7 12.5,1.8 11.4,1.4 17,3.9 19.5,8.8 3.3,6.7 0.4,14.6 -6.6,18.1 -3.4,1.6 -4.4,1.7 -16,0.2 -6.8,-0.8 -15.3,-1.9 -18.9,-2.5 -3.6,-0.6 -10.8,-1.7 -16,-2.5 -17.7,-2.6 -30.5,-4.5 -36.5,-5.5 -3.3,-0.6 -10.9,-1.7 -17,-2.5 -21.3,-3 -31.1,-4.4 -37.5,-5.5 -6.2,-1.1 -14.2,-2.3 -37,-5.5 -5.8,-0.8 -13.2,-1.9 -16.5,-2.5 -5.5,-0.9 -16.1,-2.5 -34,-5 -28.1,-3.9 -33.9,-5.4 -37.5,-9.8 -1.6,-2 -3.2,-4.7 -3.5,-6.2 -0.8,-3.6 1.8,-9.3 5.7,-12.5 3.2,-2.5 3.7,-2.6 12.3,-2.1 5,0.3 13.7,1.2 19.5,2.1z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M814.6,174.1c-0.8,2.6 -2.2,16.9 -1.6,16.9 0.3,-0 1.4,-3.6 2.4,-8.1 1.3,-5.8 1.5,-8.4 0.7,-9.2 -0.7,-0.7 -1.2,-0.6 -1.5,0.4z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M358.3,179.2c-2.2,1.8 -8,6.7 -12.8,10.8 -22.2,19.1 -26.7,22.9 -34,29 -9,7.5 -40.8,34.4 -50.6,42.8 -3.6,3.1 -20.6,17.6 -37.7,32.1 -17.2,14.5 -31.2,26.8 -31.2,27.2 0,0.5 6.9,8.8 15.3,18.5 8.3,9.7 16.1,18.8 17.2,20.3 1,1.4 4.7,5.7 8,9.6 3.4,3.8 7.3,8.3 8.6,9.9 1.3,1.6 4.2,5 6.4,7.6 2.2,2.6 7.2,8.4 11,13 3.9,4.6 9.7,11.5 13,15.3 3.3,3.8 7.1,8.4 8.5,10.1 1.3,1.7 6.5,7.8 11.5,13.6 4.9,5.8 11.9,14 15.5,18.2l6.5,7.7 1.2,-4.7c0.6,-2.6 1.7,-6.5 2.3,-8.7 1,-3.6 1.8,-6.8 5,-21 0.5,-2.2 1.6,-6.7 2.5,-10 0.9,-3.3 2.1,-8.3 2.6,-11 0.5,-2.8 1.4,-5.9 1.9,-7 1,-2.2 6,-35.1 9.1,-59.5 0.5,-4.1 1.3,-9.5 1.9,-12 0.5,-2.5 1.6,-10.1 2.5,-17 0.8,-6.9 2,-14.5 2.5,-17 0.5,-2.5 1.3,-8.1 1.6,-12.5 0.4,-4.4 1,-8.5 1.4,-9 0.4,-0.6 1,-3.5 1.3,-6.5 0.4,-3 1.4,-10.5 2.2,-16.5 0.9,-6.1 2.2,-15.7 3,-21.5 1.6,-11.3 2.8,-18.8 4.5,-29 1.6,-9.4 3.8,-25.5 3.5,-25.8 -0.1,-0.1 -2,1.2 -4.2,3z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M811,195.5c0,1.4 0.4,2.5 0.9,2.5 0.4,-0 0.6,-1.1 0.3,-2.5 -0.2,-1.4 -0.6,-2.5 -0.8,-2.5 -0.2,-0 -0.4,1.1 -0.4,2.5z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M263,217c-1.9,1 -8.2,4 -14,6.6 -13.6,6.2 -13.2,5.9 -11.2,9.5 0.9,1.6 2,2.9 2.3,2.9 0.3,-0 5.6,-3.8 11.7,-8.4 6.2,-4.7 12.2,-9.2 13.4,-10 3.3,-2.3 1.8,-2.7 -2.2,-0.6z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M184.2,379.2l-9.1,11.3 2.8,2.5c1.5,1.4 5.2,4.3 8.1,6.5 2.9,2.2 5.7,4.4 6.4,5 0.6,0.5 2.8,2.3 4.9,4 8.4,6.6 12.1,9.5 28.7,23 9.4,7.7 19.1,15.4 21.4,17.2 2.2,1.8 7.5,6 11.7,9.5 4.2,3.5 12.3,10.1 18,14.7 5.7,4.6 12.3,10.2 14.6,12.4 5.2,5 7,4.1 2.2,-1.1 -1.9,-2 -6.9,-7.8 -10.9,-12.7 -4.1,-5 -10.6,-12.7 -14.5,-17.2 -7.1,-8.2 -21.6,-25.4 -29,-34.2 -7.7,-9.1 -24,-28.4 -31.6,-37 -4.1,-4.8 -8.5,-10.2 -9.8,-11.9 -1.2,-1.8 -2.8,-3.2 -3.5,-3.2 -0.7,-0 -5.4,5.1 -10.4,11.2z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M803.2,394.9c1.3,1.5 5.5,6.4 9.3,10.8 3.9,4.4 11.7,13.5 17.5,20.2 5.8,6.8 11.4,13.3 12.5,14.6 1.1,1.2 4.9,5.7 8.5,9.9 3.6,4.3 8.3,9.9 10.5,12.5 2.2,2.5 6,7.1 8.5,10 2.5,3 10.5,12.4 17.9,21 7.3,8.6 14,16.6 14.8,17.8 2,3 3.4,2.8 5.7,-0.5 1.1,-1.5 5.1,-6.4 8.9,-10.9 3.8,-4.6 6.7,-8.7 6.5,-9.2 -0.3,-0.9 -11.6,-10.1 -67.3,-55 -12.6,-10.2 -29.6,-23.8 -37.7,-30.4 -8.1,-6.5 -15,-12.3 -15.3,-12.8 -0.4,-0.5 -1.1,-0.9 -1.6,-0.9 -0.6,-0 0,1.3 1.3,2.9z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M785.1,421.1c-0.7,2.4 -1.7,5.5 -2.2,6.9 -0.4,1.4 -1.3,4.7 -1.8,7.5 -0.9,4.5 -2.5,11.2 -5.1,21.5 -5.9,23.1 -8.2,36 -13.6,74.5 -0.7,5.5 -1.8,12.7 -2.3,16 -1.5,9.3 -4.2,27.9 -5.7,39.5 -0.8,5.8 -1.8,13 -2.3,16 -1.9,11.8 -4.3,28 -5.7,38.5 -0.9,6 -1.9,13.2 -2.4,16 -3,18.2 -6.7,47.5 -6,47.5 0.3,-0 4.8,-3.7 10.1,-8.3 5.2,-4.5 13.1,-11.1 17.3,-14.7 4.3,-3.6 14.4,-12.1 22.5,-19 8.1,-6.9 19.8,-16.8 26,-22 6.3,-5.2 15.3,-12.9 20,-17 4.7,-4.2 11.8,-10.1 15.6,-13.3 9.8,-8.2 27.1,-22.8 37.4,-31.7 4.7,-4.1 11.4,-9.7 14.9,-12.4 3.4,-2.7 6.2,-5.3 6.2,-5.8 0,-0.5 -3.7,-5.2 -8.2,-10.5 -8.8,-10.2 -13.6,-15.8 -20.8,-24.4 -9,-10.6 -23.8,-28 -43.2,-50.8 -6.8,-7.9 -13.4,-15.8 -14.8,-17.5 -1.3,-1.7 -5.6,-6.8 -9.5,-11.3 -3.8,-4.5 -9.5,-11.1 -12.5,-14.8 -3,-3.7 -7.1,-8.5 -9.1,-10.7l-3.5,-4 -1.3,4.3z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M845.8,655.8c-12.9,9.8 -15.9,13 -9,9.4 5.1,-2.7 22.3,-10.8 24.5,-11.6 1.4,-0.4 1.7,-1.2 1.1,-2.8 -0.7,-2.6 -2.3,-4.8 -3.3,-4.7 -0.3,-0 -6.3,4.4 -13.3,9.7z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M286.2,690.2c-1.7,9 -2.8,14 -3.7,16.2 -0.6,1.4 -0.4,1.7 1,1.5 1,-0.3 1.9,-1.5 2.1,-2.9 0.3,-2.9 2,-13 3,-17.8 0.3,-1.7 0.2,-3.2 -0.3,-3.2 -0.5,-0 -1.4,2.8 -2.1,6.2z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M495,789.5c0,0.7 4.9,11.4 9.9,21.6l2.8,5.6 8.4,-4.1c4.7,-2.2 9.8,-4.6 11.4,-5.3 7.8,-3.2 14.7,-6.4 14.4,-6.7 -0.5,-0.5 -15.9,-4.5 -23.4,-6.2 -3.3,-0.7 -8.9,-2 -12.5,-2.9 -3.6,-0.9 -7.5,-1.9 -8.7,-2.2 -1.3,-0.3 -2.3,-0.2 -2.3,0.2z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M305.5,939.9c-10.7,4.8 -17.3,22 -11.4,29.5 4.8,6.1 15.4,7.6 22.1,3.1 5.6,-3.8 9.8,-13 9.8,-21.5 0,-8.3 -1.7,-10.8 -8,-12.1 -6.5,-1.2 -8,-1.1 -12.5,1z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M453.1,942.1c-1.8,0.6 -5,2.1 -7.1,3.5l-3.8,2.5 0.6,12.7c0.3,7.6 0.9,13 1.6,13.4 0.6,0.4 3.9,0.8 7.3,0.8 5.2,-0 6.6,-0.4 9.2,-2.6 4,-3.3 5.5,-9 4.7,-17.7 -0.7,-8 -2.6,-12.2 -5.8,-13.1 -2.7,-0.7 -2.3,-0.7 -6.7,0.5z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M522.2,940c-8.3,1.9 -15.2,11.4 -15.2,20.6 0,6.1 1.1,9.5 4,12.4 2.6,2.6 11,2.7 16,0.2 3.1,-1.5 3.5,-2.1 3.3,-5.2 -0.1,-1.9 -0.3,-8.9 -0.4,-15.5 -0.2,-6.8 -0.8,-12.3 -1.4,-12.7 -1.2,-0.9 -1.9,-0.9 -6.3,0.2z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M655,941.2c-3.1,1.6 -5.1,3.6 -6.7,6.7 -1.3,2.4 -2.2,4.6 -2,4.7 0.4,0.5 18.4,-7.4 22,-9.6 3.2,-2 2.6,-2.5 -4.4,-3.5 -3.5,-0.5 -5.3,-0.1 -8.9,1.7z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M879.2,940.5c-6,1.9 -11.4,6.2 -11,8.8 0.4,2.8 5.2,5.4 11.1,6l4.7,0.5 0,-8.4c0,-4.6 -0.1,-8.4 -0.2,-8.3 -0.2,-0 -2.2,0.6 -4.6,1.4z" android:strokeColor="#00000000"/>
++</vector>
+Index: app/src/main/java/com/example/podpise/ctrl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/podpise/ctrl.java b/app/src/main/java/com/example/podpise/ctrl.java
+new file mode 100644
+--- /dev/null	(date 1700179536737)
++++ b/app/src/main/java/com/example/podpise/ctrl.java	(date 1700179536737)
+@@ -0,0 +1,79 @@
++package com.example.podpise;
++import android.annotation.SuppressLint;
++import android.content.Intent;
++import android.os.Bundle;
++import android.provider.DocumentsContract;
++import android.provider.OpenableColumns;
++import android.view.View;
++import android.widget.Button;
++import androidx.annotation.Nullable;
++import androidx.appcompat.app.AppCompatActivity;
++import android.content.DialogInterface;
++import android.content.Intent;
++import android.os.Bundle;
++import android.os.Environment;
++import android.util.Log;
++import android.view.View;
++import android.widget.Toast;
++
++import androidx.appcompat.app.AlertDialog;
++import androidx.appcompat.app.AppCompatActivity;
++
++
++public class ctrl extends AppCompatActivity {
++        private static final int PICK_DOCUMENT_REQUEST = 1;
++
++        @Override
++        protected void onCreate(Bundle savedInstanceState) {
++            super.onCreate(savedInstanceState);
++            setContentView(R.layout.activity_main);
++
++            @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button btnPickDocument = findViewById(R.id.btnPickDocument);
++            btnPickDocument.setOnClickListener(new View.OnClickListener() {
++                @Override
++                public void onClick(View v) {
++                    pickDocument();
++                }
++            });
++        }
++
++        private void pickDocument() {
++            Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
++            intent.addCategory(Intent.CATEGORY_OPENABLE);
++            intent.setType("*/*");
++
++            startActivityForResult(intent, PICK_DOCUMENT_REQUEST);
++        }
++
++        @Override
++        protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
++            super.onActivityResult(requestCode, resultCode, data);
++
++            if (requestCode == PICK_DOCUMENT_REQUEST && resultCode == RESULT_OK && data != null) {
++                // Получите URI выбранного документа
++                if (data.getData() != null) {
++                    String documentUri = data.getData().toString();
++
++                    // Дополнительная обработка выбранного документа
++                    // Например, отобразить имя файла
++                    String displayName = getDocumentDisplayName(data.getData());
++                    if (displayName != null) {
++                        // Ваш код для обработки выбранного документа
++                        // displayName содержит имя файла
++                    }
++                }
++            }
++        }
++
++        @SuppressLint("Range")
++        private String getDocumentDisplayName(android.net.Uri uri) {
++            String displayName = null;
++            try (android.database.Cursor cursor = getContentResolver().query(uri, null, null, null, null)) {
++                if (cursor != null && cursor.moveToFirst()) {
++                    displayName = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
++                }
++            }
++            return displayName;
++        }
++    }
++}
+\ No newline at end of file
+Index: app/src/main/res/drawable/delete_sign.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/delete_sign.xml b/app/src/main/res/drawable/delete_sign.xml
+new file mode 100644
+--- /dev/null	(date 1700185378000)
++++ b/app/src/main/res/drawable/delete_sign.xml	(date 1700185378000)
+@@ -0,0 +1,14 @@
++<vector android:autoMirrored="true" android:height="48dp"
++    android:viewportHeight="1100" android:viewportWidth="1100"
++    android:width="48dp" xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="#000000"
++        android:pathData="M184,11.6c-87.3,12.7 -156.3,82 -168.4,169.3 -1.4,10 -1.6,49.8 -1.6,368.6 0,318.8 0.2,358.6 1.6,368.6 11,79.2 69.6,145 146.7,164.9 25.1,6.4 -1.7,6 387.7,6 315.6,-0 355.1,-0.2 365.1,-1.6 79.2,-11 145,-69.6 164.9,-146.7 6.4,-25.1 6,2.1 6,-391.2 0,-393.3 0.4,-366.1 -6,-391.2 -17.9,-69.1 -73.2,-124.4 -142.3,-142.3 -25.1,-6.4 1.9,-6 -389,-5.9 -296.4,0.1 -356.8,0.3 -364.7,1.5zM575.6,38.9c14.6,5.2 25.2,11.8 42.6,26.2 14.1,11.7 28.7,26 97.4,95 72.3,72.7 83.1,85.1 92.7,106.1 6.6,14.3 6.2,8.9 6.2,90.8l0,74.5 -3,0.3c-9.4,0.9 -31.1,6.1 -45.3,10.8 -9,3 -16.5,5.4 -16.8,5.4 -0.2,-0 -0.4,-29.4 -0.4,-65.3 0,-63.5 -0.1,-65.3 -2.1,-69.7 -2.7,-5.9 -5.3,-8.6 -11.4,-11.8 -10.8,-5.5 -10.5,-5.5 -85,-6.1l-69,-0.6 -5.7,-2.8c-6.9,-3.4 -14.9,-11.8 -17.4,-18.4 -1.7,-4.4 -1.9,-10.3 -2.4,-74.8 -0.7,-74 -0.6,-73.6 -5.4,-83.7 -2.4,-5 -7.4,-9.8 -12.4,-11.9 -4.2,-1.8 -9.1,-1.9 -107,-1.9 -82.1,0.1 -104.2,0.3 -110.2,1.4 -25.1,4.6 -44.1,22 -50.9,46.6l-2.1,7.5 0,281.2c0,313.2 -0.6,287.1 7,302.8 7.9,16.3 21.7,27.6 40.6,33.2 5.5,1.7 15.9,1.8 152.4,2.3l146.4,0.5 7.1,14c9.7,19.2 19.3,34.5 29.6,46.7l3.1,3.8 -169,-0c-163.6,-0 -169.3,-0.1 -178.3,-1.9 -36.7,-7.7 -66.6,-28.8 -86,-60.7 -5.4,-9.1 -12.1,-24.7 -14.3,-33.9 -5,-20.8 -4.6,2.1 -4.6,-306 0,-284.9 0,-286 2.1,-295 7,-31.1 16.6,-49.2 36.4,-69.1 19.8,-19.8 36.1,-28.6 68.5,-36.9 4.6,-1.1 27.1,-1.4 132.1,-1.4l126.6,-0.1 7.9,2.9zM740.2,548.2l30.8,31.3 31.2,-31.3c17.2,-17.1 31.6,-31.2 32,-31.2 0.9,-0 63.8,63.1 63.8,63.9 0,0.3 -1.5,1.6 -3.3,2.8 -1.7,1.2 -16,15.1 -31.7,30.8l-28.5,28.6 31.9,31.2c17.6,17.2 31.7,31.7 31.5,32.2 -0.8,1.8 -62.4,62.5 -63.4,62.5 -0.6,-0 -15,-14 -32,-31l-31,-31 -31.1,31.1c-17.1,17.1 -31.7,31 -32.3,30.8 -1.3,-0.5 -63.1,-62.1 -63.1,-62.9 0,-0.4 14,-14.5 31,-31.4 17.1,-17 31,-31.1 31,-31.5 0,-0.4 -13.9,-14.6 -31,-31.6 -17,-17 -31,-31.2 -31,-31.5 0,-0.9 62.5,-63 63.5,-63 0.5,-0 14.8,14 31.7,31.2zM269.8,888.1c3.2,2.9 17.4,24.4 21.5,32.5 6.2,12.1 5.5,12.2 11.6,-2.3 6,-14.3 12.4,-26.6 15.4,-30.1 1.5,-1.6 3.2,-2.2 6.1,-2.2 8.3,-0 11,7.2 6.1,16 -3,5.2 -4.1,7.7 -18.2,38.8 -8.7,19.3 -11.5,24.3 -15.5,28.7 -6.4,7.1 -13.6,10.5 -23.5,11.2 -8.2,0.7 -11.4,-0.4 -13.2,-4.4 -2.9,-6.2 0.6,-10.9 9.1,-12.3 8.3,-1.3 11.9,-3.4 15.6,-8.9 1.7,-2.8 3.2,-5.4 3.2,-6 0,-0.6 -1.8,-3.4 -4,-6.3 -2.2,-2.9 -5.8,-8.7 -7.9,-12.8 -2.2,-4.1 -7.8,-13.3 -12.5,-20.3 -9.5,-14.1 -10.3,-17.1 -6.1,-21.2 3.1,-3.2 9.1,-3.4 12.3,-0.4zM692,913c1.9,1.9 2,3.3 2,32.9l0,31 -2.6,2c-3.5,2.8 -8.6,2.7 -11.9,-0.2 -2.4,-2.1 -2.7,-2.9 -3.2,-13.5 -0.5,-8.6 -0.9,-11.2 -2,-11.2 -3.7,-0 -20.8,2.2 -22.8,3 -2.1,0.8 -2.3,1.6 -2.7,10.4 -0.3,8.3 -0.7,9.9 -2.8,12.1 -3.1,3.3 -8.9,3.4 -12.3,0.2l-2.5,-2.2 0.5,-30.4c0.6,-34.6 0.5,-34.1 8.6,-34.1 7.1,-0 8.4,2.2 9.2,15.7 0.5,7.3 1.2,11.3 1.9,11.3 0.6,-0 2.9,-0.5 5.1,-1 2.2,-0.5 7.5,-1 11.8,-1.1l7.7,-0.3 0,-8.6c0,-14.3 2,-17.9 9.8,-18 2.9,-0 4.8,0.6 6.2,2zM397.5,916.5c2.9,2.8 2.8,1.9 2.5,28.7l-0.2,19.7 2.6,0.7c5.1,1.2 6.6,4.7 6.6,15.1 0,8.6 -0.2,9.6 -2.5,11.8 -1.7,1.8 -3.5,2.5 -6.3,2.5 -5.3,-0 -8.3,-3.3 -9,-10l-0.5,-5 -14.7,-0c-8.1,-0 -16.8,0.3 -19.4,0.6l-4.6,0.7 0,4.8c0,3.9 -0.4,5.1 -2.6,6.8 -3.8,3 -9.4,2.8 -12.5,-0.5 -2.1,-2.3 -2.4,-3.6 -2.7,-11.7 -0.3,-10.6 0.7,-13.4 5.8,-15.9 6.4,-3.3 9.9,-12.8 11,-30.4 1.2,-20 1.6,-20.3 26.8,-20.4 17,-0 17.3,-0 19.7,2.5zM548.4,915.2c1.4,0.6 2.8,1.8 3,2.7 0.3,0.9 0.6,14.6 0.8,30.4l0.3,28.9 -2.4,1.9c-2.5,2 -8.1,2.5 -11,0.9 -3.8,-2 -4.6,-6.5 -4.6,-27.7l0,-20.3 -11.2,-0 -11.3,-0 0,13.7c0,19.9 -2.2,27.3 -9.3,32.7 -3.3,2.4 -13,3.3 -18.1,1.6 -7.1,-2.3 -9.6,-9.1 -5.4,-14.5 2,-2.6 2.4,-2.7 8.4,-2l6.3,0.6 0.8,-3.8c0.9,-4.2 0.8,-19.8 -0.2,-31.4 -0.6,-7.2 -0.5,-7.8 1.9,-10.5l2.4,-2.9 19.4,-0.5c10.6,-0.3 21.2,-0.7 23.5,-0.8 2.3,-0.1 5.3,0.3 6.7,1zM463.5,918.2c7.3,3.8 8.9,5.9 8,10.5 -0.5,2.1 -0.8,10.3 -0.9,18.3 0,13.8 0.1,14.8 2.7,20 3.3,6.7 3.4,10.3 0.5,13 -3,2.8 -7.9,2.6 -11.6,-0.5l-3,-2.5 -6.8,2.6c-12.1,4.6 -25.3,2.4 -32.6,-5.3 -5.3,-5.5 -7.3,-11.8 -7.3,-22.8 0,-8.9 0.3,-10.6 2.8,-15.5 4.4,-8.9 11.5,-15.5 20.4,-19.1 7.2,-2.9 20.9,-2.2 27.8,1.3zM607.1,916c8.8,2.5 14.3,8.6 14.3,15.9 0,9 -4.6,12.9 -27.9,23.1 -6.6,2.9 -12.4,5.6 -12.8,6 -0.5,0.4 1.1,1.7 3.5,2.9 6.5,3.1 17.5,2.9 24.6,-0.4 10.2,-4.7 17.4,-2.2 15.7,5.5 -2.5,11.3 -30.8,17.2 -46.7,9.6 -6.8,-3.2 -12.9,-9.8 -14.8,-15.8 -1.8,-6.1 -1.5,-17.2 0.8,-24.4 3.3,-10.7 10.2,-18.7 18.8,-21.8 4.6,-1.7 19.3,-2 24.5,-0.6zM716.5,915.6c3,1.2 4.5,6 4.5,14.6 0,4.6 0.3,12 0.7,16.6l0.6,8.3 5.4,-5.3c3,-2.9 10.2,-11.2 15.9,-18.3 5.8,-7.2 11.7,-13.8 13.2,-14.7 4,-2.6 9.8,-2.3 12.7,0.7l2.5,2.4 0,28.6 0,28.6 -2.5,2.4c-3.4,3.5 -9.6,3.5 -13.2,-0.1l-2.5,-2.5 0.7,-15.7 0.7,-15.7 -6.5,8.1c-5.5,6.9 -17.5,18 -28.1,26.2 -4,3.1 -10.9,3 -14,-0.1 -2.2,-2.2 -2.3,-2.8 -2.9,-31.2 -0.7,-28.7 -0.7,-28.9 1.5,-31.2 2.2,-2.3 7.5,-3.1 11.3,-1.7zM827.1,916c8.8,2.4 14.1,8.4 14.2,15.8 0.1,9.1 -4.4,12.9 -27.8,23.2 -6.6,2.9 -12.4,5.6 -12.8,6 -0.5,0.4 1.1,1.7 3.5,2.9 6.5,3.1 17.5,2.9 24.6,-0.4 10.2,-4.7 17.4,-2.2 15.7,5.5 -2.5,11.3 -30.8,17.2 -46.7,9.6 -6.8,-3.2 -12.9,-9.8 -14.8,-15.8 -1.8,-6.1 -1.5,-17.2 0.8,-24.4 3.3,-10.7 10.2,-18.7 18.8,-21.8 4.6,-1.7 19.3,-2 24.5,-0.6z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M368.6,936.2c-0.7,8.4 -3.1,18.4 -5.7,24.5l-1.8,4.3 10.4,-0 10.5,-0 0,-14.9c0,-8.2 0.3,-16.3 0.6,-18l0.7,-3.1 -7,-0 -7,-0 -0.7,7.2z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M445.2,931c-8.3,1.9 -15.2,11.4 -15.2,20.6 0,6.1 1.1,9.5 4,12.4 2.6,2.6 11,2.7 16,0.2 3.1,-1.5 3.5,-2.1 3.3,-5.2 -0.1,-1.9 -0.3,-8.9 -0.4,-15.5 -0.2,-6.8 -0.8,-12.3 -1.4,-12.7 -1.2,-0.9 -1.9,-0.9 -6.3,0.2z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M588,932.2c-3.1,1.6 -5.1,3.6 -6.7,6.7 -1.3,2.4 -2.2,4.6 -2,4.7 0.4,0.5 18.4,-7.4 22,-9.6 3.2,-2 2.6,-2.5 -4.4,-3.5 -3.5,-0.5 -5.3,-0.1 -8.9,1.7z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M808,932.2c-3.1,1.6 -5.1,3.6 -6.7,6.7 -1.3,2.4 -2.2,4.6 -2,4.7 0.4,0.5 18.4,-7.4 22,-9.6 3.2,-2 2.6,-2.5 -4.4,-3.5 -3.5,-0.5 -5.3,-0.1 -8.9,1.7z" android:strokeColor="#00000000"/>
++</vector>
+Index: app/src/main/res/drawable/send_check.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/send_check.xml b/app/src/main/res/drawable/send_check.xml
+new file mode 100644
+--- /dev/null	(date 1700185404000)
++++ b/app/src/main/res/drawable/send_check.xml	(date 1700185404000)
+@@ -0,0 +1,42 @@
++<vector android:autoMirrored="true" android:height="48dp"
++    android:viewportHeight="1100" android:viewportWidth="1100"
++    android:width="48dp" xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="#000000"
++        android:pathData="M184,11.6c-87.3,12.7 -156.3,82 -168.4,169.3 -1.4,10 -1.6,49.8 -1.6,368.6 0,318.8 0.2,358.6 1.6,368.6 11,79.2 69.6,145 146.7,164.9 25.1,6.4 -1.7,6 387.7,6 315.6,-0 355.1,-0.2 365.1,-1.6 79.2,-11 145,-69.6 164.9,-146.7 6.4,-25.1 6,2.1 6,-391.2 0,-393.3 0.4,-366.1 -6,-391.2 -17.9,-69.1 -73.2,-124.4 -142.3,-142.3 -25.1,-6.4 1.9,-6 -389,-5.9 -296.4,0.1 -356.8,0.3 -364.7,1.5zM970.4,214.2c11.4,3.3 20.1,13 22.3,24.8 0.4,2.5 0.6,102.8 0.3,223l-0.5,218.5 -2.8,5.7c-1.6,3.3 -4.9,7.6 -7.8,10.2 -9.3,8.4 24.2,7.6 -330.3,7.6 -212.3,-0 -317.3,-0.3 -319.8,-1 -8.9,-2.5 -18.3,-12.1 -21,-21.3 -0.9,-3 -1.1,-13.9 -0.9,-38.8 0.3,-33.1 0.2,-34.7 -1.5,-35.2 -1.1,-0.3 -17.2,-0.5 -35.9,-0.5 -31.6,-0.1 -34.3,-0.2 -38.6,-2 -13,-5.6 -21.7,-20.8 -19,-33.3 1.9,-8.7 5.6,-14.4 13,-19.7 7.4,-5.3 8.9,-5.5 46.6,-6.1l35,-0.6 0.3,-28.2 0.2,-28.2 -83.2,-0.3 -83.3,-0.3 -5,-2.3c-6.5,-3 -13.1,-9.4 -16.1,-15.7 -3.3,-6.9 -3.4,-18.5 -0.2,-25.2 3,-6.3 8.8,-11.9 15.7,-15.2l5.6,-2.6 83,-0.1 83,-0.1 0.3,-28.7 0.2,-28.6 -123.2,-0.2c-120.7,-0.3 -123.4,-0.3 -128.2,-2.3 -6.2,-2.5 -14,-10 -16.9,-16.2 -3.1,-6.8 -3,-19 0.1,-25.1 3.4,-6.5 8.5,-11.5 14.9,-14.8l5.8,-2.9 123.5,-0.2 123.5,-0.3 0.1,-34.2c0,-18.9 0.4,-35.7 0.8,-37.3 2.5,-10 9.5,-17.7 19.4,-21.5 4.5,-1.7 20.5,-1.8 320.6,-1.9 242.1,-0.1 316.8,0.2 320,1.1zM266,791.8c6.8,2.2 14.4,7.6 17.7,12.5 4.7,7.1 5.8,11.7 5.8,25.2 0,9.6 -0.4,13.4 -2.2,19 -4.7,14.9 -15,27.8 -26.9,33.6 -5.9,2.9 -7.9,3.4 -16.5,3.7 -7.9,0.4 -11.1,-0 -16.7,-1.7 -13,-3.9 -23.7,-13.3 -27.9,-24.2 -2.2,-6.1 -2.2,-21.5 0.1,-29.4 4,-13.6 14.6,-28.5 24.4,-34.2 9.1,-5.4 13.6,-6.4 26.7,-5.9 6.6,0.2 13.6,0.8 15.5,1.4zM766,816c1.9,1.9 2,3.3 2,32.9l0,31 -2.6,2c-3.5,2.8 -8.6,2.7 -11.9,-0.2 -2.4,-2.1 -2.7,-2.9 -3.2,-13.5 -0.5,-8.6 -0.9,-11.2 -2,-11.2 -3.7,-0 -20.8,2.2 -22.8,3 -2,0.8 -2.3,1.6 -2.7,10.5 -0.5,8.2 -0.8,9.9 -2.8,12 -3.1,3.3 -8.9,3.4 -12.3,0.2l-2.5,-2.2 0.5,-30.3c0.5,-29 0.6,-30.4 2.6,-32.3 3,-2.8 9.7,-2.6 12.4,0.3 1.8,1.9 2.2,4.1 2.8,13.6l0.8,11.4 2.6,-0.7c1.4,-0.3 7.2,-0.9 12.9,-1.2l10.2,-0.6 0,-8.6c0,-14.4 2,-18 9.8,-18.1 2.9,-0 4.8,0.6 6.2,2zM374.2,819l2.4,3.1 4.3,-1.6c6,-2.1 16.6,-1.9 21.6,0.4 5.2,2.4 7.8,5.3 11.1,12.6 2.4,5.1 2.8,7.6 3.2,17 0.5,13.8 -1.6,20.4 -8.8,27.5 -6.1,6.2 -12.2,8.3 -23,7.8l-8,-0.3 0,12.3c0,16.4 -1.4,19.2 -9.6,19.2 -2.4,-0 -4.3,-0.8 -5.9,-2.5l-2.5,-2.4 -0.1,-32.3c0,-17.8 -0.4,-37 -0.8,-42.8 -0.9,-11.5 -0.3,-15.1 3.1,-18.7 1.6,-1.7 3.2,-2.3 6.4,-2.3 3.5,-0 4.6,0.5 6.6,3zM349.5,819.5c3.2,3.1 3.2,7.5 0.1,11.2 -2.3,2.7 -2.8,2.8 -10,2.6l-7.6,-0.2 0.6,22.7 0.6,22.7 -2.4,3.5c-2,2.9 -3.1,3.6 -6.6,3.8 -3.4,0.3 -4.7,-0.2 -6.7,-2.2 -2.5,-2.5 -2.5,-2.5 -2.5,-21.9 0,-10.7 -0.3,-21.5 -0.6,-24.1l-0.7,-4.6 -5.9,-0c-6.2,-0 -11.1,-1.8 -12.2,-4.5 -1.1,-3 -0.6,-6.2 1.5,-8.9l2,-2.6 24,-0 24,-0 2.4,2.5zM622.4,818.2c1.4,0.6 2.8,1.8 3,2.7 0.3,0.9 0.6,14.6 0.8,30.4l0.3,28.9 -2.4,1.9c-2.5,2 -8.1,2.5 -11,0.9 -3.8,-2 -4.6,-6.5 -4.6,-27.7l0,-20.3 -11.2,-0 -11.3,-0 0,13.7c0,19.9 -2.2,27.3 -9.3,32.7 -3.3,2.4 -13,3.3 -18.1,1.6 -7.1,-2.3 -9.6,-9.1 -5.4,-14.5 2,-2.6 2.4,-2.7 8.4,-2l6.3,0.6 0.8,-3.8c0.9,-4.3 0.8,-20.1 -0.1,-31.4 -0.7,-7.2 -0.6,-7.8 1.8,-10.5l2.4,-2.9 19.4,-0.5c10.6,-0.3 21.2,-0.7 23.5,-0.8 2.3,-0.1 5.3,0.3 6.7,1zM474.5,821.2c7.4,3.8 9,5.9 7.9,10.5 -0.5,2.1 -0.9,10.3 -0.8,18.3 0,13.7 0.1,14.8 2.7,20 3.3,6.7 3.4,10.3 0.5,13 -3,2.8 -7.9,2.6 -11.6,-0.5l-3,-2.5 -6.8,2.6c-12.1,4.6 -25.3,2.4 -32.6,-5.3 -5.3,-5.5 -7.3,-11.8 -7.3,-22.8 0,-8.9 0.3,-10.6 2.8,-15.7 3.5,-7.2 12.8,-15.9 19.9,-18.7 7.7,-3.1 21.3,-2.5 28.3,1.1zM527,819c1.9,0.5 6,2.4 9,4.2 9.8,5.9 12.7,16.3 6.6,24.2l-2.5,3.4 3.4,2.7c4.5,3.3 6.5,7.3 6.5,12.6 0,3.7 -0.6,4.8 -4.3,8.4 -6.7,6.4 -21.5,10.5 -38,10.5 -7.4,-0 -8,-0.2 -10.9,-3.1l-3.1,-3.1 0.6,-26.7c0.4,-17.6 1,-27.7 1.8,-29.5 0.7,-1.6 2.5,-3 4.3,-3.5 4.2,-1.3 22.3,-1.3 26.6,-0.1zM683.3,820c6.5,2.4 10.6,6.5 11.7,11.6 2.4,10.6 -2.6,15.4 -27.5,26.4 -6.6,2.9 -12.4,5.6 -12.8,6 -0.5,0.4 1.1,1.7 3.5,2.9 6.4,3.1 16.9,2.9 24.8,-0.4 7.8,-3.3 12.4,-3.3 14.6,-0 3.8,5.9 -2.2,13.1 -14,16.7 -5.6,1.7 -8.6,2 -16.5,1.6 -11.7,-0.6 -19,-3.6 -24.9,-10.3 -4.7,-5.4 -6.5,-10.8 -6.4,-20 0.2,-16.6 8.9,-30.7 21.7,-35.3 5.3,-1.9 19.8,-1.4 25.8,0.8zM790.5,818.6c3.2,1.3 4.5,5.9 4.6,16.6 0.1,5.7 0.4,13.2 0.8,16.7l0.6,6.4 7.5,-7.9c4.1,-4.4 11.3,-12.7 16,-18.6 4.7,-5.8 9.7,-11.3 11.2,-12.2 4,-2.4 9.4,-2.1 12.3,0.9l2.5,2.4 0,28.6 0,28.6 -2.5,2.4c-3.4,3.5 -9.6,3.5 -13.2,-0.1l-2.5,-2.5 0.7,-15.7 0.7,-15.6 -7,8.6c-6.3,7.5 -15.5,16.1 -27,25 -4.8,3.8 -11.2,3.9 -14.7,0.3 -2.4,-2.3 -2.5,-2.9 -2.5,-16.7 0,-7.9 -0.3,-20.6 -0.6,-28.3 -0.6,-13.4 -0.6,-14.1 1.5,-16.8 1.8,-2.1 3.1,-2.7 6.1,-2.7 2.1,-0 4.6,0.3 5.5,0.6zM903.3,820c6.4,2.4 10.1,6.1 11.6,11.4 2.8,10.6 -2.3,15.6 -27.4,26.6 -6.6,2.9 -12.4,5.6 -12.8,6 -0.5,0.4 1.1,1.7 3.5,2.9 6.4,3.1 16.9,2.9 24.8,-0.4 7.8,-3.3 12.4,-3.3 14.6,-0 3.8,5.9 -2.2,13.1 -14,16.7 -5.6,1.7 -8.6,2 -16.5,1.6 -11.7,-0.6 -19,-3.6 -24.9,-10.3 -4.7,-5.4 -6.5,-10.8 -6.4,-20 0.2,-16.6 8.9,-30.7 21.7,-35.3 5.3,-1.9 19.8,-1.4 25.8,0.8zM246.7,943.2l2.3,2.1 0,30.8 0,30.8 -2.6,2c-3.5,2.8 -8.6,2.7 -11.9,-0.2 -2.4,-2.1 -2.7,-2.9 -3.2,-13.5 -0.5,-8.6 -0.9,-11.2 -2,-11.2 -3.7,-0 -20.8,2.2 -22.8,3 -2,0.8 -2.3,1.6 -2.7,10.5 -0.5,8.2 -0.8,9.9 -2.8,12 -2.9,3.1 -8.6,3.4 -12.2,0.6l-2.4,-2 0.4,-30.3c0.4,-28.9 0.5,-30.4 2.5,-32.6 1.5,-1.6 3.2,-2.2 6.2,-2.2 6.9,-0 8.2,2.3 9,15.8l0.8,11.4 2.6,-0.7c1.4,-0.3 7.2,-0.9 12.9,-1.2l10.2,-0.6 0,-8.6c0,-14.2 2,-18 9.4,-18.1 2.7,-0 4.7,0.7 6.3,2.2zM480.2,946l2.4,3.1 4.3,-1.6c6,-2.1 16.6,-1.9 21.6,0.4 5.2,2.4 7.8,5.3 11.1,12.6 2.4,5.1 2.8,7.6 3.2,17 0.5,13.8 -1.6,20.4 -8.8,27.5 -6.1,6.2 -12.2,8.3 -23,7.8l-8,-0.3 0,12.3c0,16.4 -1.4,19.2 -9.6,19.2 -2.4,-0 -4.3,-0.8 -5.9,-2.5l-2.5,-2.4 0,-32.3c-0.1,-17.8 -0.5,-37 -0.9,-42.7 -1,-11.3 -0.3,-15.1 3.1,-18.8 1.6,-1.7 3.2,-2.3 6.4,-2.3 3.5,-0 4.6,0.5 6.6,3zM584.6,946.2c8.4,4.4 11.7,9.2 13.6,20 3.1,17.3 -8.5,39 -23.9,44.8 -7.6,2.9 -21.3,2.5 -28.5,-0.7 -5.3,-2.4 -13.3,-9.4 -15.4,-13.4 -9,-17.5 3.3,-45.1 23.5,-52.6 2.4,-0.9 7.2,-1.2 14.6,-1 9.6,0.3 11.7,0.6 16.1,2.9zM753.2,946l2.4,3.1 4.3,-1.6c6,-2.1 16.6,-1.9 21.6,0.4 5.2,2.4 7.8,5.3 11.1,12.6 2.4,5.1 2.8,7.6 3.2,17 0.5,13.8 -1.6,20.4 -8.8,27.5 -6.1,6.2 -12.2,8.3 -23,7.8l-8,-0.3 0,12.3c0,16.4 -1.4,19.2 -9.6,19.2 -2.4,-0 -4.3,-0.8 -5.9,-2.5l-2.5,-2.4 0,-32.3c-0.1,-17.8 -0.5,-37 -0.9,-42.7 -1,-11.3 -0.3,-15.1 3.1,-18.8 1.6,-1.7 3.2,-2.3 6.4,-2.3 3.5,-0 4.6,0.5 6.6,3zM448,945.5c1.6,0.9 3.2,2.5 3.4,3.8 0.7,3.2 1.5,57 0.9,58.5 -0.9,2.3 -6.4,4.4 -9.8,3.8 -5.7,-1.1 -6.7,-3.3 -7.6,-16.3 -0.4,-6.5 -0.8,-16.9 -0.8,-23.1l-0.1,-11.2 -13.7,-0 -13.8,-0 0,22.2c0,15.6 -0.4,22.9 -1.2,24.4 -1.8,3.1 -6.7,4.9 -10.6,3.8 -5,-1.4 -6.3,-5.2 -5.6,-15.4 0.3,-4.7 0.2,-16 -0.4,-25.3 -1.2,-22.3 -0.4,-24.3 10.8,-25.8 2.8,-0.3 14.1,-0.7 25.3,-0.8 16.4,-0.1 20.9,0.2 23.2,1.4zM819.7,946.2c2,1.9 2.3,3.1 2.3,10.4 0,4.6 0.3,8.5 0.8,8.7 0.4,0.3 2.3,-0 4.2,-0.7 2.8,-0.9 4.1,-2.3 6.7,-7.1 4.6,-8.7 9.1,-12.5 14.8,-12.5 8.2,-0 12.7,4 10.1,9.1 -1.1,2.2 -2.6,3.3 -5.8,4.3 -0.9,0.2 -3.4,3.9 -5.7,8.2l-4,7.7 5.2,5.8c6.8,7.5 11.7,15.8 12.4,20.8 0.7,5.2 -2.8,9.1 -8.2,9.1 -5,-0 -7.1,-1.4 -9.6,-6.3 -3.1,-6.1 -11.9,-18.6 -14.3,-20.3 -1.1,-0.8 -2.8,-1.4 -3.8,-1.4 -1.6,-0 -1.8,1.1 -1.8,9.2 0,15.3 -2.3,19.8 -10.2,19.8 -3.5,-0 -7.7,-2.6 -7.8,-4.8 -0.1,-0.4 -0.3,-13.4 -0.5,-28.9 -0.4,-27.1 -0.4,-28.2 1.6,-30.7 2.7,-3.5 10.1,-3.7 13.6,-0.4zM308.5,948.2c7.4,3.8 9,5.9 7.9,10.5 -0.5,2.1 -0.9,10.3 -0.8,18.3 0,13.7 0.1,14.8 2.7,20 3.3,6.7 3.4,9.6 0.5,12.7 -2.9,3.1 -7.8,3 -11.6,-0.2l-3,-2.5 -6.8,2.6c-12.1,4.6 -25.3,2.4 -32.6,-5.3 -5.3,-5.5 -7.3,-11.8 -7.3,-22.8 0,-8.9 0.3,-10.6 2.8,-15.7 3.5,-7.2 12.8,-15.9 19.9,-18.7 7.7,-3.1 21.3,-2.5 28.3,1.1zM638,946c1.9,0.5 6,2.4 9,4.2 9.8,5.9 12.7,16.3 6.6,24.2l-2.5,3.4 3.4,2.7c4.5,3.3 6.5,7.3 6.5,12.6 0,3.7 -0.6,4.8 -4.3,8.4 -6.7,6.4 -21.5,10.5 -38,10.5 -7.4,-0 -8,-0.2 -10.9,-3.1l-3.1,-3.1 0.6,-26.7c0.4,-17.6 1,-27.7 1.8,-29.5 0.7,-1.6 2.5,-3 4.3,-3.5 4.2,-1.3 22.3,-1.3 26.6,-0.1zM713.3,947c6.5,2.4 10.6,6.5 11.7,11.6 2.4,10.6 -2.6,15.4 -27.5,26.4 -6.6,2.9 -12.4,5.6 -12.8,6 -0.5,0.4 1.1,1.7 3.5,2.9 6.4,3.1 16.9,2.9 24.8,-0.4 7.8,-3.3 12.4,-3.3 14.6,-0 3.8,5.9 -2.2,13.1 -14,16.7 -5.6,1.7 -8.6,2 -16.5,1.6 -11.7,-0.6 -19,-3.6 -24.9,-10.3 -4.7,-5.4 -6.5,-10.8 -6.4,-20 0.2,-16.6 8.9,-30.7 21.7,-35.3 5.3,-1.9 19.8,-1.4 25.8,0.8zM875.2,947.2c2.5,2.1 9.4,12.9 15.5,24.4l5.6,10.6 7.2,-14.9c8.9,-18.2 11.3,-21.3 16.5,-21.3 5,-0 9,3.1 9,7.2 0,1.9 -5.7,14.7 -14.9,33.7 -13.6,28 -22.1,47.2 -22.1,49.9 0,0.6 -1.2,2.4 -2.6,4.1 -2.1,2.5 -3.3,3.1 -6.5,3.1 -4.7,-0 -8.9,-3.5 -8.9,-7.5 0,-3.5 3.4,-13.2 8.6,-24.4l4.4,-9.4 -4.6,-8.6c-2.6,-4.7 -8.4,-15.2 -13,-23.3 -4.7,-8.1 -8.4,-15.8 -8.4,-17.3 0,-4 4.1,-7.5 8.8,-7.5 2.1,-0 4.5,0.6 5.4,1.2z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M421,274.9c0,0.5 4.2,4.4 9.4,8.8 5.1,4.3 15.1,13 22.2,19.4 7.1,6.4 22.4,20 33.9,30.4 11.6,10.3 22.6,20.2 24.5,21.9 1.9,1.7 21.1,18.8 42.5,38 49.1,43.8 62.3,55.6 70.5,63.1 19.3,17.5 26.2,23.5 27.3,23.5 1.1,-0 10.5,-8.3 50.2,-44 6.6,-5.9 25.7,-23 42.5,-38 16.8,-15 35.9,-32.1 42.5,-38 6.6,-5.9 21.2,-19 32.5,-29 11.3,-10.1 22.8,-20.4 25.5,-22.9 8.3,-7.7 29.7,-26.4 33.8,-29.5 2,-1.6 3.7,-3.2 3.7,-3.7 0,-0.5 -98.2,-0.9 -230.5,-0.9 -136.6,-0 -230.5,0.4 -230.5,0.9z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M370.8,457.7c0.1,79.5 0.4,144.9 0.7,145.1 0.3,0.3 4.9,-3.5 10.2,-8.4 10.8,-9.8 19.2,-17.4 42.3,-37.9 8.5,-7.6 19.3,-17.3 24,-21.5 19.2,-17.4 77.9,-69.8 82,-73l4.3,-3.6 -4.9,-4.6c-4.8,-4.4 -28.1,-25.3 -63.4,-56.8 -9.6,-8.5 -20.2,-18 -23.5,-21 -3.3,-3 -11.7,-10.5 -18.5,-16.6 -6.9,-6.1 -21.4,-19.1 -32.2,-28.8 -10.8,-9.7 -20,-17.6 -20.5,-17.6 -0.4,-0 -0.7,65.1 -0.5,144.7z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M922.4,320.2c-4.4,4 -28.7,25.7 -53.9,48.3 -25.3,22.5 -48.7,43.5 -52,46.5 -3.3,3 -11.9,10.7 -19,17 -21.8,19.5 -28,25.1 -28.3,25.9 -0.1,0.5 4.6,5 10.5,10.2 5.9,5.1 11,9.6 11.3,9.9 0.5,0.6 10.6,9.6 34.5,30.9 7.2,6.3 13.2,11.8 13.5,12.1 0.3,0.3 15.1,13.6 32.9,29.6 17.9,15.9 38.3,34.2 45.5,40.6 7.2,6.5 13.4,11.8 13.9,11.8 0.4,-0 0.7,-65.3 0.7,-145 0,-79.8 -0.3,-145 -0.8,-145 -0.4,-0 -4.4,3.3 -8.8,7.2z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M718.9,502.3c-2,1.8 -9.6,8.6 -16.9,15.2 -36.1,32.4 -36,32.4 -46,34.4 -6.7,1.3 -15.1,-0.3 -20.8,-4.2 -2,-1.3 -15.1,-12.7 -29,-25.2 -13.9,-12.4 -25.9,-22.5 -26.7,-22.3 -1.2,0.3 -20.3,17 -54.6,47.8 -43,38.7 -102.4,91.6 -103.5,92.3 -5.5,3.2 -3.1,3.2 229.8,3 127.1,-0.2 231.3,-0.5 231.5,-0.7 0.3,-0.3 -11.8,-11.4 -30.7,-28.1 -3.1,-2.8 -11.5,-10.2 -18.6,-16.6 -7.1,-6.4 -17.4,-15.6 -22.9,-20.5 -5.5,-4.9 -27.4,-24.6 -48.8,-43.7 -21.3,-19.1 -38.9,-34.7 -39,-34.7 -0.1,0.1 -1.8,1.5 -3.8,3.3z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M240.8,808.4c-20.4,5.6 -32.9,38.6 -19.8,52.1 5.4,5.5 11.9,7.8 21.6,7.3 7.3,-0.3 8.7,-0.7 12.6,-3.3 5.6,-4 11.2,-11.5 14,-19 3.2,-8.3 3.3,-24.2 0.3,-29.5 -3.9,-6.8 -18.2,-10.6 -28.7,-7.6z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M385.8,836.5c-2,0.7 -5,2.3 -6.6,3.5l-3,2.2 0.6,12.7c0.3,7.5 0.9,12.9 1.6,13.3 0.6,0.4 4.1,0.8 7.7,0.8 6.4,-0 6.8,-0.2 9.7,-3.5 3.6,-4 4.8,-9.8 3.7,-18.3 -1.4,-11.2 -4.9,-13.9 -13.7,-10.7z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M456.2,834c-8.3,1.9 -15.2,11.4 -15.2,20.6 0,6.1 1.1,9.5 4,12.4 2.6,2.6 11,2.7 16,0.2 3.1,-1.5 3.5,-2.1 3.3,-5.2 -0.1,-1.9 -0.3,-8.9 -0.4,-15.5 -0.2,-6.8 -0.8,-12.3 -1.4,-12.7 -1.2,-0.9 -1.9,-0.9 -6.3,0.2z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M512,838.5c0,6.3 0.1,6.5 2.6,6.5 7.7,-0 15.3,-4.1 14,-7.5 -0.8,-2.2 -8.4,-5.5 -12.8,-5.5l-3.8,-0 0,6.5z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M511,862.3l0,7.3 7.8,-0.8c8,-0.7 12.6,-2 13.6,-3.6 0.8,-1.3 -3,-6 -6.2,-7.6 -1.5,-0.7 -5.5,-1.6 -8.9,-2l-6.3,-0.7 0,7.4z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M662.3,834.9c-2.8,1.3 -4.9,3.3 -6.8,6.6 -1.5,2.5 -2.5,4.8 -2.3,5.1 0.6,0.5 20.2,-8 23,-10 2.3,-1.6 1.3,-2.1 -5.3,-3 -3.2,-0.5 -5.5,-0.1 -8.6,1.3z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M882.3,834.9c-2.8,1.3 -4.9,3.3 -6.8,6.6 -1.5,2.5 -2.5,4.8 -2.3,5.1 0.6,0.5 20.2,-8 23,-10 2.3,-1.6 1.3,-2.1 -5.3,-3 -3.2,-0.5 -5.5,-0.1 -8.6,1.3z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M491.8,963.5c-2,0.7 -5,2.3 -6.6,3.5l-3,2.2 0.6,12.7c0.3,7.5 0.9,12.9 1.6,13.3 0.6,0.4 4.1,0.8 7.7,0.8 6.4,-0 6.8,-0.2 9.7,-3.5 3.6,-4 4.8,-9.8 3.7,-18.3 -1.4,-11.2 -4.9,-13.9 -13.7,-10.7z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M559.5,960.9c-7.6,3.4 -13.4,12.8 -13.5,21.7 0,8.5 5.5,13.4 15.1,13.4 11.2,-0 18.9,-10 18.9,-24.5 0,-7.8 -1.8,-10.3 -8,-11.6 -6.5,-1.2 -8,-1.1 -12.5,1z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M764.8,963.5c-2,0.7 -5,2.3 -6.6,3.5l-3,2.2 0.6,12.7c0.3,7.5 0.9,12.9 1.6,13.3 0.6,0.4 4.1,0.8 7.7,0.8 6.4,-0 6.8,-0.2 9.7,-3.5 3.6,-4 4.8,-9.8 3.7,-18.3 -1.4,-11.2 -4.9,-13.9 -13.7,-10.7z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M290.2,961c-8.3,1.9 -15.2,11.4 -15.2,20.6 0,6.1 1.1,9.5 4,12.4 2.6,2.6 11,2.7 16,0.2 3.1,-1.5 3.5,-2.1 3.3,-5.2 -0.1,-1.9 -0.3,-8.9 -0.4,-15.5 -0.2,-6.8 -0.8,-12.3 -1.4,-12.7 -1.2,-0.9 -1.9,-0.9 -6.3,0.2z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M623,965.5c0,6.3 0.1,6.5 2.6,6.5 7.7,-0 15.3,-4.1 14,-7.5 -0.8,-2.2 -8.4,-5.5 -12.8,-5.5l-3.8,-0 0,6.5z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M622,989.3l0,7.3 7.8,-0.8c8,-0.7 12.6,-2 13.6,-3.6 0.8,-1.3 -3,-6 -6.2,-7.6 -1.5,-0.7 -5.5,-1.6 -8.9,-2l-6.3,-0.7 0,7.4z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M692.3,961.9c-2.8,1.3 -4.9,3.3 -6.8,6.6 -1.5,2.5 -2.5,4.8 -2.3,5.1 0.6,0.5 20.2,-8 23,-10 2.3,-1.6 1.3,-2.1 -5.3,-3 -3.2,-0.5 -5.5,-0.1 -8.6,1.3z" android:strokeColor="#00000000"/>
++</vector>
+Index: app/src/main/res/drawable/download_sign.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/download_sign.xml b/app/src/main/res/drawable/download_sign.xml
+new file mode 100644
+--- /dev/null	(date 1700185426000)
++++ b/app/src/main/res/drawable/download_sign.xml	(date 1700185426000)
+@@ -0,0 +1,14 @@
++<vector android:autoMirrored="true" android:height="48dp"
++    android:viewportHeight="1100" android:viewportWidth="1100"
++    android:width="48dp" xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="#000000"
++        android:pathData="M184,11.6c-87.3,12.7 -156.3,82 -168.4,169.3 -1.4,10 -1.6,49.8 -1.6,368.6 0,318.8 0.2,358.6 1.6,368.6 11,79.2 69.6,145 146.7,164.9 25.1,6.4 -1.7,6 387.7,6 315.6,-0 355.1,-0.2 365.1,-1.6 79.2,-11 145,-69.6 164.9,-146.7 6.4,-25.1 6,2.1 6,-391.2 0,-393.3 0.4,-366.1 -6,-391.2 -17.9,-69.1 -73.2,-124.4 -142.3,-142.3 -25.1,-6.4 1.9,-6 -389,-5.9 -296.4,0.1 -356.8,0.3 -364.7,1.5zM666.3,66.4c2.6,0.8 6.4,2.7 8.5,4.2 2.2,1.6 36,38.6 75.3,82.2 51.9,57.6 72.1,80.7 73.9,84.5l2.5,5.2 0.3,73.4c0.3,79.6 0.2,80.3 -5.2,88.9 -9.9,15.7 -32.1,18.8 -46.4,6.7 -2.5,-2.2 -5.4,-6.3 -7.4,-10.3l-3.3,-6.7 0,-56.7 0,-56.7 -65,-0.3c-64,-0.3 -65.1,-0.3 -69.6,-2.4 -6.9,-3.2 -12.8,-9.1 -16.1,-15.9l-2.8,-6 0,-64.8 0,-64.7 -138.2,-0 -138.3,-0 0,276.2 0,276.3 96,0.5c95.4,0.5 96,0.5 100.6,2.6 20.5,9.5 24.9,36 8.5,51.2 -2.3,2.1 -6.8,4.9 -10,6.1 -5.7,2.1 -6,2.1 -103.9,2.1 -79.3,-0.1 -99.4,-0.3 -104.6,-1.4 -8.4,-1.8 -21.3,-8.4 -27.8,-14.1 -7.3,-6.4 -14.7,-17.9 -17.8,-27.6l-2.5,-8 0,-287.4 0,-287.4 2.5,-8c3.1,-9.7 10.5,-21.2 17.8,-27.6 6.3,-5.6 19.4,-12.3 27.4,-14 9,-2 339.1,-2.1 345.6,-0.1zM839.7,467.8c6.6,3.4 10.9,7.8 14.3,14.4l3,6.1 0,68.2c0,59.9 -0.2,68.7 -1.6,72.9 -2.2,6.4 -10,14.7 -16.6,17.7l-5.3,2.4 -88.9,0.3 -89,0.2 13.6,13.8c16.8,17 18.3,19.6 18.3,31.7 0,7.8 -0.4,9.7 -2.7,14.1 -8.9,16.8 -29.9,22.2 -45.2,11.4 -2.3,-1.6 -22.4,-21.2 -44.8,-43.7 -44.3,-44.4 -44.6,-44.8 -45.5,-56.7 -0.4,-4.7 0,-7.5 1.7,-12.1 2.1,-5.7 4.6,-8.3 44.9,-48.8 47,-47.3 47.5,-47.7 59.6,-48.5 22.1,-1.4 38,20 30.8,41.4 -1.3,4.1 -4.2,7.5 -16.6,20.1l-15.1,15.3 70.2,-0 70.1,-0 0.3,-49.8 0.3,-49.7 2.8,-5.7c3.3,-6.7 10.9,-14 17,-16.2 6.1,-2.3 18.9,-1.6 24.4,1.2zM340.6,774.7c7.2,2.4 14.7,10.3 16.3,17 1.7,6.9 0.6,13.1 -3.5,19.9l-3.4,5.6 3.4,3.9c4,4.7 5.6,9.7 5.6,17.6 0,19.9 -14.3,30.1 -40.6,29.1 -10.3,-0.4 -11.7,-0.7 -18,-3.9 -10.6,-5.3 -14.1,-12.2 -8.9,-17.4 3.8,-3.9 10.4,-3.4 17.5,1 5.1,3.3 5.9,3.5 13.7,3.5 13.7,-0 18.3,-3.2 18.3,-12.6 0,-4.7 -0.4,-5.5 -3.4,-8.2 -3.3,-2.9 -6.9,-3.8 -16,-4.1 -6.8,-0.2 -10.1,-5.7 -7.3,-11.7 1.7,-3.4 4.2,-4.5 12.8,-5.9 2,-0.3 5.5,-1.9 7.8,-3.5 6.9,-5 6.5,-10.2 -1,-14.1 -3.6,-1.8 -4.8,-1.9 -10.4,-1 -3.5,0.5 -8.5,1.9 -11.1,3 -5.5,2.5 -8.5,2.6 -12.4,0.6 -3.4,-1.7 -4.7,-5.5 -3.4,-9.3 1.2,-3.5 7.7,-7.9 14.4,-9.6 7.8,-2.1 23.4,-2 29.6,0.1zM513.2,802l2.4,3.1 4.3,-1.6c6.1,-2.1 16.6,-1.9 21.7,0.4 9,4.1 13.5,13.5 14.1,29.6 0.6,13.8 -1.4,20.3 -8.7,27.5 -6.1,6.2 -12.2,8.3 -23,7.8l-8,-0.3 0,12.3c0,16.4 -1.4,19.2 -9.6,19.2 -2.4,-0 -4.3,-0.8 -5.9,-2.5l-2.5,-2.4 0,-32.3c-0.1,-17.8 -0.5,-37 -0.9,-42.7 -1,-11.3 -0.3,-15.1 3.1,-18.8 1.6,-1.7 3.2,-2.3 6.4,-2.3 3.5,-0 4.6,0.5 6.6,3zM490.5,802.5c1.4,1.3 2.5,3.5 2.5,4.9 0,7.3 -3.2,8.6 -21.2,8.6l-14.4,-0 0.4,23.8 0.4,23.9 -2.7,2.1c-3.7,2.9 -8.6,2.8 -12.1,-0.1l-2.7,-2.3 -0.8,-23.5c-0.5,-12.9 -1.1,-25.2 -1.4,-27.4 -0.7,-5.1 1,-8.5 5.5,-10.7 3,-1.5 6.5,-1.8 23.8,-1.8 20.2,-0 20.3,-0 22.7,2.5zM668.7,803.3c5.6,2.9 9,6.8 9.9,11.6 1,4.6 -0.4,11.6 -3.1,15.5 -1.4,2 -2,3.8 -1.4,4.1 0.5,0.4 1.9,2.5 3,4.7 1.6,3.2 2,5.4 1.7,9.9 -0.6,7.7 -4,12.8 -10.9,16.3 -12.8,6.3 -35.9,0.7 -35.9,-8.7 0,-6.9 6.7,-9.5 16,-6.2 8.4,3 14.6,0.9 13.8,-4.7 -0.2,-1.9 -1.6,-2.7 -8.2,-4.9 -9.4,-3.1 -11.5,-5.2 -9.6,-9.9 1.3,-3 2.8,-3.7 12.5,-5.7 3.7,-0.8 4,-1.1 4.3,-4.5 0.3,-3.5 0.1,-3.7 -3.6,-4.8 -4.3,-1.1 -6.2,-0.7 -10.4,2.2 -3.8,2.6 -9.3,2.4 -12.3,-0.7 -4.8,-4.8 -2.3,-10.4 6.8,-15 4.7,-2.4 6,-2.6 13.7,-2.3 6.7,0.4 9.6,1 13.7,3.1zM703.7,802.2c2,1.9 2.3,3.1 2.3,10.4 0,4.6 0.3,8.5 0.8,8.7 0.4,0.3 2.3,-0 4.2,-0.7 2.8,-0.9 4.1,-2.3 6.7,-7.1 4.6,-8.7 9.1,-12.5 14.8,-12.5 5.5,-0 10.1,2.2 11,5.1 0.9,2.7 -2.3,7.1 -5.6,7.9 -1.7,0.4 -3.6,2.7 -6.6,8.4l-4.2,7.9 5.2,5.7c6.8,7.6 11.7,15.9 12.4,20.9 0.7,5.2 -2.8,9.1 -8.2,9.1 -5,-0 -7.1,-1.4 -9.6,-6.3 -3.1,-6.1 -11.9,-18.6 -14.3,-20.3 -1.1,-0.8 -2.8,-1.4 -3.8,-1.4 -1.6,-0 -1.8,1.1 -1.8,9.2 0,15.3 -2.3,19.8 -10.2,19.8 -3.5,-0 -7.7,-2.6 -7.8,-4.8 -0.1,-0.4 -0.3,-13.4 -0.5,-28.9 -0.4,-27.1 -0.4,-28.2 1.6,-30.7 2.7,-3.5 10.1,-3.7 13.6,-0.4zM413.8,802.6c2.8,0.9 6.7,3 8.7,4.7 3.5,2.8 3.6,3.2 3,7.1 -0.4,2.3 -0.8,10.6 -0.9,18.6 0,13.8 0.1,14.8 2.7,20 3.3,6.7 3.4,10.3 0.5,13 -3,2.8 -7.9,2.6 -11.6,-0.5l-3,-2.5 -6.8,2.6c-12.1,4.6 -25.3,2.4 -32.6,-5.3 -5.3,-5.5 -7.3,-11.8 -7.3,-22.8 0,-8.9 0.3,-10.6 2.8,-15.5 4.4,-8.9 11.6,-15.6 20.4,-19 6.1,-2.4 17.3,-2.6 24.1,-0.4zM798.5,804.2c7.4,3.8 9,5.9 7.9,10.5 -0.5,2.1 -0.9,10.3 -0.8,18.3 0,13.7 0.1,14.8 2.7,20 3.3,6.7 3.4,9.6 0.5,12.7 -2.9,3.1 -7.8,3 -11.6,-0.2l-3,-2.5 -6.8,2.6c-12.1,4.6 -25.3,2.4 -32.6,-5.3 -5.3,-5.5 -7.3,-11.8 -7.3,-22.8 0,-8.9 0.3,-10.6 2.8,-15.5 4.4,-8.9 11.5,-15.5 20.4,-19.1 7.2,-2.9 20.9,-2.2 27.8,1.3zM573.2,803.2c2.1,1.7 11.4,16.2 16.9,26.5l4.4,8.3 7.1,-14.8c8.6,-18 11.1,-21.2 16.4,-21.2 5.2,-0 9,3.1 9,7.5 0,2.2 -3.4,10.1 -10.1,23.7 -13.2,26.5 -22,45.5 -25.3,54.8 -3.4,9.5 -5.7,12 -10.8,12 -4.7,-0 -8.8,-3.5 -8.8,-7.5 0,-3.6 3.4,-13.2 8.6,-24.3l4.4,-9.5 -4.6,-8.6c-2.6,-4.7 -8.4,-15.2 -13,-23.3 -4.7,-8.1 -8.4,-15.8 -8.4,-17.3 0,-4 4.1,-7.5 8.8,-7.5 2.1,-0 4.5,0.6 5.4,1.2zM608.3,915c16.5,-0 16.8,-0 19.2,2.5 5.3,5.3 1.5,13.5 -6.3,13.5l-3.9,-0 -0.7,9.5c-0.6,8.8 0.6,47.1 1.9,60.7 0.9,8.6 -1.9,12.7 -8.6,12.8 -5,-0 -7.9,-2.6 -9,-8 -0.5,-2.5 -1.2,-20.3 -1.5,-39.5l-0.7,-35 -21,-0 -20.9,-0 0.6,21c0.4,11.5 0.3,29.3 -0.1,39.4 -0.8,17.5 -1,18.4 -3.2,20.2 -2.3,1.9 -7.4,2.5 -10.6,1.3 -0.8,-0.4 -2.3,-2 -3.2,-3.7 -1.4,-2.7 -1.5,-5.9 -0.9,-24 0.4,-11.5 0.4,-28.5 0,-37.8l-0.7,-16.9 -5,-0c-6.8,-0 -9.7,-2.6 -9.7,-8.7 0,-3.8 0.4,-4.6 3.3,-6.4 3.1,-2 4,-2.1 33.7,-1.5 16.8,0.3 38.1,0.6 47.3,0.6zM486.6,920c11.9,4.1 21.8,14.8 26.6,28.7 1.9,5.6 2.3,8.8 2.3,18.3 0,11.1 -0.1,11.8 -3.4,18.5 -4.1,8.4 -14.3,19 -21.6,22.6 -10.2,5 -30.1,3.5 -42.7,-3.3 -7.7,-4.1 -9.3,-9.4 -4.5,-14.6 2.8,-3 7.7,-2.9 14.5,0.5 4.2,2 7.4,2.8 13.7,3.1 9.3,0.5 12.2,-0.5 18,-6.4 3,-3 8.5,-12 8.5,-14 0,-0.5 -10.1,-0.3 -29.8,0.7 -6.2,0.3 -9.8,-9.6 -5.1,-14 2.9,-2.7 13.7,-4.4 24.6,-3.9l9,0.4 -1.5,-4.4c-2.1,-6.4 -7,-12.2 -12.6,-15.1 -6.5,-3.4 -16.8,-3.5 -24,-0.3 -6.4,2.9 -10.1,2.8 -13.1,-0.3 -3.8,-3.8 -3.4,-8.7 1,-12.1 8.3,-6.3 28.4,-8.6 40.1,-4.4z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M673,189.5l0,29.5 26.7,-0 26.7,-0 -3.5,-3.8c-2,-2 -14,-15.3 -26.7,-29.5l-23.2,-25.7 0,29.5z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M526.1,819.1c-1.8,0.6 -5,2.1 -7.1,3.5l-3.8,2.5 0.6,12.7c0.3,7.6 0.9,13 1.6,13.4 0.6,0.4 3.9,0.8 7.3,0.8 5.2,-0 6.6,-0.4 9.2,-2.6 4,-3.3 5.5,-9 4.7,-17.7 -0.7,-8 -2.6,-12.2 -5.8,-13.1 -2.7,-0.7 -2.3,-0.7 -6.7,0.5z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M399.2,817c-8.3,1.9 -15.2,11.4 -15.2,20.6 0,6.1 1.1,9.5 4,12.4 2.6,2.6 11,2.7 16,0.2 3.1,-1.5 3.5,-2.1 3.3,-5.2 -0.1,-1.9 -0.3,-8.9 -0.4,-15.5 -0.2,-6.8 -0.8,-12.3 -1.4,-12.7 -1.2,-0.9 -1.9,-0.9 -6.3,0.2z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M780.2,817c-8.3,1.9 -15.2,11.4 -15.2,20.6 0,6.1 1.1,9.5 4,12.4 2.6,2.6 11,2.7 16,0.2 3.1,-1.5 3.5,-2.1 3.3,-5.2 -0.1,-1.9 -0.3,-8.9 -0.4,-15.5 -0.2,-6.8 -0.8,-12.3 -1.4,-12.7 -1.2,-0.9 -1.9,-0.9 -6.3,0.2z" android:strokeColor="#00000000"/>
++</vector>
+Index: app/src/main/res/drawable/download.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/download.xml b/app/src/main/res/drawable/download.xml
+new file mode 100644
+--- /dev/null	(date 1700043640000)
++++ b/app/src/main/res/drawable/download.xml	(date 1700043640000)
+@@ -0,0 +1,5 @@
++<vector android:height="48dp" android:tint="#000000"
++    android:viewportHeight="24" android:viewportWidth="24"
++    android:width="48dp" xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="@android:color/white" android:pathData="M5,20h14v-2H5V20zM19,9h-4V3H9v6H5l7,7L19,9z"/>
++</vector>
+Index: app/src/main/res/drawable/documents.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/documents.xml b/app/src/main/res/drawable/documents.xml
+new file mode 100644
+--- /dev/null	(date 1700185452000)
++++ b/app/src/main/res/drawable/documents.xml	(date 1700185452000)
+@@ -0,0 +1,20 @@
++<vector android:autoMirrored="true" android:height="48dp"
++    android:viewportHeight="1100" android:viewportWidth="1100"
++    android:width="48dp" xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="#000000"
++        android:pathData="M184,11.6c-87.3,12.7 -156.3,82 -168.4,169.3 -1.4,10 -1.6,49.8 -1.6,368.6 0,318.8 0.2,358.6 1.6,368.6 11,79.2 69.6,145 146.7,164.9 25.1,6.4 -1.7,6 387.7,6 315.6,-0 355.1,-0.2 365.1,-1.6 79.2,-11 145,-69.6 164.9,-146.7 6.4,-25.1 6,2.1 6,-391.2 0,-393.3 0.4,-366.1 -6,-391.2 -17.9,-69.1 -73.2,-124.4 -142.3,-142.3 -25.1,-6.4 1.9,-6 -389,-5.9 -296.4,0.1 -356.8,0.3 -364.7,1.5zM840.8,78.1c1.7,0.6 3.5,2.2 4.1,3.7 0.8,2 1,87.1 0.9,309l-0.3,306.4 -2.8,2.4 -2.8,2.4 -26.5,-0 -26.4,-0 0,34.9c0,32.8 -0.1,35 -1.9,37.2 -1.9,2.4 -2,2.4 -29.1,2.9l-27.2,0.5 0.1,30.1c0.2,29.2 0.1,30.1 -1.9,32.7l-2.1,2.7 -233.4,-0 -233.4,-0 -2,-2.6 -2.1,-2.7 0,-306.6c0.1,-239.4 0.3,-306.9 1.3,-308.2 2.8,-3.6 5.2,-3.9 31.6,-3.9l26.1,-0 0,-31.3c0,-30.6 0.1,-31.4 2.1,-33.3 1.9,-1.8 4.2,-1.9 29,-2.2l26.9,-0.3 0,-34.7c0,-19.1 0.4,-35.2 0.8,-35.9 0.4,-0.6 2.1,-1.9 3.7,-2.7 2.7,-1.4 27,-1.6 232.6,-1.6 159.8,-0 230.5,0.3 232.7,1.1zM288.1,885.9l2.9,2.9 0,36.7 0,36.7 3,2.8 3,2.8 -0.6,12.8c-0.6,12 -0.8,13 -3.1,15.1 -3.4,3.2 -9.2,3.1 -12.3,-0.2 -2,-2.1 -2.5,-3.9 -2.8,-9.5l-0.4,-7 -20.8,-0c-11.4,-0 -23.4,0.3 -26.7,0.6l-6.1,0.7 -0.4,6.3c-0.3,4.9 -0.9,6.9 -2.8,8.9 -3.2,3.4 -9.1,3.5 -12.5,-0 -2.4,-2.3 -2.5,-3 -2.5,-14.9 0,-13.6 0.5,-14.8 6.1,-16.8 3.3,-1.1 6.6,-8.6 10.6,-24.2 2.4,-9 2.7,-12.2 2.9,-29.6 0.1,-10.7 0.2,-20.1 0.3,-20.7 0.1,-0.7 1.4,-1.9 3.1,-2.8 2.2,-1.2 6.8,-1.5 20.2,-1.6 9.5,-0.1 20.2,-0.5 23.8,-0.9 11.5,-1.3 12,-1.2 15.1,1.9zM729,912c1.9,1.9 2,3.3 2,32.9l0,31 -2.6,2c-3.5,2.8 -8.6,2.7 -11.9,-0.2 -2.4,-2.1 -2.7,-2.9 -3.2,-13.5 -0.5,-8.6 -0.9,-11.2 -2,-11.2 -3.7,-0 -20.8,2.2 -22.8,3 -2.1,0.8 -2.3,1.6 -2.7,10.4 -0.3,8.3 -0.7,9.9 -2.8,12.1 -3.1,3.3 -8.9,3.4 -12.3,0.2l-2.5,-2.2 0.5,-30.4c0.6,-34.6 0.5,-34.1 8.6,-34.1 7.1,-0 8.4,2.2 9.2,15.7 0.5,7.3 1.2,11.3 1.9,11.3 0.6,-0 2.9,-0.5 5.1,-1 2.2,-0.5 7.5,-1 11.8,-1.1l7.7,-0.3 0,-8.6c0,-14.3 2,-17.9 9.8,-18 2.9,-0 4.8,0.6 6.2,2zM353.9,913.7c6.1,1.9 12.2,6.9 14.5,11.8 9,18.8 -2,47.3 -21.1,54.5 -7.6,2.9 -21.3,2.5 -28.5,-0.7 -13.5,-6.1 -20.5,-18.9 -17.9,-32.9 2.9,-15.2 13.2,-28.5 26,-33 5.3,-1.9 20.8,-1.7 27,0.3zM393.7,915.2c2,1.9 2.3,3.1 2.3,10.4 0,4.6 0.3,8.5 0.8,8.7 0.4,0.3 2.3,-0 4.2,-0.7 2.8,-0.9 4.1,-2.3 6.7,-7.1 4.6,-8.7 9.1,-12.5 14.8,-12.5 5.1,-0 9.9,2 10.9,4.6 1.2,3.1 -1.9,7.3 -6.6,8.8 -0.9,0.2 -3.4,3.9 -5.7,8.2l-4,7.7 5.2,5.8c6.8,7.5 11.7,15.8 12.4,20.8 0.7,5.2 -2.8,9.1 -8.2,9.1 -5,-0 -7.1,-1.4 -9.6,-6.3 -3.1,-6.1 -11.9,-18.6 -14.3,-20.3 -1.1,-0.8 -2.8,-1.4 -3.8,-1.4 -1.6,-0 -1.8,1.1 -1.8,9.2 0,15.3 -2.3,19.8 -10.2,19.8 -3.5,-0 -7.7,-2.6 -7.8,-4.8 -0.1,-0.4 -0.3,-13.4 -0.5,-28.9 -0.4,-27.1 -0.4,-28.2 1.6,-30.7 2.7,-3.5 10.1,-3.7 13.6,-0.4zM576.7,915.2c3.3,3.7 3.9,5.6 6.8,19.8 1.5,7.4 4.7,19.4 7.1,26.6 2.4,7.1 4.4,13.7 4.4,14.6 0,2.6 -4.9,5.8 -8.8,5.8 -5.5,-0 -7.8,-2.9 -11.7,-15.1 -1.9,-5.9 -3.7,-12.5 -4.1,-14.8 -0.4,-2.3 -1,-4.1 -1.3,-4.1 -0.4,-0 -3.6,6.3 -7,14 -6.9,15.3 -9.1,18 -15.1,18 -6.2,-0 -8.1,-2.4 -13.5,-17.5l-4.9,-13.7 -1.8,5.3c-1.1,3 -2.8,9.2 -3.9,13.9 -2.5,10 -4.9,13 -10.8,13 -2.7,-0 -4.4,-0.7 -6.1,-2.5 -2,-2.1 -2.2,-3.1 -1.7,-7.8 0.3,-3 2,-9.4 3.7,-14.3 1.8,-4.9 4.4,-12.7 5.7,-17.4 1.3,-4.7 3.2,-11 4.1,-14 2.2,-7.6 5.8,-11 11.4,-11 6.8,-0 9.5,3.5 12.2,16 2.4,10.8 5.8,22 6.7,22 1,-0 6.5,-13.2 10.1,-24.5 3.7,-11.2 6.5,-14.5 12.3,-14.5 3,-0 4.7,0.6 6.2,2.2zM791.5,915.5c3.4,3.3 3.4,8.3 -0.1,11.6 -2.3,2.1 -3.4,2.4 -10,2.2l-7.4,-0.2 0.6,22.7 0.6,22.7 -2.4,3.5c-2,2.9 -3.1,3.6 -6.6,3.8 -3.4,0.3 -4.7,-0.2 -6.7,-2.2 -2.5,-2.5 -2.5,-2.5 -2.5,-21.9 0,-10.7 -0.3,-21.5 -0.6,-24.1l-0.7,-4.6 -5.9,-0c-6.2,-0 -11.1,-1.8 -12.2,-4.5 -1.1,-3 -0.6,-6.2 1.5,-8.9l2,-2.6 24,-0 24,-0 2.4,2.5zM644.1,915c8.8,2.5 14.3,8.6 14.3,15.9 0,9 -4.6,12.9 -27.9,23.1 -6.6,2.9 -12.4,5.6 -12.8,6 -0.5,0.4 1.1,1.7 3.5,2.9 6.5,3.1 17.5,2.9 24.6,-0.4 10.2,-4.7 17.4,-2.2 15.7,5.5 -2.5,11.3 -30.8,17.2 -46.7,9.6 -6.8,-3.2 -12.9,-9.8 -14.8,-15.8 -1.8,-6.1 -1.5,-17.2 0.8,-24.4 3.3,-10.7 10.2,-18.7 18.8,-21.8 4.6,-1.7 19.3,-2 24.5,-0.6zM815,916c1.3,1.3 2,3.3 2,5.9 0,2.1 0.3,5.8 0.6,8.2l0.6,4.4 7.2,0.3c10.2,0.3 17.3,2.6 21.7,7.1 5.6,5.5 7.5,15.3 4.5,22.5l-1.4,3.4 3.4,-1.4c1.8,-0.8 4.3,-1.4 5.4,-1.4 1.9,-0 2,-0.6 2,-17.9l0,-17.9 -5.4,0.2c-6.9,0.1 -9.6,-2 -9.6,-7.5 0,-6.5 2.4,-7.3 22.3,-7.7 16.4,-0.4 17,-0.3 19.3,1.9 5.3,4.9 1.9,12.9 -5.5,12.9l-3.8,-0 -0.7,15.2c-0.7,14.7 -0.3,19.4 1.4,18.3 1.7,-1 9.3,0.8 11.2,2.7 1,1 1.8,3.2 1.8,5.3 0,4.9 -3.8,7 -13.8,7.9 -4.2,0.3 -10.9,1.2 -14.7,1.8 -3.9,0.6 -8.3,0.8 -9.8,0.4 -3,-0.7 -6.1,-5.8 -5.4,-8.7 0.4,-1.5 -0.2,-1.3 -3.2,1.1 -5.7,4.5 -12.6,6 -27.7,6 -11.3,-0 -13.5,-0.3 -15.5,-1.9l-2.3,-1.8 0.1,-28.7c0,-26.2 0.1,-28.8 1.8,-30.6 2.5,-2.8 10.7,-2.8 13.5,-0zM449.2,916.2c2.1,1.7 11.4,16.2 16.9,26.5l4.4,8.3 7.1,-14.8c8.6,-18 11.1,-21.2 16.4,-21.2 5.2,-0 9,3.1 9,7.5 0,2.2 -3.4,10.1 -10.1,23.7 -13.2,26.5 -22,45.5 -25.3,54.8 -3.4,9.5 -5.7,12 -10.8,12 -4.7,-0 -8.8,-3.5 -8.8,-7.5 0,-3.6 3.4,-13.2 8.6,-24.3l4.4,-9.5 -4.6,-8.6c-2.6,-4.7 -8.4,-15.2 -13,-23.3 -4.7,-8.1 -8.4,-15.8 -8.4,-17.3 0,-4 4.1,-7.5 8.8,-7.5 2.1,-0 4.5,0.6 5.4,1.2z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M386.7,92.7c-0.4,0.3 -0.7,13.8 -0.7,30l0,29.3 198.6,0.2 198.6,0.3 1.9,2.4c1.9,2.3 1.9,7.9 1.9,266.7l0,264.4 2.3,0.5c1.2,0.3 10.8,0.4 21.2,0.3l19,-0.3 0.5,-296.3c0.3,-186.5 0.1,-296.7 -0.5,-297.3 -1,-1 -441.8,-1.3 -442.8,-0.2z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M328,193.5l0,25.5 197,-0c210.5,-0 201.6,-0.2 203.4,4.5 0.3,0.9 0.6,122.2 0.6,269.6l0,267.9 21.5,-0 21.5,-0 0,-296.5 0,-296.5 -222,-0 -222,-0 0,25.5z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M270,531l0,297 221.5,-0 221.5,-0 0,-297 0,-297 -221.5,-0 -221.5,-0 0,297zM653,327l0,5 -161.5,-0 -161.5,-0 0,-5 0,-5 161.5,-0 161.5,-0 0,5zM653.5,406.5c0,0.7 -54.8,1.1 -161.7,1.3 -143.6,0.2 -161.8,-0 -161.8,-1.3 0,-1.3 18.2,-1.5 161.8,-1.3 106.9,0.2 161.7,0.6 161.7,1.3zM653,494l0,5 -161.5,-0 -161.5,-0 0,-5 0,-5 161.5,-0 161.5,-0 0,5zM652.8,577.2l-0.3,5.3 -161,-0 -161,-0 -0.3,-5.3 -0.3,-5.2 161.6,-0 161.6,-0 -0.3,5.2zM653.5,656.5c0,0.7 -54.8,1.1 -161.7,1.3 -143.6,0.2 -161.8,-0 -161.8,-1.3 0,-1.3 18.2,-1.5 161.8,-1.3 106.9,0.2 161.7,0.6 161.7,1.3zM653.1,739.4c0.2,0.3 0.3,2.5 0.1,5l-0.4,4.6 -161.4,-0 -161.4,-0 0,-5 0,-5 161.3,-0c88.8,-0 161.6,0.2 161.8,0.4z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M245.9,901.7c-1.3,0.3 -1.7,2.5 -2.2,12.6 -0.6,13.6 -3.5,29.7 -7.1,40.5l-2.4,7.1 19.1,-0.5 19.2,-0.5 0.3,-29.3 0.2,-29.3 -6.1,-0.7c-6.7,-0.6 -18.4,-0.6 -21,0.1z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M332.5,929.9c-10.7,4.8 -17.3,22 -11.4,29.5 4.8,6.1 15.4,7.6 22.1,3.1 5.6,-3.8 9.8,-13 9.8,-21.5 0,-8.3 -1.7,-10.8 -8,-12.1 -6.5,-1.2 -8,-1.1 -12.5,1z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M625,931.2c-3.1,1.6 -5.1,3.6 -6.7,6.7 -1.3,2.4 -2.2,4.6 -2,4.7 0.4,0.5 18.4,-7.4 22,-9.6 3.2,-2 2.6,-2.5 -4.4,-3.5 -3.5,-0.5 -5.3,-0.1 -8.9,1.7z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M818,955.3c0,3.6 -0.3,7.2 -0.6,8 -0.5,1.3 0.4,1.4 5.8,1 9.2,-0.8 11.2,-2 11.6,-6.9 0.4,-5.6 -1.9,-7.5 -10.3,-8.1l-6.5,-0.6 0,6.6z" android:strokeColor="#00000000"/>
++</vector>
+Index: app/src/main/res/drawable/create_sign.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/create_sign.xml b/app/src/main/res/drawable/create_sign.xml
+new file mode 100644
+--- /dev/null	(date 1700185250000)
++++ b/app/src/main/res/drawable/create_sign.xml	(date 1700185250000)
+@@ -0,0 +1,26 @@
++<vector android:autoMirrored="true" android:height="48dp"
++    android:viewportHeight="1100" android:viewportWidth="1100"
++    android:width="48dp" xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="#000000"
++        android:pathData="M184,17.6c-87.3,12.7 -156.3,82 -168.4,169.3 -1.4,10 -1.6,49.8 -1.6,368.6 0,318.8 0.2,358.6 1.6,368.6 11,79.2 69.6,145 146.7,164.9 25.1,6.4 -1.7,6 387.7,6 315.6,-0 355.1,-0.2 365.1,-1.6 79.2,-11 145,-69.6 164.9,-146.7 6.4,-25.1 6,2.1 6,-391.2 0,-393.3 0.4,-366.1 -6,-391.2 -17.9,-69.1 -73.2,-124.4 -142.3,-142.3 -25.1,-6.4 1.9,-6 -389,-5.9 -296.4,0.1 -356.8,0.3 -364.7,1.5zM673.5,217l39,52 76,-0c45.3,-0 79.6,0.4 85,1 38.4,4.4 71.8,34.7 79.6,72.2 1.8,9 1.9,16.3 1.9,202.3 0,184.7 -0.1,193.4 -1.9,202.1 -5.3,25.7 -22.6,48.8 -46.2,61.8 -8.1,4.5 -15.8,7.2 -27.4,9.6 -8.8,1.9 -16.9,2 -330,2 -313.3,-0 -321.2,-0.1 -330.1,-2 -18.7,-3.9 -34.3,-12 -47.2,-24.4 -12.8,-12.2 -22.8,-30 -26.2,-46.6 -1.9,-9.2 -2,-15 -2,-202.5 0,-184.6 0.1,-193.4 1.9,-202.1 3.5,-16.9 10.6,-30.4 22.8,-43.5 16,-17 40.6,-28.8 60,-28.9l6.3,-0 0.2,-26.3 0.3,-26.2 52.5,-0 52.5,-0 0.2,25.8 0.2,25.8 22.8,-0.1c12.5,-0 22.8,-0.2 22.8,-0.3 0.1,-0.1 17.6,-23.5 38.9,-52l38.8,-51.7 85.2,-0 85.2,-0 38.9,52zM921.7,886c17.1,-0 17.4,-0 19.8,2.5 5.3,5.3 1.5,13.5 -6.3,13.5l-3.9,-0 -0.7,9.5c-0.6,8.8 0.6,47.1 1.9,60.7 0.9,8.6 -1.9,12.7 -8.6,12.8 -5,-0 -7.9,-2.6 -9,-8 -0.5,-2.5 -1.2,-20.3 -1.5,-39.5l-0.7,-35 -21,-0 -20.9,-0 0.6,21c0.4,11.5 0.3,29.3 -0.1,39.4 -0.8,17.5 -1,18.4 -3.2,20.2 -2.3,1.9 -7.4,2.5 -10.6,1.3 -0.8,-0.4 -2.3,-2 -3.2,-3.7 -1.4,-2.7 -1.5,-5.9 -0.9,-24 0.4,-11.5 0.4,-28.5 0,-37.8l-0.7,-16.9 -5,-0c-6.8,-0 -9.7,-2.6 -9.7,-8.7 0,-3.8 0.4,-4.6 3.3,-6.4 3.1,-2 4,-2.1 33.1,-1.5 16.5,0.3 37.7,0.6 47.3,0.6zM200.8,890.1c2.4,2.5 3.2,6.2 3.2,15.1 0,6 -0.3,7.2 -2.5,9.3 -4.5,4.6 -11.9,2.8 -14.5,-3.4 -1.7,-4.3 -6.4,-5.1 -12.4,-2.1 -6.1,2.9 -16.4,14.2 -21.2,23.2 -3.6,6.8 -3.9,7.9 -3.9,15.6l0,8.3 4.2,4c3.9,3.6 4.6,3.9 10,3.9 6.4,-0 11.2,-1.8 19.4,-7.4 3.8,-2.6 6.5,-3.6 9.2,-3.6 5,-0 8.7,3.5 8.7,8.4 0,2.8 -0.8,4.1 -4.7,7.6 -2.6,2.2 -8.5,6 -13.2,8.3 -8.3,4.1 -8.6,4.2 -19,4.2 -9.9,-0 -11,-0.2 -16,-3 -24.8,-13.7 -22.4,-48.4 5.3,-75.9 9.2,-9.2 14.8,-11.8 26.7,-12.5 5.4,-0.3 10.1,-0.9 10.5,-1.4 1.6,-1.6 8.3,-0.7 10.2,1.4zM800.5,891c12,4.1 21.8,14.7 26.7,28.7 1.9,5.6 2.3,8.8 2.3,18.3 0,11.1 -0.1,11.8 -3.4,18.5 -4.1,8.4 -14.3,19 -21.6,22.6 -10.2,5 -30.1,3.5 -42.7,-3.3 -7.7,-4.1 -9.3,-9.4 -4.5,-14.6 2.8,-3 7.7,-2.9 14.5,0.5 4.2,2 7.4,2.8 13.7,3.1 9.3,0.5 12.2,-0.5 18,-6.4 3,-3 8.5,-12 8.5,-14 0,-0.5 -10.1,-0.3 -29.8,0.7 -6.2,0.3 -9.8,-9.6 -5.1,-14 2.9,-2.7 13.7,-4.4 24.6,-3.9l9,0.4 -1.5,-4.4c-2.1,-6.4 -7,-12.2 -12.6,-15.1 -6.5,-3.4 -16.8,-3.5 -24,-0.3 -6.4,2.9 -10.1,2.8 -13.1,-0.3 -3.8,-3.8 -3.4,-8.7 1,-12.1 8.4,-6.3 28,-8.5 40,-4.4zM541,915c1.9,1.9 2,3.3 2,32.9l0,31 -2.6,2c-3.5,2.8 -8.6,2.7 -11.9,-0.2 -2.4,-2.1 -2.7,-2.9 -3.2,-13.5 -0.5,-8.6 -0.9,-11.2 -2,-11.2 -3.7,-0 -20.8,2.2 -22.8,3 -2.1,0.8 -2.3,1.6 -2.7,10.4 -0.3,8.3 -0.7,9.9 -2.8,12.1 -3.1,3.3 -8.9,3.4 -12.3,0.2l-2.5,-2.2 0.5,-30.4c0.6,-34.6 0.5,-34.1 8.6,-34.1 7.1,-0 8.4,2.2 9.2,15.7 0.5,7.3 1.2,11.3 1.9,11.3 0.6,-0 2.9,-0.5 5.1,-1 2.2,-0.5 7.5,-1 11.8,-1.1l7.7,-0.3 0,-8.6c0,-14.3 2,-17.9 9.8,-18 2.9,-0 4.8,0.6 6.2,2zM260.9,916.7c6.1,1.9 12.2,6.9 14.5,11.8 9,18.8 -2,47.3 -21.1,54.5 -7.6,2.9 -21.3,2.5 -28.5,-0.7 -13.5,-6.1 -20.5,-18.9 -17.9,-32.9 2.9,-15.2 13.2,-28.5 26,-33 5.3,-1.9 20.8,-1.7 27,0.3zM320.7,919.3c5.6,2.9 9,6.8 9.9,11.6 1,4.6 -0.4,11.6 -3.1,15.5 -1.4,2 -2,3.8 -1.4,4.1 0.5,0.4 1.9,2.5 3,4.7 1.6,3.2 2,5.4 1.7,9.9 -0.6,7.7 -4,12.8 -10.9,16.3 -12.8,6.3 -35.9,0.7 -35.9,-8.7 0,-6.9 6.7,-9.5 16,-6.2 8.4,3 14.6,0.9 13.8,-4.7 -0.2,-1.9 -1.6,-2.7 -8.2,-4.9 -9.4,-3.1 -11.5,-5.2 -9.6,-9.9 1.3,-3 2.8,-3.7 12.5,-5.7 3.7,-0.8 4,-1.1 4.3,-4.5 0.3,-3.5 0.1,-3.7 -3.6,-4.8 -4.3,-1.1 -6.2,-0.7 -10.4,2.2 -3.8,2.6 -9.3,2.4 -12.3,-0.7 -4.8,-4.8 -2.3,-10.4 6.8,-15 4.7,-2.4 6,-2.6 13.7,-2.3 6.7,0.4 9.6,1 13.7,3.1zM397.5,918.5c2.9,2.8 2.8,1.9 2.5,28.7l-0.2,19.7 2.6,0.7c5.1,1.2 6.6,4.7 6.6,15.1 0,8.6 -0.2,9.6 -2.5,11.8 -1.7,1.8 -3.5,2.5 -6.3,2.5 -5.3,-0 -8.3,-3.3 -9,-10l-0.5,-5 -14.7,-0c-8.1,-0 -16.8,0.3 -19.4,0.6l-4.6,0.7 0,4.8c0,3.9 -0.4,5.1 -2.6,6.8 -3.8,3 -9.4,2.8 -12.5,-0.5 -2.2,-2.4 -2.4,-3.3 -2.4,-13.1 0,-10.2 0.1,-10.5 2.8,-12.9 1.5,-1.3 3.5,-2.4 4.2,-2.4 1.5,-0 4.7,-5.5 7.2,-12.4 0.8,-2.3 1.8,-10 2.3,-17.2 1.2,-20 1.6,-20.3 26.8,-20.4 17,-0 17.3,-0 19.7,2.5zM459.8,918.6c2.8,0.9 6.7,3 8.7,4.7 3.5,2.8 3.6,3.2 3,7.1 -0.4,2.3 -0.8,10.6 -0.9,18.6 0,13.8 0.1,14.8 2.7,20 3.3,6.7 3.4,10.3 0.5,13 -3,2.8 -7.9,2.6 -11.6,-0.5l-3,-2.5 -6.8,2.6c-12.1,4.6 -25.3,2.4 -32.6,-5.3 -5.3,-5.5 -7.3,-11.8 -7.3,-22.8 0,-8.9 0.3,-10.6 2.8,-15.5 4.4,-8.9 11.6,-15.6 20.4,-19 6.1,-2.4 17.3,-2.6 24.1,-0.4zM565.5,917.6c3,1.2 4.5,6 4.5,14.6 0,4.6 0.3,12 0.7,16.6l0.6,8.3 5.4,-5.3c3,-2.9 10.2,-11.2 15.9,-18.3 5.8,-7.2 11.7,-13.8 13.2,-14.7 4,-2.6 9.8,-2.3 12.7,0.7l2.5,2.4 0,28.6 0,28.6 -2.5,2.4c-3.4,3.5 -9.6,3.5 -13.2,-0.1l-2.5,-2.5 0.7,-15.7 0.7,-15.7 -6.5,8.1c-5.5,6.9 -17.5,18 -28.1,26.2 -4,3.1 -10.9,3 -14,-0.1 -2.2,-2.2 -2.3,-2.8 -2.9,-31.2 -0.7,-28.7 -0.7,-28.9 1.5,-31.2 2.2,-2.3 7.5,-3.1 11.3,-1.7zM676.1,918c8.8,2.4 14.1,8.4 14.2,15.8 0.1,9.1 -4.4,12.9 -27.8,23.2 -6.6,2.9 -12.4,5.6 -12.8,6 -0.5,0.4 1.1,1.7 3.5,2.9 6.5,3.1 17.5,2.9 24.6,-0.4 10.2,-4.7 17.4,-2.2 15.7,5.5 -2.5,11.3 -30.8,17.2 -46.7,9.6 -6.8,-3.2 -12.9,-9.8 -14.8,-15.8 -1.8,-6.1 -1.5,-17.2 0.8,-24.4 3.3,-10.7 10.2,-18.7 18.8,-21.8 4.6,-1.7 19.3,-2 24.5,-0.6z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M448.7,230.4c-15.8,21.1 -28.7,38.5 -28.7,38.7 0,0.2 58.3,0.4 129.5,0.4 71.2,-0 129.4,-0.3 129.3,-0.6 -0.2,-0.3 -13.1,-17.8 -28.8,-38.7l-28.5,-38.1 -72,-0.1 -72,-0 -28.8,38.4z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M262.2,256.5l0.3,12.6 25.5,-0 25.5,-0 0.3,-12.6 0.3,-12.5 -26.1,-0 -26.1,-0 0.3,12.5z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M220,298.5c-18.6,4.6 -34.4,17.5 -42.6,35 -2.3,4.9 -4.7,11.4 -5.3,14.3 -1.5,7.4 -1.6,385.9 0,393.4 0.6,2.9 3.1,9.5 5.6,14.7 8.1,16.8 23.7,29.8 41.3,34.2 7.3,1.9 15.9,1.9 333,1.7l325.5,-0.3 6.3,-2.3c16.4,-5.9 30.2,-18 37.2,-32.6 7.6,-16.1 7.1,0.6 6.8,-215.6 -0.3,-185.2 -0.4,-193.7 -2.1,-198.5 -7.8,-21 -22.1,-35.7 -41.7,-42.7l-6.5,-2.3 -326,-0.2c-270.1,-0.1 -326.9,0.1 -331.5,1.2zM848.9,323.1c18.3,4.2 34.7,20.6 39.6,39.6 6.8,26.1 -10.3,54.7 -37.4,62.7 -6.2,1.8 -19.3,2.1 -26.1,0.5 -8,-1.8 -16.9,-6.8 -23.9,-13.4 -21.5,-20.4 -22.5,-52.7 -2,-74 6.4,-6.7 17.9,-13.6 25.5,-15.4 5.3,-1.2 19,-1.3 24.3,-0zM571.5,349c30.7,3.5 61.2,13.9 86.9,29.7 43.3,26.7 76.2,68.6 91.2,116.3 1.8,5.8 5.8,23.3 7.6,33 2,11.7 1.7,48.9 -0.6,61.5 -3,16.6 -5.6,26.4 -10.3,39.5 -23.9,65.9 -79.8,115.9 -148.2,132.4 -17.8,4.3 -34.3,5.9 -55.1,5.3 -10.3,-0.3 -22.5,-1.2 -27.5,-2.2 -75.5,-13.7 -134.7,-62.4 -162.1,-133.1 -4.2,-11 -9,-29 -11.6,-43.4 -1.7,-10 -1.7,-49.7 0,-60.7 11.9,-75.3 62,-137.8 132.2,-165.1 15.5,-6.1 36.1,-11.2 52.1,-13.1 10.6,-1.2 34.9,-1.3 45.4,-0.1z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M828.2,350.3c-4.9,1.5 -12.7,9 -14.7,13.9 -2.2,5.5 -2.2,15.1 -0.1,20.3 6.8,16.2 29.3,20.7 41.3,8.2 7.7,-7.9 9.9,-16.4 6.8,-26.2 -4.2,-13.3 -19.4,-20.7 -33.3,-16.2z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M530.1,376.1c-56.7,6.4 -106.2,37.7 -136.3,86.2 -11.2,17.9 -20.1,41.1 -23.9,62.3 -3.2,17.1 -3.2,48.8 -0.1,65.6 7.5,40.8 30,79.9 61,106 49.5,41.7 114.4,54.5 175.2,34.8 64.6,-21 112.8,-77.3 123.7,-144.5 2.1,-12.4 2.3,-44.4 0.4,-56 -11,-69.2 -58.6,-125 -124.8,-146.5 -6.8,-2.2 -17.6,-5 -24.1,-6.1 -13.6,-2.3 -38.7,-3.2 -51.1,-1.8zM562,414.1c26.8,2.4 48.3,10.3 70.5,25.7 10.2,7.2 27.5,24.4 34.7,34.7 11.9,17.1 21.2,39.6 24.3,59 2.2,13.2 2.1,35.2 0,48 -8.6,51.7 -46.9,96.1 -97,112.7 -15.4,5.1 -27.2,7 -44.5,7 -17.6,-0 -30.4,-2 -45.4,-6.9 -22.1,-7.4 -39.7,-18.3 -56.7,-35.2 -18.4,-18.5 -29.7,-37.5 -37.5,-63.1 -4.9,-16.3 -6.2,-44.6 -2.9,-63.5 11,-63 63.7,-111.9 127.5,-118.4 12.2,-1.2 14.2,-1.2 27,-0z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M537.9,441c-17.9,1.6 -40.8,10.1 -55.6,20.7 -28,19.9 -45.9,50.6 -49.5,84.8 -2.2,21.1 2.2,44 12.2,63.8 6.2,12.2 11.9,20.1 21.8,30 14.5,14.7 32.8,25.1 54.2,30.8 11.5,3 13.7,3.3 28,3.3 16.2,-0 23.7,-1.2 40,-6.6 7.7,-2.5 21.7,-9.9 30.3,-16.1 8,-5.7 20.9,-19.3 26.9,-28.2 15.1,-22.6 22.5,-50.8 19.9,-75.9 -5.1,-50 -38.8,-90.2 -86.3,-103.1 -8.1,-2.2 -26.6,-4.7 -31.8,-4.3 -0.8,-0 -5.4,0.4 -10.1,0.8zM549.8,492.2l-0.3,13.3 -6,0.7c-9.3,1.2 -15.9,3.7 -23.2,8.7 -12.5,8.5 -20.5,21.8 -22.1,36.1l-0.7,6.5 -13.5,-0 -13.5,-0 0.3,-6c0.9,-17.3 11.2,-39 24.3,-51.1 13.4,-12.3 33.5,-21.2 48.7,-21.3l6.3,-0.1 -0.3,13.2z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M239.5,932.9c-10.7,4.8 -17.3,22 -11.4,29.5 4.8,6.1 15.4,7.6 22.1,3.1 5.6,-3.8 9.8,-13 9.8,-21.5 0,-8.3 -1.7,-10.8 -8,-12.1 -6.5,-1.2 -8,-1.1 -12.5,1z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M368.6,938.2c-0.7,8.4 -3.1,18.4 -5.7,24.5l-1.8,4.3 10.4,-0 10.5,-0 0,-14.9c0,-8.2 0.3,-16.3 0.6,-18l0.7,-3.1 -7,-0 -7,-0 -0.7,7.2z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M445.2,933c-8.3,1.9 -15.2,11.4 -15.2,20.6 0,6.1 1.1,9.5 4,12.4 2.6,2.6 11,2.7 16,0.2 3.1,-1.5 3.5,-2.1 3.3,-5.2 -0.1,-1.9 -0.3,-8.9 -0.4,-15.5 -0.2,-6.8 -0.8,-12.3 -1.4,-12.7 -1.2,-0.9 -1.9,-0.9 -6.3,0.2z" android:strokeColor="#00000000"/>
++    <path android:fillColor="#000000"
++        android:pathData="M657,934.2c-3.1,1.6 -5.1,3.6 -6.7,6.7 -1.3,2.4 -2.2,4.6 -2,4.7 0.4,0.5 18.4,-7.4 22,-9.6 3.2,-2 2.6,-2.5 -4.4,-3.5 -3.5,-0.5 -5.3,-0.1 -8.9,1.7z" android:strokeColor="#00000000"/>
++</vector>
+Index: app/src/main/java/com/example/podpise/activity_sign.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/podpise/activity_sign.java b/app/src/main/java/com/example/podpise/activity_sign.java
+new file mode 100644
+--- /dev/null	(date 1700165984000)
++++ b/app/src/main/java/com/example/podpise/activity_sign.java	(date 1700165984000)
+@@ -0,0 +1,14 @@
++package com.example.podpise;
++
++import androidx.appcompat.app.AppCompatActivity;
++
++import android.os.Bundle;
++
++public class activity_sign extends AppCompatActivity {
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.activity_sign);
++    }
++}
+\ No newline at end of file
+Index: app/src/main/java/com/example/podpise/activity_history.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/podpise/activity_history.java b/app/src/main/java/com/example/podpise/activity_history.java
+new file mode 100644
+--- /dev/null	(date 1700166268000)
++++ b/app/src/main/java/com/example/podpise/activity_history.java	(date 1700166268000)
+@@ -0,0 +1,14 @@
++package com.example.podpise;
++
++import androidx.appcompat.app.AppCompatActivity;
++
++import android.os.Bundle;
++
++public class activity_history extends AppCompatActivity {
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.activity_history);
++    }
++}
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_history.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_history.xml b/app/src/main/res/layout/activity_history.xml
+new file mode 100644
+--- /dev/null	(date 1700166268000)
++++ b/app/src/main/res/layout/activity_history.xml	(date 1700166268000)
+@@ -0,0 +1,9 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".activity_history">
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_sign.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_sign.xml b/app/src/main/res/layout/activity_sign.xml
+new file mode 100644
+--- /dev/null	(date 1700165984000)
++++ b/app/src/main/res/layout/activity_sign.xml	(date 1700165984000)
+@@ -0,0 +1,9 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".activity_sign">
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/.gitignore b/app/.gitignore
+new file mode 100644
+--- /dev/null	(date 1700024202000)
++++ b/app/.gitignore	(date 1700024202000)
+@@ -0,0 +1,1 @@
++/build
+\ No newline at end of file
+Index: app/proguard-rules.pro
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/proguard-rules.pro b/app/proguard-rules.pro
+new file mode 100644
+--- /dev/null	(date 1700024202000)
++++ b/app/proguard-rules.pro	(date 1700024202000)
+@@ -0,0 +1,21 @@
++# Add project specific ProGuard rules here.
++# You can control the set of applied configuration files using the
++# proguardFiles setting in build.gradle.
++#
++# For more details, see
++#   http://developer.android.com/guide/developing/tools/proguard.html
++
++# If your project uses WebView with JS, uncomment the following
++# and specify the fully qualified class name to the JavaScript interface
++# class:
++#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
++#   public *;
++#}
++
++# Uncomment this to preserve the line number information for
++# debugging stack traces.
++#-keepattributes SourceFile,LineNumberTable
++
++# If you keep the line number information, uncomment this to
++# hide the original source file name.
++#-renamesourcefileattribute SourceFile
+\ No newline at end of file
+Index: app/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle.kts b/app/build.gradle.kts
+new file mode 100644
+--- /dev/null	(date 1700024204000)
++++ b/app/build.gradle.kts	(date 1700024204000)
+@@ -0,0 +1,42 @@
++plugins {
++    id("com.android.application")
++}
++
++android {
++    namespace = "com.example.podpise"
++    compileSdk = 33
++
++    defaultConfig {
++        applicationId = "com.example.podpise"
++        minSdk = 26
++        targetSdk = 33
++        versionCode = 1
++        versionName = "1.0"
++
++        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
++    }
++
++    buildTypes {
++        release {
++            isMinifyEnabled = false
++            proguardFiles(
++                getDefaultProguardFile("proguard-android-optimize.txt"),
++                "proguard-rules.pro"
++            )
++        }
++    }
++    compileOptions {
++        sourceCompatibility = JavaVersion.VERSION_1_8
++        targetCompatibility = JavaVersion.VERSION_1_8
++    }
++}
++
++dependencies {
++
++    implementation("androidx.appcompat:appcompat:1.6.1")
++    implementation("com.google.android.material:material:1.9.0")
++    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
++    testImplementation("junit:junit:4.13.2")
++    androidTestImplementation("androidx.test.ext:junit:1.1.5")
++    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
++}
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_create_application.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_create_application.xml b/app/src/main/res/layout/activity_create_application.xml
+new file mode 100644
+--- /dev/null	(date 1700157884000)
++++ b/app/src/main/res/layout/activity_create_application.xml	(date 1700157884000)
+@@ -0,0 +1,38 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".activity_create_application">
++
++    <Spinner
++        android:id="@+id/spinner2"
++        android:layout_width="209dp"
++        android:layout_height="28dp"
++        android:layout_marginTop="175dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++
++    <Spinner
++        android:id="@+id/spinner3"
++        android:layout_width="209dp"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="50dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
++
++    <Button
++        android:id="@+id/button2"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="50dp"
++        android:onClick="send_application"
++        android:text="@string/Send"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.498"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/spinner3" />
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+new file mode 100644
+--- /dev/null	(date 1700185602000)
++++ b/app/src/main/res/layout/activity_main.xml	(date 1700185602000)
+@@ -0,0 +1,217 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".MainActivity">
++
++    <ImageButton
++        android:id="@+id/imageButton8"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginEnd="75dp"
++        android:onClick="Start_Activity_Sign"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.816"
++        app:layout_constraintStart_toEndOf="@+id/imageButton7"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.092"
++        app:srcCompat="@drawable/sign" />
++
++    <ImageButton
++        android:id="@+id/imageButton"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="75dp"
++        android:onClick="Start_Create_activity"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.577"
++        app:srcCompat="@drawable/create_sign" />
++
++    <TextView
++        android:id="@+id/textView2"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="25dp"
++        android:layout_marginEnd="50dp"
++        android:layout_marginBottom="25dp"
++        android:text="@string/Download_podpise"
++        app:layout_constraintBottom_toTopOf="@+id/imageButton4"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.657"
++        app:layout_constraintStart_toEndOf="@+id/textView"
++        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
++        app:layout_constraintVertical_bias="0.625" />
++
++    <ImageButton
++        android:id="@+id/imageButton6"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginEnd="75dp"
++        android:onClick="Start_Activity_History"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.816"
++        app:layout_constraintStart_toEndOf="@+id/imageButton5"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.331"
++        app:srcCompat="@drawable/history" />
++
++    <TextView
++        android:id="@+id/textView"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="50dp"
++        android:layout_marginTop="25dp"
++        android:layout_marginBottom="25dp"
++        android:text="@string/Photo_podpise"
++        app:layout_constraintBottom_toTopOf="@+id/imageButton3"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/imageButton"
++        app:layout_constraintVertical_bias="0.562" />
++
++    <TextView
++        android:id="@+id/textView5"
++        android:layout_width="109dp"
++        android:layout_height="21dp"
++        android:layout_marginStart="60dp"
++        android:layout_marginTop="25dp"
++        android:layout_marginBottom="25dp"
++        android:text="@string/Create_requistion"
++        app:layout_constraintBottom_toTopOf="@+id/imageButton"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/imageButton5"
++        app:layout_constraintVertical_bias="0.142" />
++
++    <TextView
++        android:id="@+id/textView3"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="50dp"
++        android:layout_marginTop="24dp"
++        android:text="@string/Delete_podpise"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
++
++    <ImageButton
++        android:id="@+id/imageButton5"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="75dp"
++        android:onClick="Start_Create_application_activity"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.331"
++        app:srcCompat="@drawable/documents" />
++
++    <ImageButton
++        android:id="@+id/imageButton2"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginEnd="75dp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.825"
++        app:layout_constraintStart_toEndOf="@+id/imageButton"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.576"
++        app:srcCompat="@drawable/download_sign" />
++
++    <ImageButton
++        android:id="@+id/imageButton3"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="75dp"
++        android:onClick="delete_key"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.822"
++        app:srcCompat="@drawable/delete_sign" />
++
++    <TextView
++        android:id="@+id/textView4"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="24dp"
++        android:layout_marginEnd="50dp"
++        android:text="@string/Open_podpise"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.587"
++        app:layout_constraintStart_toEndOf="@+id/textView3"
++        app:layout_constraintTop_toBottomOf="@+id/imageButton4" />
++
++    <ImageButton
++        android:id="@+id/imageButton7"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="75dp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.094"
++        app:srcCompat="@drawable/send_check" />
++
++    <ImageButton
++        android:id="@+id/imageButton4"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginEnd="75dp"
++        android:onClick="Start_Open_activity"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.8"
++        app:layout_constraintStart_toEndOf="@+id/imageButton3"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.82"
++        app:srcCompat="@drawable/folder" />
++
++    <TextView
++        android:id="@+id/textView7"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="25dp"
++        android:layout_marginEnd="50dp"
++        android:layout_marginBottom="25dp"
++        android:text="@string/Sign"
++        app:layout_constraintBottom_toTopOf="@+id/imageButton6"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.659"
++        app:layout_constraintStart_toEndOf="@+id/textView8"
++        app:layout_constraintTop_toBottomOf="@+id/imageButton8"
++        app:layout_constraintVertical_bias="0.75" />
++
++    <TextView
++        android:id="@+id/textView6"
++        android:layout_width="66dp"
++        android:layout_height="22dp"
++        android:layout_marginTop="25dp"
++        android:layout_marginEnd="50dp"
++        android:layout_marginBottom="25dp"
++        android:text="@string/History"
++        app:layout_constraintBottom_toTopOf="@+id/imageButton2"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.595"
++        app:layout_constraintStart_toEndOf="@+id/textView5"
++        app:layout_constraintTop_toBottomOf="@+id/imageButton6"
++        app:layout_constraintVertical_bias="0.166" />
++
++    <TextView
++        android:id="@+id/textView8"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="75dp"
++        android:layout_marginTop="25dp"
++        android:layout_marginBottom="25dp"
++        android:text="@string/Send"
++        app:layout_constraintBottom_toTopOf="@+id/imageButton5"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/imageButton7"
++        app:layout_constraintVertical_bias="0.8" />
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_send_sign.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_send_sign.xml b/app/src/main/res/layout/activity_send_sign.xml
+new file mode 100644
+--- /dev/null	(date 1700134778000)
++++ b/app/src/main/res/layout/activity_send_sign.xml	(date 1700134778000)
+@@ -0,0 +1,9 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".activity_send_sign">
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_create_sign.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_create_sign.xml b/app/src/main/res/layout/activity_create_sign.xml
+new file mode 100644
+--- /dev/null	(date 1700158354000)
++++ b/app/src/main/res/layout/activity_create_sign.xml	(date 1700158354000)
+@@ -0,0 +1,107 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".Create_sign">
++
++    <EditText
++        android:id="@+id/editTextText2"
++        android:layout_width="250dp"
++        android:layout_height="50dp"
++        android:layout_marginTop="50dp"
++        android:ems="10"
++        android:hint="@string/Double_Name"
++        android:inputType="text"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.442"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++
++    <EditText
++        android:id="@+id/editTextText3"
++        android:layout_width="250dp"
++        android:layout_height="50dp"
++        android:layout_marginTop="20dp"
++        android:ems="10"
++        android:hint="@string/Name"
++        android:inputType="text"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.442"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
++
++    <EditText
++        android:id="@+id/editTextText4"
++        android:layout_width="250dp"
++        android:layout_height="50dp"
++        android:layout_marginTop="20dp"
++        android:ems="10"
++        android:hint="@string/Thirst_Name"
++        android:inputType="text"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.442"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
++
++    <Spinner
++        android:id="@+id/spinner"
++        android:layout_width="250dp"
++        android:layout_height="50dp"
++        android:layout_marginTop="20dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.442"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/editTextText4" />
++
++    <EditText
++        android:id="@+id/editTextText"
++        android:layout_width="250dp"
++        android:layout_height="50dp"
++        android:layout_marginTop="20dp"
++        android:ems="10"
++
++        android:inputType="text"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.44"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/spinner" />
++
++    <EditText
++        android:id="@+id/editTextText5"
++        android:layout_width="250dp"
++        android:layout_height="50dp"
++        android:layout_marginTop="20dp"
++        android:ems="10"
++
++        android:inputType="number"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.44"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
++
++    <Button
++        android:id="@+id/button"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="144dp"
++        android:backgroundTint="@color/black"
++        android:onClick="CreateKey"
++        android:text="@string/Regestration"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.462"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/editTextText5" />
++
++    <ImageButton
++        android:id="@+id/imageButton9"
++        android:layout_width="71dp"
++        android:layout_height="63dp"
++        android:layout_marginTop="20dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/editTextText5"
++        app:srcCompat="@drawable/camera" />
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_open_sign.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_open_sign.xml b/app/src/main/res/layout/activity_open_sign.xml
+new file mode 100644
+--- /dev/null	(date 1700153112000)
++++ b/app/src/main/res/layout/activity_open_sign.xml	(date 1700153112000)
+@@ -0,0 +1,190 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".activity_open_sign">
++
++    <TextView
++        android:id="@+id/textView9"
++        android:layout_width="200dp"
++        android:layout_height="30dp"
++        android:layout_marginTop="40dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.824"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++
++    <TextView
++        android:id="@+id/textView14"
++        android:layout_width="200dp"
++        android:layout_height="30dp"
++        android:layout_marginTop="16dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.824"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView13" />
++
++    <TextView
++        android:id="@+id/textView15"
++        android:layout_width="200dp"
++        android:layout_height="30dp"
++        android:layout_marginTop="16dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.824"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView14" />
++
++    <TextView
++        android:id="@+id/textView10"
++        android:layout_width="200dp"
++        android:layout_height="30dp"
++        android:layout_marginTop="15dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.824"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView9" />
++
++    <TextView
++        android:id="@+id/textView11"
++        android:layout_width="200dp"
++        android:layout_height="30dp"
++        android:layout_marginTop="15dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.824"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView10" />
++
++    <TextView
++        android:id="@+id/textView13"
++        android:layout_width="100dp"
++        android:layout_height="30dp"
++        android:layout_marginTop="13dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.824"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView12" />
++
++    <TextView
++        android:id="@+id/textView12"
++        android:layout_width="200dp"
++        android:layout_height="30dp"
++        android:layout_marginTop="13dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.824"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView11" />
++
++    <TextView
++        android:id="@+id/textView16"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="40dp"
++        android:text="@string/Double_Name"
++        android:textSize="20sp"
++        app:layout_constraintEnd_toStartOf="@+id/textView9"
++        app:layout_constraintHorizontal_bias="0.441"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++
++    <TextView
++        android:id="@+id/textView17"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="20dp"
++        android:text="@string/Name"
++        android:textSize="20sp"
++        app:layout_constraintEnd_toStartOf="@+id/textView10"
++        app:layout_constraintHorizontal_bias="0.281"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView16" />
++
++    <TextView
++        android:id="@+id/textView18"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="20dp"
++        android:text="@string/Thirst_Name"
++        android:textSize="20sp"
++        app:layout_constraintEnd_toStartOf="@+id/textView11"
++        app:layout_constraintHorizontal_bias="0.441"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView17" />
++
++    <TextView
++        android:id="@+id/textView19"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="20dp"
++        android:text="@string/role"
++        android:textSize="20sp"
++        app:layout_constraintEnd_toStartOf="@+id/textView14"
++        app:layout_constraintHorizontal_bias="0.299"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView21" />
++
++    <TextView
++        android:id="@+id/textView20"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="20dp"
++        android:text="TextView"
++        android:textSize="20sp"
++        app:layout_constraintEnd_toStartOf="@+id/textView12"
++        app:layout_constraintHorizontal_bias="0.413"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView18" />
++
++    <TextView
++        android:id="@+id/textView21"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="20dp"
++        android:text="TextView"
++        android:textSize="20sp"
++        app:layout_constraintEnd_toStartOf="@+id/textView13"
++        app:layout_constraintHorizontal_bias="0.218"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView20" />
++
++    <TextView
++        android:id="@+id/textView22"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="24dp"
++        android:text="@string/Key"
++        android:textSize="20sp"
++        app:layout_constraintEnd_toStartOf="@+id/textView15"
++        app:layout_constraintHorizontal_bias="0.311"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView19" />
++
++    <TextView
++        android:id="@+id/textView23"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginBottom="144dp"
++        android:text="@string/Photo"
++        android:textSize="20sp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.101"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView22"
++        app:layout_constraintVertical_bias="0.91" />
++
++    <ImageView
++        android:id="@+id/imageView"
++        android:layout_width="265dp"
++        android:layout_height="234dp"
++        android:layout_marginTop="16dp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.737"
++        app:layout_constraintStart_toEndOf="@+id/textView23"
++        app:layout_constraintTop_toBottomOf="@+id/textView15"
++        app:layout_constraintVertical_bias="0.225"
++        tools:srcCompat="@tools:sample/avatars" />
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/values/colors.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/colors.xml b/app/src/main/res/values/colors.xml
+new file mode 100644
+--- /dev/null	(date 1700024204000)
++++ b/app/src/main/res/values/colors.xml	(date 1700024204000)
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="utf-8"?>
++<resources>
++    <color name="black">#FF000000</color>
++    <color name="white">#FFFFFFFF</color>
++</resources>
+\ No newline at end of file
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+new file mode 100644
+--- /dev/null	(date 1700166266000)
++++ b/app/src/main/res/values/strings.xml	(date 1700166266000)
+@@ -0,0 +1,48 @@
++<resources>
++    <string name="app_name">Podpise</string>
++    <string name="Photo_podpise">Создать подпись</string>
++    <string name="Download_podpise">Загрузить подпись</string>
++    <string name="Delete_podpise">Удалить подпись</string>
++    <string name="Open_podpise">Открыть подпись</string>
++    <string name="Create_requistion">Создать заявку</string>
++    <string name="History">История</string>
++    <string name="Sign">Подписать</string>
++    <string name="Send">Отправить</string>
++
++    <string name="Double_Name">Фамилия</string>
++    <string name="Name">Имя</string>
++    <string name="Thirst_Name">Отчество</string>
++
++    <string name="Number_group">Номер группы</string>
++    <string name="Curs">Курс</string>
++    <string name="Speciality">Специальность</string>
++    <string name="Number_record_book">Номер зачетной книжки</string>
++
++    <string name="Job_title">Должность</string>
++    <string name="Since_Degree">Научная степень</string>
++    <string name="Department">Кафедра</string>
++    <string name="Number_certificate">Номер сертификата</string>
++
++    <string name="Regestration">Создать</string>
++    <string name="role">Роль</string>
++    <string name="Key">Ключ</string>
++    <string name="Photo">Фото</string>
++
++    <string-array name="Role">
++        <item>Студент</item>
++        <item>Преподаватель</item>
++    </string-array>
++
++    <string-array name="Uneversity">
++        <item>БГУ</item>
++        <item>ВСГУТУ</item>
++        <item>СИБГУТИ</item>
++    </string-array>
++
++    <string-array name="Reference">
++        <item>Согласие на прохождение психологического тестирования</item>
++        <item>Документ о доходах</item>
++        <item>Документ на академический отпуск</item>
++        <item>Документ о переводе</item>
++    </string-array>
++</resources>
+\ No newline at end of file
+Index: app/src/main/res/values/themes.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/themes.xml b/app/src/main/res/values/themes.xml
+new file mode 100644
+--- /dev/null	(date 1700024204000)
++++ b/app/src/main/res/values/themes.xml	(date 1700024204000)
+@@ -0,0 +1,9 @@
++<resources xmlns:tools="http://schemas.android.com/tools">
++    <!-- Base application theme. -->
++    <style name="Base.Theme.Podpise" parent="Theme.Material3.DayNight.NoActionBar">
++        <!-- Customize your light theme here. -->
++        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
++    </style>
++
++    <style name="Theme.Podpise" parent="Base.Theme.Podpise" />
++</resources>
+\ No newline at end of file
+Index: app/src/main/res/drawable/requisition.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/requisition.xml b/app/src/main/res/drawable/requisition.xml
+new file mode 100644
+--- /dev/null	(date 1700057062000)
++++ b/app/src/main/res/drawable/requisition.xml	(date 1700057062000)
+@@ -0,0 +1,5 @@
++<vector android:autoMirrored="true" android:height="48dp"
++    android:tint="#000000" android:viewportHeight="24"
++    android:viewportWidth="24" android:width="48dp" xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="@android:color/white" android:pathData="M19,3L5,3c-1.1,0 -2,0.9 -2,2v14c0,1.1 0.9,2 2,2h14c1.1,0 2,-0.9 2,-2L21,5c0,-1.1 -0.9,-2 -2,-2zM14,17L7,17v-2h7v2zM17,13L7,13v-2h10v2zM17,9L7,9L7,7h10v2z"/>
++</vector>
+Index: app/src/main/res/drawable/delete.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/delete.xml b/app/src/main/res/drawable/delete.xml
+new file mode 100644
+--- /dev/null	(date 1700045132000)
++++ b/app/src/main/res/drawable/delete.xml	(date 1700045132000)
+@@ -0,0 +1,5 @@
++<vector android:height="48dp" android:tint="#000000"
++    android:viewportHeight="24" android:viewportWidth="24"
++    android:width="48dp" xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="@android:color/white" android:pathData="M6,19c0,1.1 0.9,2 2,2h8c1.1,0 2,-0.9 2,-2V7H6v12zM19,4h-3.5l-1,-1h-5l-1,1H5v2h14V4z"/>
++</vector>
+Index: app/src/main/res/drawable/camera.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/camera.xml b/app/src/main/res/drawable/camera.xml
+new file mode 100644
+--- /dev/null	(date 1700042570000)
++++ b/app/src/main/res/drawable/camera.xml	(date 1700042570000)
+@@ -0,0 +1,6 @@
++<vector android:height="48dp" android:tint="#000000"
++    android:viewportHeight="24" android:viewportWidth="24"
++    android:width="48dp" xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="@android:color/white" android:pathData="M12,12m-3.2,0a3.2,3.2 0,1 1,6.4 0a3.2,3.2 0,1 1,-6.4 0"/>
++    <path android:fillColor="@android:color/white" android:pathData="M9,2L7.17,4L4,4c-1.1,0 -2,0.9 -2,2v12c0,1.1 0.9,2 2,2h16c1.1,0 2,-0.9 2,-2L22,6c0,-1.1 -0.9,-2 -2,-2h-3.17L15,2L9,2zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5z"/>
++</vector>
+Index: app/src/main/res/drawable/history.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/history.xml b/app/src/main/res/drawable/history.xml
+new file mode 100644
+--- /dev/null	(date 1700055966000)
++++ b/app/src/main/res/drawable/history.xml	(date 1700055966000)
+@@ -0,0 +1,5 @@
++<vector android:height="48dp" android:tint="#000000"
++    android:viewportHeight="24" android:viewportWidth="24"
++    android:width="48dp" xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="@android:color/white" android:pathData="M13,3c-4.97,0 -9,4.03 -9,9L1,12l3.89,3.89 0.07,0.14L9,12L6,12c0,-3.87 3.13,-7 7,-7s7,3.13 7,7 -3.13,7 -7,7c-1.93,0 -3.68,-0.79 -4.94,-2.06l-1.42,1.42C8.27,19.99 10.51,21 13,21c4.97,0 9,-4.03 9,-9s-4.03,-9 -9,-9zM12,8v5l4.28,2.54 0.72,-1.21 -3.5,-2.08L13.5,8L12,8z"/>
++</vector>
+Index: app/src/main/res/drawable/ic_launcher_foreground.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/ic_launcher_foreground.xml b/app/src/main/res/drawable/ic_launcher_foreground.xml
+new file mode 100644
+--- /dev/null	(date 1700024204000)
++++ b/app/src/main/res/drawable/ic_launcher_foreground.xml	(date 1700024204000)
+@@ -0,0 +1,30 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:aapt="http://schemas.android.com/aapt"
++    android:width="108dp"
++    android:height="108dp"
++    android:viewportWidth="108"
++    android:viewportHeight="108">
++    <path android:pathData="M31,63.928c0,0 6.4,-11 12.1,-13.1c7.2,-2.6 26,-1.4 26,-1.4l38.1,38.1L107,108.928l-32,-1L31,63.928z">
++        <aapt:attr name="android:fillColor">
++            <gradient
++                android:endX="85.84757"
++                android:endY="92.4963"
++                android:startX="42.9492"
++                android:startY="49.59793"
++                android:type="linear">
++                <item
++                    android:color="#44000000"
++                    android:offset="0.0" />
++                <item
++                    android:color="#00000000"
++                    android:offset="1.0" />
++            </gradient>
++        </aapt:attr>
++    </path>
++    <path
++        android:fillColor="#FFFFFF"
++        android:fillType="nonZero"
++        android:pathData="M65.3,45.828l3.8,-6.6c0.2,-0.4 0.1,-0.9 -0.3,-1.1c-0.4,-0.2 -0.9,-0.1 -1.1,0.3l-3.9,6.7c-6.3,-2.8 -13.4,-2.8 -19.7,0l-3.9,-6.7c-0.2,-0.4 -0.7,-0.5 -1.1,-0.3C38.8,38.328 38.7,38.828 38.9,39.228l3.8,6.6C36.2,49.428 31.7,56.028 31,63.928h46C76.3,56.028 71.8,49.428 65.3,45.828zM43.4,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2c-0.3,-0.7 -0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C45.3,56.528 44.5,57.328 43.4,57.328L43.4,57.328zM64.6,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2s-0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C66.5,56.528 65.6,57.328 64.6,57.328L64.6,57.328z"
++        android:strokeWidth="1"
++        android:strokeColor="#00000000" />
++</vector>
+\ No newline at end of file
+Index: app/src/main/res/drawable/send.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/send.xml b/app/src/main/res/drawable/send.xml
+new file mode 100644
+--- /dev/null	(date 1700059424000)
++++ b/app/src/main/res/drawable/send.xml	(date 1700059424000)
+@@ -0,0 +1,5 @@
++<vector android:autoMirrored="true" android:height="48dp"
++    android:tint="#000000" android:viewportHeight="24"
++    android:viewportWidth="24" android:width="48dp" xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="@android:color/white" android:pathData="M2.01,21L23,12 2.01,3 2,10l15,2 -15,2z"/>
++</vector>
+Index: app/src/main/res/drawable/sign.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/sign.xml b/app/src/main/res/drawable/sign.xml
+new file mode 100644
+--- /dev/null	(date 1700056828000)
++++ b/app/src/main/res/drawable/sign.xml	(date 1700056828000)
+@@ -0,0 +1,6 @@
++<vector android:height="48dp" android:tint="#000000"
++    android:viewportHeight="24" android:viewportWidth="24"
++    android:width="48dp" xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="@android:color/white" android:pathData="M3,17.25l0,3.75l3.75,0l11.06,-11.06l-3.75,-3.75z"/>
++    <path android:fillColor="@android:color/white" android:pathData="M20.71,5.63l-2.34,-2.34c-0.39,-0.39 -1.02,-0.39 -1.41,0l-1.83,1.83l3.75,3.75l1.83,-1.83C21.1,6.65 21.1,6.02 20.71,5.63z"/>
++</vector>
+Index: app/src/main/res/drawable/folder.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/folder.xml b/app/src/main/res/drawable/folder.xml
+new file mode 100644
+--- /dev/null	(date 1700045638000)
++++ b/app/src/main/res/drawable/folder.xml	(date 1700045638000)
+@@ -0,0 +1,5 @@
++<vector android:height="48dp" android:tint="#000000"
++    android:viewportHeight="24" android:viewportWidth="24"
++    android:width="48dp" xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="@android:color/white" android:pathData="M10,4H4c-1.1,0 -1.99,0.9 -1.99,2L2,18c0,1.1 0.9,2 2,2h16c1.1,0 2,-0.9 2,-2V8c0,-1.1 -0.9,-2 -2,-2h-8l-2,-2z"/>
++</vector>
+Index: app/src/main/res/drawable/ic_launcher_background.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/ic_launcher_background.xml b/app/src/main/res/drawable/ic_launcher_background.xml
+new file mode 100644
+--- /dev/null	(date 1700024204000)
++++ b/app/src/main/res/drawable/ic_launcher_background.xml	(date 1700024204000)
+@@ -0,0 +1,170 @@
++<?xml version="1.0" encoding="utf-8"?>
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="108dp"
++    android:height="108dp"
++    android:viewportWidth="108"
++    android:viewportHeight="108">
++    <path
++        android:fillColor="#3DDC84"
++        android:pathData="M0,0h108v108h-108z" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M9,0L9,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,0L19,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M29,0L29,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M39,0L39,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M49,0L49,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M59,0L59,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M69,0L69,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M79,0L79,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M89,0L89,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M99,0L99,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,9L108,9"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,19L108,19"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,29L108,29"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,39L108,39"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,49L108,49"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,59L108,59"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,69L108,69"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,79L108,79"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,89L108,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,99L108,99"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,29L89,29"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,39L89,39"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,49L89,49"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,59L89,59"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,69L89,69"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,79L89,79"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M29,19L29,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M39,19L39,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M49,19L49,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M59,19L59,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M69,19L69,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M79,19L79,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++</vector>
+Index: app/src/main/res/drawable/create.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/create.xml b/app/src/main/res/drawable/create.xml
+new file mode 100644
+--- /dev/null	(date 1700061322000)
++++ b/app/src/main/res/drawable/create.xml	(date 1700061322000)
+@@ -0,0 +1,6 @@
++<vector android:height="48dp" android:tint="#000000"
++    android:viewportHeight="24" android:viewportWidth="24"
++    android:width="48dp" xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="@android:color/white" android:pathData="M13.7827,15.1719l2.1213,-2.1213l5.9962,5.9962l-2.1213,2.1213z"/>
++    <path android:fillColor="@android:color/white" android:pathData="M17.5,10c1.93,0 3.5,-1.57 3.5,-3.5c0,-0.58 -0.16,-1.12 -0.41,-1.6l-2.7,2.7L16.4,6.11l2.7,-2.7C18.62,3.16 18.08,3 17.5,3C15.57,3 14,4.57 14,6.5c0,0.41 0.08,0.8 0.21,1.16l-1.85,1.85l-1.78,-1.78l0.71,-0.71L9.88,5.61L12,3.49c-1.17,-1.17 -3.07,-1.17 -4.24,0L4.22,7.03l1.41,1.41H2.81L2.1,9.15l3.54,3.54l0.71,-0.71V9.15l1.41,1.41l0.71,-0.71l1.78,1.78l-7.41,7.41l2.12,2.12L16.34,9.79C16.7,9.92 17.09,10 17.5,10z"/>
++</vector>
+Index: app/src/main/res/values-night/themes.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values-night/themes.xml b/app/src/main/res/values-night/themes.xml
+new file mode 100644
+--- /dev/null	(date 1700024204000)
++++ b/app/src/main/res/values-night/themes.xml	(date 1700024204000)
+@@ -0,0 +1,7 @@
++<resources xmlns:tools="http://schemas.android.com/tools">
++    <!-- Base application theme. -->
++    <style name="Base.Theme.Podpise" parent="Theme.Material3.DayNight.NoActionBar">
++        <!-- Customize your dark theme here. -->
++        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
++    </style>
++</resources>
+\ No newline at end of file
+Index: app/src/main/res/mipmap-anydpi/ic_launcher_round.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/mipmap-anydpi/ic_launcher_round.xml b/app/src/main/res/mipmap-anydpi/ic_launcher_round.xml
+new file mode 100644
+--- /dev/null	(date 1700024204000)
++++ b/app/src/main/res/mipmap-anydpi/ic_launcher_round.xml	(date 1700024204000)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
++    <background android:drawable="@drawable/ic_launcher_background" />
++    <foreground android:drawable="@drawable/ic_launcher_foreground" />
++    <monochrome android:drawable="@drawable/ic_launcher_foreground" />
++</adaptive-icon>
+\ No newline at end of file
+Index: app/src/main/res/mipmap-anydpi/ic_launcher.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/mipmap-anydpi/ic_launcher.xml b/app/src/main/res/mipmap-anydpi/ic_launcher.xml
+new file mode 100644
+--- /dev/null	(date 1700024204000)
++++ b/app/src/main/res/mipmap-anydpi/ic_launcher.xml	(date 1700024204000)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
++    <background android:drawable="@drawable/ic_launcher_background" />
++    <foreground android:drawable="@drawable/ic_launcher_foreground" />
++    <monochrome android:drawable="@drawable/ic_launcher_foreground" />
++</adaptive-icon>
+\ No newline at end of file
